@@ -163,7 +163,7 @@ def generate_table(elements, courses, semester,part1 = True, part2 = False):
     )
 
     for course in courses:
-        if not (course["semester"] == semester or course["semester"][:2] == semester):
+        if not (course["semester"] == semester or course["semester"] == semester[:2]):
             continue
         start_line = hour_to_line[date_to_hour_id(round_time(course["start_time"]))]
         end_line = hour_to_line[date_to_hour_id(ceil_time(course["end_time"]))]
