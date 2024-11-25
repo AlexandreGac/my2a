@@ -76,21 +76,25 @@ def importCourseCSV(csv_file):
                 )
                 continue
 
-            if semester not in ["S3", "S4"]:
+            if semester not in ["S3", "S4", "S3A", "S3B", "S4A", "S4B"]:
                 print("------ " + f"Semester {semester} does not exist")
                 error_rows.append(
                     [
                         row["code"],
                         "Le semestre '"
                         + semester
-                        + "' n'existe pas. Veuillez utiliser 'S3' ou 'S4'",
+                        + "' n'existe pas. Veuillez utiliser 'S3', 'S3A', 'S3B', 'S4', 'S4A' ou 'S4B'.",
                     ]
                 )
                 continue
             # Match semester name to semester value
             semester_mapping = {
                 "S3": Course.Semester.S3,
+                "S3A": Course.Semester.S3A,
+                "S3B": Course.Semester.S3B,
                 "S4": Course.Semester.S4,
+                "S4A": Course.Semester.S4A,
+                "S4B": Course.Semester.S4B,
             }
             semester = semester_mapping.get(semester)
 

@@ -30,6 +30,11 @@ class Course(models.Model):
     class Semester(models.TextChoices):
         S3 = "S3"
         S4 = "S4"
+        # Ajoute les demi-semestres
+        S3A = "S3A"
+        S3B = "S3B"
+        S4A = "S4A"
+        S4B = "S4B"
 
     semester = models.CharField(max_length=10, choices=Semester.choices)
 
@@ -117,12 +122,15 @@ class Student(models.Model):
                 min_start = min(s_courses.start_time, course.start_time)
                 max_start = max(s_courses.start_time, course.start_time)
                 min_end = min(s_courses.end_time, course.end_time)
+                # Tri des périodes/semestres
+                tiniest_period = max(s_courses.semester, course.semester)
+                widest_period = min(s_courses.semester, course.semester)
 
+                # Vérification de la compatibilité des cours
                 if (
-                    s_courses.semester == course.semester
-                    and s_courses.day == course.day
-                    and min_start <= max_start
-                    and max_start <= min_end
+                        widest_period in tiniest_period
+                        and s_courses.day == course.day
+                        and min_start <= max_start <= min_end
                 ):
                     incompatible_courses.append(course)
                     if course in compatible_courses:
