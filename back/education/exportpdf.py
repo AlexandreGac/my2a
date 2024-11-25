@@ -51,16 +51,20 @@ def generate_pdf_from_courses(name, courses, intro):
     title = Paragraph(title_text, title_style)
 
     elements.append(title)
-    generate_table(elements, courses, "S3")
+    generate_table(elements, courses, "S3A")
     elements.append(PageBreak())
-    generate_table(elements, courses, "S4")
+    generate_table(elements, courses, "S3B")
+    elements.append(PageBreak())
+    generate_table(elements, courses, "S4A") # 2 more pages
+    elements.append(PageBreak())
+    generate_table(elements, courses, "S4B")
     doc.build(elements)
     pdf = buffer.getvalue()
     buffer.close()
     return pdf
 
 
-def generate_table(elements, courses, semester):
+def generate_table(elements, courses, semester,part1 = True, part2 = False):
     hour_to_line = {
         "8h00": 1,
         "8h30": 2,
@@ -159,7 +163,7 @@ def generate_table(elements, courses, semester):
     )
 
     for course in courses:
-        if not course["semester"] == semester:
+        if not (course["semester"] == semester or course["semester"] == semester[:2]):
             continue
         start_line = hour_to_line[date_to_hour_id(round_time(course["start_time"]))]
         end_line = hour_to_line[date_to_hour_id(ceil_time(course["end_time"]))]
