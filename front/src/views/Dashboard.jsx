@@ -51,7 +51,6 @@ export default function Dashboard() {
     const [comment, setComment] = useState('')
     const [parameters, setParameters] = useState({})
     const [semester, setSemester] = useState(1)
-    const [part, setPart] = useState(1)
 
     const timetable = useMemo(() => (
         {url: "/api/student/current/timetable/"}
@@ -602,24 +601,14 @@ export default function Dashboard() {
                         <Grid item md={6} xs={11} sm={11}>
                             <Box sx={{ marginBottom: "50px" }} >
                                 <Button variant="contained" sx={{marginRight: "10px"}} onClick={() => {
-                                    setSemester(1); setPart(1);
+                                    setSemester(1);
                                 }}>
-                                    Semestre 1 A
+                                    Semestre 1
                                 </Button>
                                 <Button variant="contained" sx={{marginRight: "10px"}} onClick={() => {
-                                    setSemester(1); setPart(2);
+                                    setSemester(2);
                                 }}>
-                                    Semestre 1 B
-                                </Button>
-                                <Button variant="contained" sx={{marginRight: "10px"}} onClick={() => {
-                                    setSemester(2); setPart(1);
-                                }}>
-                                    Semestre 2 A
-                                </Button>
-                                <Button variant="contained" sx={{marginRight: "10px"}} onClick={() => {
-                                    setSemester(2); setPart(2);
-                                }}>
-                                    Semestre 2 B
+                                    Semestre 2
                                 </Button>
                                 <Button variant="contained" sx={{marginRight: "10px"}} onClick={() => {
                                     window.open("/api/student/current/timetable/")
@@ -631,7 +620,7 @@ export default function Dashboard() {
                                 <Document file={timetable}
                                     onContextMenu={(e) => e.preventDefault()}
                                     className="pdf-container">
-                                    <Page size="A2" pageNumber={2*(semester-1) + part} scale={1} renderTextLayer={false} />
+                                    <Page size="A2" pageNumber={semester} scale={1} renderTextLayer={false} />
                                 </Document>
                             </Box>
                         </Grid>

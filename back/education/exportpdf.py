@@ -13,6 +13,11 @@ from reportlab.platypus import (
 )
 
 
+def center_text(txt):
+    #assert(len(txt) <= 14)
+    L = len(txt)
+    return (14 - (L)//2)*" " + txt
+
 def round_time(time):
     """
     Round a time to the nearest slot.
@@ -51,20 +56,16 @@ def generate_pdf_from_courses(name, courses, intro):
     title = Paragraph(title_text, title_style)
 
     elements.append(title)
-    generate_table(elements, courses, "S3A")
+    generate_table(elements, courses, "S3")
     elements.append(PageBreak())
-    generate_table(elements, courses, "S3B")
-    elements.append(PageBreak())
-    generate_table(elements, courses, "S4A") # 2 more pages
-    elements.append(PageBreak())
-    generate_table(elements, courses, "S4B")
+    generate_table(elements, courses, "S4")
     doc.build(elements)
     pdf = buffer.getvalue()
     buffer.close()
     return pdf
 
 
-def generate_table(elements, courses, semester,part1 = True, part2 = False):
+def generate_table(elements, courses, semester):
     hour_to_line = {
         "8h00": 1,
         "8h30": 2,
@@ -98,51 +99,33 @@ def generate_table(elements, courses, semester,part1 = True, part2 = False):
         colors.lightgreen,
         colors.lightcyan,
     ]
-
-    style = TableStyle(
-        [
-            ("FONTNAME", (0, 0), (-1, -1), "Times-Bold"),
-            ("BACKGROUND", (0, 0), (-1, 0), colors.lightgrey),
-            ("BACKGROUND", (0, 0), (0, -1), colors.lightgrey),
-            ("ALIGN", (0, 0), (-1, -1), "CENTER"),
-            ("BOX", (0, 0), (-1, -1), 1, colors.black),
-            ("LINEABOVE", (0, 0), (-1, 0), 1, colors.black),
-            ("LINEABOVE", (0, 0), (0, -1), 1, colors.black),
-            ("LINEBELOW", (0, 0), (-1, 0), 1, colors.black),
-            ("LINEBELOW", (0, 0), (0, -1), 1, colors.black),
-            ("LINEAFTER", (1, 1), (-1, -1), 1, colors.black),
-            ("LINEAFTER", (0, 0), (0, -1), 1, colors.black),
-            ("LINEAFTER", (0, 0), (-1, 0), 1, colors.black),
-            ("BACKGROUND", (1, 1), (-1, -1), colors.whitesmoke),
-        ]
-    )
     table_data = [
-        [" ", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"],
-        ["8h", " ", " ", " ", " ", " "],
-        ["8h30", " ", " ", " ", " ", " "],
-        ["9h", " ", " ", " ", " ", " "],
-        ["9h30", " ", " ", " ", " ", " "],
-        ["10h", " ", " ", " ", " ", " "],
-        ["10h30", " ", " ", " ", " ", " "],
-        ["11h", " ", " ", " ", " ", " "],
-        ["11h30", " ", " ", " ", " ", " "],
-        ["12h", " ", " ", " ", " ", " "],
-        ["12h30", " ", " ", " ", " ", " "],
-        ["13h", " ", " ", " ", " ", " "],
-        ["13h30", " ", " ", " ", " ", " "],
-        ["14h", " ", " ", " ", " ", " "],
-        ["14h30", " ", " ", " ", " ", " "],
-        ["15h", " ", " ", " ", " ", " "],
-        ["15h30", " ", " ", " ", " ", " "],
-        ["16h", " ", " ", " ", " ", " "],
-        ["16h30", " ", " ", " ", " ", " "],
-        ["17h", " ", " ", " ", " ", " "],
-        ["17h30", " ", " ", " ", " ", " "],
-        ["18h", " ", " ", " ", " ", " "],
-        ["18h30", " ", " ", " ", " ", " "],
-        ["19h", " ", " ", " ", " ", " "],
-        ["19h30", " ", " ", " ", " ", " "],
-        ["20h", " ", " ", " ", " ", " "],
+        [" ", "Lundi", "" ,"Mardi", "" , "Mercredi", "" , "Jeudi", "" , "Vendredi", ""],
+        ["8h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["8h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["9h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["9h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["10h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["10h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["11h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["11h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["12h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["12h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["13h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["13h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["14h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["14h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["15h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["15h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["16h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["16h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["17h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["17h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["18h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["18h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["19h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["19h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        ["20h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
     ]
     style = TableStyle(
         [
@@ -155,49 +138,148 @@ def generate_table(elements, courses, semester,part1 = True, part2 = False):
             ("LINEABOVE", (0, 0), (0, -1), 1, colors.black),
             ("LINEBELOW", (0, 0), (-1, 0), 1, colors.black),
             ("LINEBELOW", (0, 0), (0, -1), 1, colors.black),
-            ("LINEAFTER", (1, 1), (-1, -1), 1, colors.black),
             ("LINEAFTER", (0, 0), (0, -1), 1, colors.black),
             ("LINEAFTER", (0, 0), (-1, 0), 1, colors.black),
             ("BACKGROUND", (1, 1), (-1, -1), colors.whitesmoke),
         ]
     )
 
+    for i in range(1,5):
+        style.add("LINEAFTER", (2*i, 0), (2*i, -1), 1, colors.black)
+
     for course in courses:
-        if not (course["semester"] == semester or course["semester"] == semester[:2]):
+        if not (course["semester"][:2] == semester):
             continue
         start_line = hour_to_line[date_to_hour_id(round_time(course["start_time"]))]
         end_line = hour_to_line[date_to_hour_id(ceil_time(course["end_time"]))]
+
+        if course["semester"][2:] == "B":
+            column = table_data[0].index(course["day"]) + 1
+            style.add(
+                "LINEAFTER",
+                (column - 1, start_line),
+                (column - 1, end_line),
+                1,
+                colors.black,
+            )
+            table_data[start_line][column] = course["semester"]
+            style.add(
+                "LINEABOVE",
+                (column, start_line + 1),
+                (column, start_line + 1),
+                1,
+                colors.black,
+            )
+        else:
+            column = table_data[0].index(course["day"])
+            if course["semester"][2:] == "A":
+                style.add(
+                    "LINEAFTER",
+                    (column, start_line),
+                    (column, end_line),
+                    1,
+                    colors.black,
+                )
+
+        table_data[start_line][column] = course["semester"]
+        style.add(
+            "LINEABOVE",
+            (column, start_line + 1),
+            (column, start_line + 1),
+            1,
+            colors.black,
+        )
+        style.add(
+            "LINEAFTER",
+            (table_data[0].index(course["day"]) - 1, start_line),
+            (table_data[0].index(course["day"]) - 1, end_line),
+            1,
+            colors.black,
+        )
+
+        style.add(
+            "LINEAFTER",
+            (table_data[0].index(course["day"]) + 1, start_line),
+            (table_data[0].index(course["day"]) + 1, end_line),
+            1,
+            colors.black,
+        )
         style.add(
             "LINEBELOW",
-            (table_data[0].index(course["day"]), start_line - 1),
-            (table_data[0].index(course["day"]), start_line - 1),
+            (column, start_line - 1),
+            (column , start_line - 1),
             1,
             colors.black,
         )
         style.add(
             "LINEABOVE",
-            (table_data[0].index(course["day"]), end_line + 1),
-            (table_data[0].index(course["day"]), end_line + 1),
+            (column, end_line + 1),
+            (column, end_line + 1),
             1,
             colors.black,
         )
 
         middle_line = (start_line + end_line) // 2
-        # table_data[middle_line-1][table_data[0].index(course["day"])] = course["name"]
-        table_data[middle_line][table_data[0].index(course["day"])] = course["code"]
-        table_data[middle_line + 1][table_data[0].index(course["day"])] = (
-            str(course["ects"]) + " ECTS"
-        )
-
-        for line in range(start_line, end_line + 1):
+        if course["semester"][2:] == "":
+            table_data[middle_line][column] = center_text(course["code"])
+            table_data[middle_line + 1][column] = center_text(str(course["ects"]) + " ECTS")
+            table_data[start_line][column] = center_text(course["semester"])
             style.add(
-                "BACKGROUND",
-                (table_data[0].index(course["day"]), line),
-                (table_data[0].index(course["day"]), line),
-                colors_list[course['color'] % len(colors_list)],
+                "ALIGN",
+                (column, start_line),
+                (column + 1, end_line),
+                "LEFT",
             )
 
-    table = Table(table_data, colWidths=100, rowHeights=15)
+            style.add(
+                "LINEBELOW",
+                (column+1, start_line - 1),
+                (column+1 , start_line - 1),
+                1,
+                colors.black,
+            )
+            style.add(
+                "LINEABOVE",
+                (column+1, end_line + 1),
+                (column+1, end_line + 1),
+                1,
+                colors.black,
+            )
+            style.add(
+                "LINEABOVE",
+                (column+1, start_line + 1),
+                (column+1, start_line + 1),
+                1,
+                colors.black,
+            )
+            for line in range(start_line, end_line + 1):
+                    style.add(
+                        "BACKGROUND",
+                        (column, line),
+                        (column, line),
+                        colors_list[course['color'] % len(colors_list)],
+                    )
+                    style.add(
+                        "BACKGROUND",
+                        (column + 1, line),
+                        (column + 1, line),
+                        colors_list[course['color'] % len(colors_list)],
+                    )
+        else :
+            table_data[middle_line][column] = course["code"]
+            table_data[middle_line + 1][column] = (
+                str(course["ects"]) + " ECTS"
+            )
+
+            for line in range(start_line, end_line + 1):
+                style.add(
+                    "BACKGROUND",
+                    (column, line),
+                    (column, line),
+                    colors_list[course['color'] % len(colors_list)],
+                )
+
+    table = Table(table_data, colWidths=50, rowHeights=15)
 
     table.setStyle(style)
 
