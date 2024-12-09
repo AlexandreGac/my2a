@@ -1,7 +1,8 @@
-from education.models import Parameter
-from templated_email import send_templated_mail
+from education.models import Parameter, Student
+from back.templates.templated_email import send_templated_mail, get_templated_mail
 from celery import shared_task
-from education.models import Student
+
+from django.core.mail import EmailMessage
 
 def get_department_admins(department):
     """Return the list of admins for a department."""
@@ -20,10 +21,14 @@ def send_confirmation_mail(studentId):
     for course in student.parcours.courses_mandatory.all():
         parcours_count += course.ects
 
-    send_templated_mail(
+    # Charger le PDF
+    pdf_content = student.generate_timetable()
+
+    # Construire le contenu de l'email avec le template
+    email_content = get_templated_mail(
         template_name="confirmation",
         from_email="my2a@enpc.org",
-        recipient_list=[student.user.email],
+        to=[student.user.email],
         context={
             "student": student,
             "parcours_name": student.parcours.name,
@@ -35,8 +40,20 @@ def send_confirmation_mail(studentId):
             "parcours_count": parcours_count,
             "total_count": mandatory_count + elective_count + parcours_count + student.parcours.academic_base_ects + student.parcours.base_ects,
         },
+    )
+
+    # Construire l'email
+    email = EmailMessage(
+        subject=email_content.subject,
+        body=email_content.body,
+        from_email="my2a@enpc.org",
+        to=[student.user.email],
         cc=get_department_admins(student.department),
     )
+    email.attach("emploidutemps_annuel.pdf", pdf_content, "application/pdf")  # Ajouter la pièce jointe
+
+    # Envoyer l'email
+    email.send()
 
 @shared_task(name="send_account_creation_mail")
 def send_account_creation_mail(mail, first_name, last_name, password):
