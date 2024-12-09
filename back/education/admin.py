@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Course, Department, Enrollment, Parameter, Parcours, Student
+from .models import Course, Opening_Week, Department, Enrollment, Parameter, Parcours, Student
 
 
 class StudentAdmin(admin.ModelAdmin):
@@ -18,6 +18,12 @@ class StudentAdmin(admin.ModelAdmin):
 class CourseAdmin(admin.ModelAdmin):
     search_fields = ["name", "code", "department__name"]
     list_filter = ["department", "semester", "day"]
+    list_display = ["name", "code", "department"]
+
+
+class Opening_WeekAdmin(admin.ModelAdmin):
+    search_fields = ["name", "code", "department__name"]
+    list_filter = ["department", "semester", "week"]
     list_display = ["name", "code", "department"]
 
 

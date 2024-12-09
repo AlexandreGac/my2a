@@ -57,6 +57,32 @@ class Course(models.Model):
 
     def __str__(self):
         return self.code
+    
+
+class Opening_Week(models.Model):
+    name = models.CharField(max_length=400)
+    code = models.CharField(max_length=10)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    description = models.TextField(null=True, blank=True)
+
+    class Semester(models.TextChoices):
+        S3 = "S3"
+        S4 = "S4"
+        # Ajoute les demi-semestres
+        S3A = "S3A"
+        S3B = "S3B"
+        S4A = "S4A"
+        S4B = "S4B"
+
+    semester = models.CharField(max_length=10, choices=Semester.choices)
+    week = models.IntegerField(null=False,blank=False)
+    
+    ects = models.FloatField()
+    teacher = models.CharField(max_length=100, null=True, blank=True)
+
+    def __str__(self):
+        return self.code
+
 
 
 class Parcours(models.Model):
