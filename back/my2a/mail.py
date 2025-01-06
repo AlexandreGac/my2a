@@ -1,5 +1,5 @@
 from education.models import Parameter, Student
-from back.templates.templated_email import send_templated_mail, get_templated_mail
+from templated_email import send_templated_mail, get_templated_mail
 from celery import shared_task
 
 from django.core.mail import EmailMessage
