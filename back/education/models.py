@@ -1,6 +1,7 @@
 from django.contrib.auth import models as models2
 from django.contrib.auth.models import User
 from django.db import models
+from solo.models import SingletonModel
 from django.utils import timezone
 
 from .exportpdf import generate_pdf_from_courses
@@ -221,3 +222,32 @@ class Parameter(models.Model):
     show = models.BooleanField(default=True)
     def __str__(self):
         return self.name
+
+
+
+
+
+class YearInformation(SingletonModel):
+    start_of_the_school_year = models.DateField()
+    start_of_S4A = models.DateField()
+    start_of_S3B = models.DateField()
+    start_of_S4A = models.DateField()
+    start_of_S4B = models.DateField()
+    end_of_school_year = models.DateField()
+    monday_of_autumn_holiday = models.DateField()
+    moday_of_xmas_holiday = models.DateField()
+    monday_of_winter_holiday = models.DateField()
+    monday_of_spring_holiday = models.DateField()
+    def __str__(self):
+        return str(self.start_of_the_school_year)
+
+
+
+class SpecialDay(models.Model):
+    name = models.CharField(max_length=100)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    date = models.DateField()
+    is_public_holiday = models.BooleanField()
+    def __str__(self):
+        return self.name
+
