@@ -252,6 +252,7 @@ export default function Inspector() {
                         <Grid item md={6} xs={11} sm={11}>
                             <Button sx={{ marginBottom: 2, marginRight: 2}} variant="outlined" onClick={() => { window.location = "/api/students/export" + (currentDepartment !=  null ? "?dep=" + currentDepartment : "")}} startIcon={<DownloadIcon />} >Télécharger l'Excel</Button>
                             <Button sx={{ marginBottom: 2, marginRight: 2}} variant="outlined" onClick={() => { window.location = "/inspector/upload/course" }} startIcon={<DownloadIcon />} >Ajouter des cours</Button>
+                            <Button sx={{ marginBottom: 2, marginRight: 2}} variant="outlined" onClick={() => { window.location = "/inspector/upload/special-day" }} startIcon={<DownloadIcon />} >Ajouter un jour spécial</Button>
                             <Button sx={{ marginBottom: 2, marginRight: 2}} variant="outlined" onClick={() => { window.location = "/inspector/upload/student" }} startIcon={<DownloadIcon />} >Ajouter des élèves</Button>
                             <Button sx={{ marginBottom: 2, marginRight: 2}} variant="outlined" onClick={() => { window.location = "/inspector/parcours" }} startIcon={<RemoveRedEyeIcon />} >Modifier les parcours</Button>
                             <Button sx={{ marginBottom: 2, marginRight: 2}} variant="outlined" onClick={() => { window.location = "/inspector/courses" }} startIcon={<RemoveRedEyeIcon />} >Voir la liste des cours</Button>
