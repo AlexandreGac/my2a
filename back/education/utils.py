@@ -98,7 +98,7 @@ def importCourseCSV(csv_file):
             }
             semester = semester_mapping.get(semester)
 
-            if day not in ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]:
+            if (day not in ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]) and not day.isdigit():
                 print("------ " + f"Day {day} does not exist")
                 error_rows.append(
                     [
@@ -110,6 +110,7 @@ def importCourseCSV(csv_file):
                 )
                 continue
 
+            """
             # Match day name to day value
             day_mapping = {
                 "Lundi": Course.Day.LUN,
@@ -120,6 +121,7 @@ def importCourseCSV(csv_file):
             }
 
             day = day_mapping.get(day)
+            """
 
             # # Catch “AAA” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] format.
             # try:

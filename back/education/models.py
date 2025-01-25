@@ -38,14 +38,18 @@ class Course(models.Model):
 
     semester = models.CharField(max_length=10, choices=Semester.choices)
 
+    """
+    # On modifie ça de manière à faire rentrer un chiffre
     class Day(models.TextChoices):
         LUN = "Lundi"
         MAR = "Mardi"
         MER = "Mercredi"
         JEU = "Jeudi"
         VEN = "Vendredi"
+    """
 
-    day = models.CharField(max_length=10, choices=Day.choices)
+    #day = models.CharField(max_length=10, choices=Day.choices)
+    day = models.CharField(max_length=10)
 
     # horaire de début et de fin - format hh:mm (24h) France
     start_time = models.TimeField()
@@ -55,8 +59,8 @@ class Course(models.Model):
 
     teacher = models.CharField(max_length=100, null=True, blank=True)
 
-    def __str__(self):
-        return self.code
+def __str__(self):
+    return self.code
 
 
 class Parcours(models.Model):
@@ -74,6 +78,8 @@ class Parcours(models.Model):
     courses_mandatory = models.ManyToManyField(
         Course, blank=True, related_name="mandatory_parcours"
     )  # ajouter les cours du tronc commun dedans
+
+    # Mandatory choice courses
     courses_on_list = models.ManyToManyField(
         Course, blank=True, related_name="on_list_parcours"
     )
