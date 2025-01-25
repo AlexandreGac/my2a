@@ -17,8 +17,11 @@ from django.dispatch import receiver
 
 @receiver(post_migrate)
 def get_year(sender, **kwargs):
-    from .models import YearInformation
-    return YearInformation.objects.get().end_of_school_year.year
+    try:
+        from .models import YearInformation
+        return YearInformation.objects.get().end_of_school_year.year
+    except Exception:
+        return 2025
 
 year = get_year(None)
 
@@ -159,72 +162,82 @@ def write_specil_week(specil_weeks, table_data, style,color):
 
 @receiver(post_migrate)
 def on_post_migrate(sender, **kwargs):
-    from .models import YearInformation
-    def get_semester_begin(year):
-        """
-        Calculates the start dates of each semester based on the given year.
+    try:
+        from .models import YearInformation
+        def get_semester_begin(year):
+            """
+            Calculates the start dates of each semester based on the given year.
 
-        Args:
-            year (int): The year for which to calculate semester start dates.
+            Args:
+                year (int): The year for which to calculate semester start dates.
 
-        Returns:
-            dict: A dictionary where keys are semester numbers (0-5)
-                and values are tuples of (day, month) representing
-                the start date of each semester.
-        """
+            Returns:
+                dict: A dictionary where keys are semester numbers (0-5)
+                    and values are tuples of (day, month) representing
+                    the start date of each semester.
+            """
 
-        try:
-            year_info = YearInformation.objects.get()
-        except YearInformation.DoesNotExist:
-            # Handle the case where no YearInformation record exists
-            # You might want to create a default record or raise an exception
-            raise ValueError("YearInformation record not found")
+            try:
+                year_info = YearInformation.objects.get()
+            except YearInformation.DoesNotExist:
+                # Handle the case where no YearInformation record exists
+                # You might want to create a default record or raise an exception
+                raise ValueError("YearInformation record not found")
 
-        semester_begin = {
-            0: (year_info.start_of_the_school_year.day, year_info.start_of_the_school_year.month),
-            1: (year_info.start_of_S3B.day, year_info.start_of_S3B.month),
-            2: (year_info.start_of_S4A.day, year_info.start_of_S4A.month),
-            3: (year_info.start_of_S4B.day, year_info.start_of_S4B.month),
-            4: (year_info.end_of_school_year.day, year_info.end_of_school_year.month),
-        }
-        return semester_begin
+            semester_begin = {
+                0: (year_info.start_of_the_school_year.day, year_info.start_of_the_school_year.month),
+                1: (year_info.start_of_S3B.day, year_info.start_of_S3B.month),
+                2: (year_info.start_of_S4A.day, year_info.start_of_S4A.month),
+                3: (year_info.start_of_S4B.day, year_info.start_of_S4B.month),
+                4: (year_info.end_of_school_year.day, year_info.end_of_school_year.month),
+            }
+            return semester_begin
 
-    def get_vacation_dates(year):
-        """
-        Retrieves vacation dates from the YearInformation model.
+        def get_vacation_dates(year):
+            """
+            Retrieves vacation dates from the YearInformation model.
 
-        Args:
-            year (int): The year for which to retrieve vacation dates.
+            Args:
+                year (int): The year for which to retrieve vacation dates.
 
-        Returns:
-            dict: A dictionary where keys are tuples of (day, month)
-                and values are strings representing the vacation names.
-        """
+            Returns:
+                dict: A dictionary where keys are tuples of (day, month)
+                    and values are strings representing the vacation names.
+            """
 
-        try:
-            year_info = YearInformation.objects.get()
-        except YearInformation.DoesNotExist:
-            # Handle the case where no YearInformation record exists
-            # You might want to create a default record or raise an exception
-            raise ValueError("YearInformation record not found")
+            try:
+                year_info = YearInformation.objects.get()
+            except YearInformation.DoesNotExist:
+                # Handle the case where no YearInformation record exists
+                # You might want to create a default record or raise an exception
+                raise ValueError("YearInformation record not found")
 
-        vacation = {
-            (year_info.monday_of_autumn_holiday.day,
-            year_info.monday_of_autumn_holiday.month): "Vacances de Toussaint",
-            (year_info.monday_of_xmas_holiday.day,
-            year_info.monday_of_xmas_holiday.month): "Vacances de Noël",
-            add_one_week((year_info.monday_of_xmas_holiday.day,
-            year_info.monday_of_xmas_holiday.month)): "Vacances de Noël",
-            (year_info.monday_of_winter_holiday.day,
-            year_info.monday_of_winter_holiday.month): "Vacances d'Hiver",
-            (year_info.monday_of_spring_holiday.day,
-            year_info.monday_of_spring_holiday.month): "Vacances de Pâques",
-        }
-        return vacation
+            vacation = {
+                (year_info.monday_of_autumn_holiday.day,
+                year_info.monday_of_autumn_holiday.month): "Vacances de Toussaint",
+                (year_info.monday_of_xmas_holiday.day,
+                year_info.monday_of_xmas_holiday.month): "Vacances de Noël",
+                add_one_week((year_info.monday_of_xmas_holiday.day,
+                year_info.monday_of_xmas_holiday.month)): "Vacances de Noël",
+                (year_info.monday_of_winter_holiday.day,
+                year_info.monday_of_winter_holiday.month): "Vacances d'Hiver",
+                (year_info.monday_of_spring_holiday.day,
+                year_info.monday_of_spring_holiday.month): "Vacances de Pâques",
+            }
+            return vacation
 
-    semester_starts = get_semester_begin(year)
-    vacation_periods = get_vacation_dates(year)
-    return semester_starts,vacation_periods
+        semester_starts = get_semester_begin(year)
+        vacation_periods = get_vacation_dates(year)
+        return semester_starts,vacation_periods
+    except Exception:
+        return {
+    0 : (26,8),
+    1 : (16,9),
+    2 : (18,11),
+    3 : (3,2),
+    4 : (14,4),
+    5 : (16,6)
+    },{}
 
 semester_begin,vacation = on_post_migrate(None)
 
