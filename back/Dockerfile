@@ -23,8 +23,7 @@ COPY pyproject.toml ./
 
 # Pipefail to ensure build files if something goes wrong
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN poetry install --no-dev --no-root --no-cache
-
+RUN poetry add django-solo && poetry install --no-dev --no-root --no-cache
 # ====================== RUNTIME ENVIRONMENT ======================
 FROM python:3.11.6-slim-bookworm as runtime-base
 ENV PYSETUP_PATH="/opt/pysetup" \
