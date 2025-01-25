@@ -384,7 +384,6 @@ export default function Dashboard() {
             })
                 .then((res) => res.json())
                 .then((result_available) => {
-                    console.log(result_available);
                     fetch('/api/student/current/courses/available_electives', {
                         method: 'GET',
                         credentials: "include",
@@ -609,6 +608,11 @@ export default function Dashboard() {
                                     setSemester(2);
                                 }}>
                                     Semestre 2
+                                </Button>
+                                <Button variant="contained" sx={{marginRight: "10px"}} onClick={() => {
+                                    setSemester(3);
+                                }}>
+                                    Année Complète
                                 </Button>
                                 <Button variant="contained" sx={{marginRight: "10px"}} onClick={() => {
                                     window.open("/api/student/current/timetable/")

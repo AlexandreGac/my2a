@@ -11,61 +11,20 @@ from reportlab.platypus import (
     Table,
     TableStyle,
 )
+from django.db.models.signals import post_migrate
+from django.dispatch import receiver
 
-def center_text(txt):
-    #assert(len(txt) <= 14)
-    L = len(txt)
-    return (14 - (L)//2)*" " + txt
+
+@receiver(post_migrate)
+def get_year(sender, **kwargs):
+    from .models import YearInformation
+    return YearInformation.objects.get().end_of_school_year.year
+
+year = get_year(None)
 
 
 def is_year_bissextile(year):
     return (year % 4 == 0) and (year % 100 != 0) or (year % 400 == 0)
-
-
-def add_n_day(day,n):
-    newday = day[0] + n
-    newmonth = day[1]
-    if newday > day_in_month[day[1]]:
-        newday -= day_in_month[day[1]]
-        newmonth = day[1]%12 + 1
-    return newday,newmonth
-
-def add_one_week(day):
-    return add_n_day(day,7)
-
-def is_after(day1, day2):
-    if day1[1] == day2[1]:
-        return day1[0] > day2[0]
-    else:
-        return (day1[1]-8)%12 > (day2[1] - 8)%12
-
-
-def find_day_and_week(day):
-    actual_monday = semester_begin[0]
-    old_monday = actual_monday
-    weeks = 0
-    while is_after(day, actual_monday):
-        weeks += 1
-        old_monday = actual_monday
-        actual_monday = add_one_week(actual_monday)
-    days = 0
-    while is_after(day, old_monday):
-        days += 1
-        old_monday = add_n_day(old_monday,1)
-    return weeks,days
-
-
-def write_specil_week(specil_weeks, table_data, style,color):
-    for key in specil_weeks:
-        for i in range(20):
-            table_data[week[key]][i+1] = ""
-        table_data[week[key]][len(table_data[0])//2] = specil_weeks[key]
-        style.add("BACKGROUND", (1, week[key]), (-1, week[key]), color,)
-
-
-year = 2025
-
-
 
 day_in_month = {
     1 : 31,
@@ -82,37 +41,25 @@ day_in_month = {
     12: 31
 }
 
+
 semester_to_int = {
-    "S3A" : [1],
-    "S3B" : [2],
-    "S4A" : [3],
-    "S4B" : [4],
-    "S3" : [1,2],
-    "S4" : [3,4]
+    "S3A" : [0],
+    "S3B" : [1],
+    "S4A" : [2],
+    "S4B" : [3],
+    "S3" : [0,1],
+    "S4" : [2,3]
 }
 
-semester_begin = {
-    0 : (26,8),
-    1 : (16,9),
-    2 : (18,11),
-    3 : (3,2),
-    4 : (14,4),
-    5 : (16,6)
-}
 
-vacation = {
-    (28,10) : "Vacances de Toussaint",
-    (23,12) : "Vacances de Noel",
-    (30,12) : "Vacances de Noel",
-    (24,2) : "Vacances d'Hiver",
-    (21,4) : "Vacances de Pâques"
-}
+
 
 pedagogic_day = {
     0 : (28,3),
     1 : (15,1),
     2 : (10,6)
 }
+
 
 ouverture_week = {
     (26,8) : "Semaine d'entrée",
@@ -162,21 +109,137 @@ background_color = {
 }
 
 
+def center_text(txt):
+    #assert(len(txt) <= 14)
+    L = len(txt)
+    return (14 - (L)//2)*" " + txt
+
+
+
+def add_n_day(day,n):
+    newday = day[0] + n
+    newmonth = day[1]
+    if newday > day_in_month[day[1]]:
+        newday -= day_in_month[day[1]]
+        newmonth = day[1]%12 + 1
+    return newday,newmonth
+
+def add_one_week(day):
+    return add_n_day(day,7)
+
+def is_after(day1, day2):
+    if day1[1] == day2[1]:
+        return day1[0] > day2[0]
+    else:
+        return (day1[1]-8)%12 > (day2[1] - 8)%12
+
+
+def find_day_and_week(day):
+    actual_monday = semester_begin[0]
+    old_monday = actual_monday
+    weeks = 0
+    while is_after(day, actual_monday):
+        weeks += 1
+        old_monday = actual_monday
+        actual_monday = add_one_week(actual_monday)
+    days = 0
+    while is_after(day, old_monday):
+        days += 1
+        old_monday = add_n_day(old_monday,1)
+    return weeks,days
+
+
+def write_specil_week(specil_weeks, table_data, style,color):
+    for key in specil_weeks:
+        for i in range(20):
+            table_data[week[key]][i+1] = ""
+        table_data[week[key]][len(table_data[0])//2] = specil_weeks[key]
+        style.add("BACKGROUND", (1, week[key]), (-1, week[key]), color,)
+
+
+@receiver(post_migrate)
+def on_post_migrate(sender, **kwargs):
+    from .models import YearInformation
+    def get_semester_begin(year):
+        """
+        Calculates the start dates of each semester based on the given year.
+
+        Args:
+            year (int): The year for which to calculate semester start dates.
+
+        Returns:
+            dict: A dictionary where keys are semester numbers (0-5)
+                and values are tuples of (day, month) representing
+                the start date of each semester.
+        """
+
+        try:
+            year_info = YearInformation.objects.get()
+        except YearInformation.DoesNotExist:
+            # Handle the case where no YearInformation record exists
+            # You might want to create a default record or raise an exception
+            raise ValueError("YearInformation record not found")
+
+        semester_begin = {
+            0: (year_info.start_of_the_school_year.day, year_info.start_of_the_school_year.month),
+            1: (year_info.start_of_S3B.day, year_info.start_of_S3B.month),
+            2: (year_info.start_of_S4A.day, year_info.start_of_S4A.month),
+            3: (year_info.start_of_S4B.day, year_info.start_of_S4B.month),
+            4: (year_info.end_of_school_year.day, year_info.end_of_school_year.month),
+        }
+        return semester_begin
+
+    def get_vacation_dates(year):
+        """
+        Retrieves vacation dates from the YearInformation model.
+
+        Args:
+            year (int): The year for which to retrieve vacation dates.
+
+        Returns:
+            dict: A dictionary where keys are tuples of (day, month)
+                and values are strings representing the vacation names.
+        """
+
+        try:
+            year_info = YearInformation.objects.get()
+        except YearInformation.DoesNotExist:
+            # Handle the case where no YearInformation record exists
+            # You might want to create a default record or raise an exception
+            raise ValueError("YearInformation record not found")
+
+        vacation = {
+            (year_info.monday_of_autumn_holiday.day,
+            year_info.monday_of_autumn_holiday.month): "Vacances de Toussaint",
+            (year_info.monday_of_xmas_holiday.day,
+            year_info.monday_of_xmas_holiday.month): "Vacances de Noël",
+            add_one_week((year_info.monday_of_xmas_holiday.day,
+            year_info.monday_of_xmas_holiday.month)): "Vacances de Noël",
+            (year_info.monday_of_winter_holiday.day,
+            year_info.monday_of_winter_holiday.month): "Vacances d'Hiver",
+            (year_info.monday_of_spring_holiday.day,
+            year_info.monday_of_spring_holiday.month): "Vacances de Pâques",
+        }
+        return vacation
+
+    semester_starts = get_semester_begin(year)
+    vacation_periods = get_vacation_dates(year)
+    return semester_starts,vacation_periods
+
+semester_begin,vacation = on_post_migrate(None)
+
+
+
 code_to_hour_line = {}
 
 week = {}
 actual_monday = semester_begin[0]
 i = 1
-while actual_monday != semester_begin[5]:
+while actual_monday != semester_begin[4]:
     week[actual_monday] = i
     actual_monday = add_one_week(actual_monday)
     i+=1
 
-
-def center_text(txt):
-    #assert(len(txt) <= 14)
-    L = len(txt)
-    return (14 - (L)//2)*" " + txt
 
 def round_time(time):
     """
@@ -455,7 +518,9 @@ def add_course(course, table_data, sem, day = None,emplacement = None, dire = No
 
 
             day = add_one_week(day)
+            print(day != semester_begin[sem+1])
             if day != semester_begin[sem+1]:
+                print(1)
                 add_course(course, table_data, sem, day,emplacement)
 
 
@@ -468,42 +533,12 @@ def generate_annual_table(elements, courses):
         colors.lightgreen,
         colors.lightcyan,
     ]
-<<<<<<< HEAD
-    table_data = [
-        [" ", "Lundi", "" ,"Mardi", "" , "Mercredi", "" , "Jeudi", "" , "Vendredi", ""],
-        ["8h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["8h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["9h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["9h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["10h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["10h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["11h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["11h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["12h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["12h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["13h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["13h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["14h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["14h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["15h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["15h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["16h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["16h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["17h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["17h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["18h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["18h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["19h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["19h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["20h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-=======
 
     table_data = [
         [" ", "Lundi", "" , "" , "" ,"Mardi", "" , "" , "" , "Mercredi", "" , "" , "" , "Jeudi", "" , "" , "" , "Vendredi", "" , "" , ""]
->>>>>>> migration-info
     ]
 
-    while actual_monday != semester_begin[5]:
+    while actual_monday != semester_begin[4]:
         table_data += [[str(actual_monday[0]) + "/" + str(actual_monday[1])] + 20*[""]]
         actual_monday = add_one_week(actual_monday)
 
@@ -527,143 +562,6 @@ def generate_annual_table(elements, courses):
     )
 
     for i in range(1,5):
-<<<<<<< HEAD
-        style.add("LINEAFTER", (2*i, 0), (2*i, -1), 1, colors.black)
-
-    for course in courses:
-        if not (course["semester"][:2] == semester):
-            continue
-        start_line = hour_to_line[date_to_hour_id(round_time(course["start_time"]))]
-        end_line = hour_to_line[date_to_hour_id(ceil_time(course["end_time"]))]
-
-        if course["semester"][2:] == "B":
-            column = table_data[0].index(course["day"]) + 1
-            style.add(
-                "LINEAFTER",
-                (column - 1, start_line),
-                (column - 1, end_line),
-                1,
-                colors.black,
-            )
-            table_data[start_line][column] = course["semester"]
-            style.add(
-                "LINEABOVE",
-                (column, start_line + 1),
-                (column, start_line + 1),
-                1,
-                colors.black,
-            )
-        else:
-            column = table_data[0].index(course["day"])
-            if course["semester"][2:] == "A":
-                style.add(
-                    "LINEAFTER",
-                    (column, start_line),
-                    (column, end_line),
-                    1,
-                    colors.black,
-                )
-
-        table_data[start_line][column] = course["semester"]
-        style.add(
-            "LINEABOVE",
-            (column, start_line + 1),
-            (column, start_line + 1),
-            1,
-            colors.black,
-        )
-        style.add(
-            "LINEAFTER",
-            (table_data[0].index(course["day"]) - 1, start_line),
-            (table_data[0].index(course["day"]) - 1, end_line),
-            1,
-            colors.black,
-        )
-
-        style.add(
-            "LINEAFTER",
-            (table_data[0].index(course["day"]) + 1, start_line),
-            (table_data[0].index(course["day"]) + 1, end_line),
-            1,
-            colors.black,
-        )
-        style.add(
-            "LINEBELOW",
-            (column, start_line - 1),
-            (column , start_line - 1),
-            1,
-            colors.black,
-        )
-        style.add(
-            "LINEABOVE",
-            (column, end_line + 1),
-            (column, end_line + 1),
-            1,
-            colors.black,
-        )
-
-        middle_line = (start_line + end_line) // 2
-        if course["semester"][2:] == "":
-            table_data[middle_line][column] = center_text(course["code"])
-            table_data[middle_line + 1][column] = center_text(str(course["ects"]) + " ECTS")
-            table_data[start_line][column] = center_text(course["semester"])
-            style.add(
-                "ALIGN",
-                (column, start_line),
-                (column + 1, end_line),
-                "LEFT",
-            )
-
-            style.add(
-                "LINEBELOW",
-                (column+1, start_line - 1),
-                (column+1 , start_line - 1),
-                1,
-                colors.black,
-            )
-            style.add(
-                "LINEABOVE",
-                (column+1, end_line + 1),
-                (column+1, end_line + 1),
-                1,
-                colors.black,
-            )
-            style.add(
-                "LINEABOVE",
-                (column+1, start_line + 1),
-                (column+1, start_line + 1),
-                1,
-                colors.black,
-            )
-            for line in range(start_line, end_line + 1):
-                    style.add(
-                        "BACKGROUND",
-                        (column, line),
-                        (column, line),
-                        colors_list[course['color'] % len(colors_list)],
-                    )
-                    style.add(
-                        "BACKGROUND",
-                        (column + 1, line),
-                        (column + 1, line),
-                        colors_list[course['color'] % len(colors_list)],
-                    )
-        else :
-            table_data[middle_line][column] = course["code"]
-            table_data[middle_line + 1][column] = (
-                str(course["ects"]) + " ECTS"
-            )
-
-            for line in range(start_line, end_line + 1):
-                style.add(
-                    "BACKGROUND",
-                    (column, line),
-                    (column, line),
-                    colors_list[course['color'] % len(colors_list)],
-                )
-
-    table = Table(table_data, colWidths=50, rowHeights=15)
-=======
         style.add("LINEAFTER", (4*i, 0), (4*i, -1), 1, colors.black,)
 
     for course in courses:
@@ -696,7 +594,6 @@ def generate_annual_table(elements, courses):
 
 
     table = Table(table_data, colWidths=27, rowHeights=18)
->>>>>>> migration-info
 
     table.setStyle(style)
 

@@ -4,7 +4,10 @@ from django.db import models
 from solo.models import SingletonModel
 from django.utils import timezone
 
-from .exportpdf import generate_pdf_from_courses
+
+
+
+
 
 
 class Department(models.Model):
@@ -20,6 +23,38 @@ class Department(models.Model):
 
     def __str__(self):
         return self.code
+
+
+class YearInformation(SingletonModel):
+    start_of_the_school_year = models.DateField(default=timezone.now)
+    start_of_S4A = models.DateField(default=timezone.now)
+    start_of_S3B = models.DateField(default=timezone.now)
+    start_of_S4A = models.DateField(default=timezone.now)
+    start_of_S4B = models.DateField(default=timezone.now)
+    end_of_school_year = models.DateField(default=timezone.now)
+
+    monday_of_autumn_holiday = models.DateField(default=timezone.now)
+    monday_of_xmas_holiday = models.DateField(default=timezone.now)
+    monday_of_winter_holiday = models.DateField(default=timezone.now)
+    monday_of_spring_holiday = models.DateField(default=timezone.now)
+
+    easter_monday = models.DateField(default=timezone.now)
+    ascension_day = models.DateField(default=timezone.now)
+    whit_monday = models.DateField(default=timezone.now)
+    def __str__(self):
+        return str(self.start_of_the_school_year)
+
+
+
+class SpecialDay(models.Model):
+    name = models.CharField(max_length=100)
+    date = models.DateField()
+    def __str__(self):
+        return self.name
+
+
+from .exportpdf import generate_pdf_from_courses
+
 
 
 class Course(models.Model):
@@ -227,27 +262,4 @@ class Parameter(models.Model):
 
 
 
-class YearInformation(SingletonModel):
-    start_of_the_school_year = models.DateField()
-    start_of_S4A = models.DateField()
-    start_of_S3B = models.DateField()
-    start_of_S4A = models.DateField()
-    start_of_S4B = models.DateField()
-    end_of_school_year = models.DateField()
-    monday_of_autumn_holiday = models.DateField()
-    moday_of_xmas_holiday = models.DateField()
-    monday_of_winter_holiday = models.DateField()
-    monday_of_spring_holiday = models.DateField()
-    def __str__(self):
-        return str(self.start_of_the_school_year)
-
-
-
-class SpecialDay(models.Model):
-    name = models.CharField(max_length=100)
-    department = models.ForeignKey(Department, on_delete=models.CASCADE)
-    date = models.DateField()
-    is_public_holiday = models.BooleanField()
-    def __str__(self):
-        return self.name
 
