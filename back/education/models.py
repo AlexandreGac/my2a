@@ -235,7 +235,7 @@ class YearInformation(SingletonModel):
     start_of_S4B = models.DateField()
     end_of_school_year = models.DateField()
     monday_of_autumn_holiday = models.DateField()
-    moday_of_xmas_holiday = models.DateField()
+    monday_of_xmas_holiday = models.DateField()
     monday_of_winter_holiday = models.DateField()
     monday_of_spring_holiday = models.DateField()
     def __str__(self):

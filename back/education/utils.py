@@ -10,7 +10,7 @@ from django.shortcuts import redirect, render
 from django.urls import path
 from django.urls.conf import include
 
-from .models import Course, Department, Parcours, Student, SpecialDay
+from .models import Course, Department, Parcours, Student, SpecialDay, YearInformation
 
 from my2a.mail import send_account_creation_mail
 
@@ -319,3 +319,10 @@ def course_list_to_string(course_list):
     if len(text) > 2:
         text = text[:-2]
     return text
+
+def ModifyYearInformation():
+    """Modify the YearInformation object to update the current year."""
+    year = datetime.now().year
+    year_information = YearInformation.objects.get(id=1)
+    year_information.year = year
+    year_information.save()

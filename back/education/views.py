@@ -18,10 +18,11 @@ from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet, ViewSet
+import json
 
 from .admin import CourseAdmin
 from my2a.mail import send_confirmation_mail, send_account_status_change_mail
-from .models import Course, Department, Enrollment, Parcours, Student, Parameter, SpecialDay
+from .models import Course, Department, Enrollment, Parcours, Student, Parameter, SpecialDay, YearInformation
 from .serializers import (
     CompleteStudentSerializer,
     CourseSerializer,
@@ -740,3 +741,47 @@ class ParameterView(APIView):
         parameters = Parameter.objects.filter(show=True)
         serializer = ParameterSerializer(parameters, many=True)
         return Response(serializer.data)
+    
+
+class ModifyYearInformations(View):
+    def get(self, request, *args, **kwargs):
+        try:
+            year_info = YearInformation.objects.first()
+            if year_info:
+                data = {
+                    "start_of_the_school_year": year_info.start_of_the_school_year,
+                    "start_of_S4A": year_info.start_of_S4A,
+                    "start_of_S3B": year_info.start_of_S3B,
+                    "start_of_S4A": year_info.start_of_S4A,
+                    "start_of_S4B": year_info.start_of_S4B,
+                    "end_of_school_year": year_info.end_of_school_year,
+                    "monday_of_autumn_holiday": year_info.monday_of_autumn_holiday,
+                    "monday_of_xmas_holiday": year_info.monday_of_xmas_holiday,
+                    "monday_of_winter_holiday": year_info.monday_of_winter_holiday,
+                    "monday_of_spring_holiday": year_info.monday_of_spring_holiday,
+                }
+                return JsonResponse(data)
+            else:
+                return JsonResponse({"error": "No year information found"}, status=404)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
+
+    def post(self, request, *args, **kwargs):
+        try:
+            data = json.loads(request.body)
+            year_info, created = YearInformation.objects.get_or_create(pk=1)
+            year_info.start_of_the_school_year = data.get("start_of_the_school_year")
+            year_info.start_of_S4A = data.get("start_of_S4A")
+            year_info.start_of_S3B = data.get("start_of_S3B")
+            year_info.start_of_S4A = data.get("start_of_S4A")
+            year_info.start_of_S4B = data.get("start_of_S4B")
+            year_info.end_of_school_year = data.get("end_of_school_year")
+            year_info.monday_of_autumn_holiday = data.get("monday_of_autumn_holiday")
+            year_info.monday_of_xmas_holiday = data.get("monday_of_xmas_holiday")
+            year_info.monday_of_winter_holiday = data.get("monday_of_winter_holiday")
+            year_info.monday_of_spring_holiday = data.get("monday_of_spring_holiday")
+            year_info.save()
+            return JsonResponse({"success": "Year information updated successfully"})
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
+

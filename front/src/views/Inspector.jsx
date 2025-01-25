@@ -218,6 +218,26 @@ export default function Inspector() {
             {isAdmin && (
                 <div>
                     <TopBar title="Gestion My2A" />
+
+                        <div style={{ position: 'relative' }}>
+                            <Button
+                                sx={{
+                                    position: 'absolute',
+                                    top: 0,
+                                    right: 0,
+                                    fontSize: '0.6rem', // Plus petit texte
+                                    padding: '6px 12px', // Plus petite taille
+                                }}
+                                variant="contained"
+                                onClick={() => {
+                                    window.location = "/inspector/yearinformations";
+                                }}
+                                startIcon={<EditIcon />}
+                            >
+                                Modifier les informations de l'année
+                            </Button>
+                        </div>
+
                     <Grid container style={{ marginTop: '30px', alignItems: "center", justifyContent: "center" }}>
                         <Grid item md={6}>
                             <FormControl sx={{marginBottom: 3}} fullWidth>
