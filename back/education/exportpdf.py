@@ -468,7 +468,6 @@ def generate_annual_table(elements, courses):
         colors.lightgreen,
         colors.lightcyan,
     ]
-<<<<<<< HEAD
     table_data = [
         [" ", "Lundi", "" ,"Mardi", "" , "Mercredi", "" , "Jeudi", "" , "Vendredi", ""],
         ["8h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
@@ -496,11 +495,6 @@ def generate_annual_table(elements, courses):
         ["19h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
         ["19h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
         ["20h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-=======
-
-    table_data = [
-        [" ", "Lundi", "" , "" , "" ,"Mardi", "" , "" , "" , "Mercredi", "" , "" , "" , "Jeudi", "" , "" , "" , "Vendredi", "" , "" , ""]
->>>>>>> migration-info
     ]
 
     while actual_monday != semester_begin[5]:
@@ -527,7 +521,6 @@ def generate_annual_table(elements, courses):
     )
 
     for i in range(1,5):
-<<<<<<< HEAD
         style.add("LINEAFTER", (2*i, 0), (2*i, -1), 1, colors.black)
 
     for course in courses:
@@ -663,40 +656,6 @@ def generate_annual_table(elements, courses):
                 )
 
     table = Table(table_data, colWidths=50, rowHeights=15)
-=======
-        style.add("LINEAFTER", (4*i, 0), (4*i, -1), 1, colors.black,)
-
-    for course in courses:
-        for sem in semester_to_int[course["semester"]]:
-            add_course(course, table_data, sem)
-
-    course_color = {}
-
-    for i in range(1, len(table_data)):
-        for j in range(1, len(table_data[0])):
-            if table_data[i][j] != "":
-                if not table_data[i][j] in course_color:
-                    course_color[table_data[i][j]] = colors.Color(red=0.5 + 0.5*rd.random(), green=0.5 + 0.5*rd.random(), blue=rd.random())
-                style.add("BACKGROUND", (j, i), (j, i), course_color[table_data[i][j]],)
-
-
-    for key in pedagogic_day:
-        weeks, days = find_day_and_week(pedagogic_day[key])
-        style.add("BACKGROUND", (4*(days) + 1, weeks), (4*(days)+4, weeks), colors.Color(red=1, blue =0.25, green = 0.25),)
-        for i in range(1,5):
-            table_data[weeks][4*days+i] = ""
-        table_data[weeks][4*days+1] = "JOURNÉE PÉDAGOGIQUE"
-
-    write_specil_week(vacation, table_data, style, colors.lightgrey)
-    write_specil_week(ouverture_week, table_data, style,colors.Color(blue = 1, green = 0.85, red = 0.25))
-
-
-
-
-
-
-    table = Table(table_data, colWidths=27, rowHeights=18)
->>>>>>> migration-info
 
     table.setStyle(style)
 

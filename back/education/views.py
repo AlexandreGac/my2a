@@ -21,17 +21,18 @@ from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet, ViewSet
 
 from .admin import CourseAdmin
 from my2a.mail import send_confirmation_mail, send_account_status_change_mail
-from .models import Course, Department, Enrollment, Parcours, Student, Parameter
+from .models import Course, Department, Enrollment, Parcours, Student, Parameter, SpecialDay
 from .serializers import (
     CompleteStudentSerializer,
     CourseSerializer,
+    SpecialDaySerializer,
     DepartmentSerializer,
     EnrollmentSerializer,
     ParcoursSerializer,
     StudentSerializer,
     ParameterSerializer,
 )
-from .utils import course_list_to_string, importCourseCSV, importStudentCSV
+from .utils import course_list_to_string, importCourseCSV, importStudentCSV, importSpecialDayCSV
 
 
 def index(request):
@@ -451,6 +452,44 @@ class ImportCourseCSV(APIView):
             )
 
 
+class ImportSpecialDayCSV(APIView):
+    def post(self, request):
+        try:
+            csv_file = request.FILES.get("csv_file")
+            if csv_file:
+                failed, created = importSpecialDayCSV(csv_file)
+                if failed:
+                    return Response(
+                        {
+                            "success": True,
+                            "error": "Some rows failed to import",
+                            "failed": failed,
+                            "created": created,
+                        },
+                        status=status.HTTP_200_OK,
+                    )
+                else:
+                    return Response(
+                        {
+                            "success": True,
+                            "error": "CSV file processed successfully",
+                            "failed": failed,
+                            "created": created,
+                        },
+                        status=status.HTTP_200_OK,
+                    )
+            else:
+                return Response(
+                    {"success": False, "error": "No CSV file provided"},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+        except Exception as e:
+            return Response(
+                {"success": False, "error": str(e)},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
+
+
 class ImportStudentCSV(APIView):
     def post(self, request):
         try:
@@ -575,7 +614,7 @@ class ExportStudentsView(APIView):
             content_type="text/csv",
             headers={"Content-Disposition": 'attachment; filename="etudiants.csv"'},
         )
-        response.write(u'\ufeff'.encode('utf8'))
+        response.write("\ufeff".encode("utf8"))
         writer = csv.writer(response, delimiter=";")
         writer.writerow(
             [

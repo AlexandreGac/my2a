@@ -17,7 +17,7 @@ function App() {
           <Route path="/inspector/" element={<Inspector />} />
           <Route path="/inspector/parcours" element={<Parcours />} />
           <Route path="/inspector/upload/course" element={<Upload />} />
-          <Route path="/inspector/upload/special-day" element={<UploadJourSpecial />} />  
+          <Route path="/inspector/upload/specialday" element={<UploadJourSpecial />} />  
           <Route path="/inspector/upload/student" element={<UploadStudent />} />
           <Route path="/inspector/courses" element={<CoursesDashboard />} />
           <Route path="*" element={<Dashboard />} />

@@ -88,12 +88,12 @@ export default function Upload() {
     const handleCloseSnackbar = () => {
         setOpenSnackbar(false);
     };
-
+    
     const sendFile = () => {
         const formData = new FormData();
         formData.append("csv_file", selectedFile);
-
-        fetch("/api/upload/course", {
+    
+        fetch("/api/upload/specialday", {
             method: "POST",
             credentials: "include",
             headers: {
@@ -109,35 +109,33 @@ export default function Upload() {
                     setSuccessProcessing(true);
                     if (result.failed.length > 0) {
                         setOpenSnackbar(true);
-                        setSnackbarMessage("Import partiellement réussi");
+                        setSnackbarMessage("Import partiellement réussi pour les jours spéciaux");
                         setSnackbarSeverity("warning");
                         setFailedProcessing(result.failed);
                         setCreatedProcessing(result.created);
-                    }
-                    else {
+                    } else {
                         setOpenSnackbar(true);
-                        setSnackbarMessage("Import réussi");
+                        setSnackbarMessage("Import des jours spéciaux réussi");
                         setSnackbarSeverity("success");
                     }
                 } else {
                     setSuccessProcessing(false);
                     setOpenSnackbar(true);
-                    setSnackbarMessage("Erreur lors de l'import");
+                    setSnackbarMessage("Erreur lors de l'import des jours spéciaux");
                     setSnackbarSeverity("error");
                 }
             });
     };
-
+    
     const handleImportClick = () => {
-        // <MySnackBar message="Tout est bon" details="C'est good" isError={false} />
         if (selectedFile) {
             setOpenSnackbar(true);
-            setSnackbarMessage("Import en cours...");
+            setSnackbarMessage("Import des jours spéciaux en cours...");
             setSnackbarSeverity("info");
             sendFile();
         }
-    }
-
+    };
+    
 
     useEffect(() => {
         fetch("/api/student/current", {
@@ -194,12 +192,12 @@ export default function Upload() {
                                 createdProcessing.length > 0 ? (
                                     <div>
                                         <Typography sx={{ mt: 6, ml: 8 }} variant="h6" component="div">
-                                            Les jours spéciaux suivants ont été créés:
+                                            Les jours spéciaux suivants ont été créés :
                                         </Typography>
                                         <List sx={{ ml: 12 }}>
-                                            {createdProcessing.map((code) => (
-                                                <ListItem key={code} sx={{ height: 20 }}>
-                                                    <ListItemText primary={<>-  <strong>{code}</strong></>} />
+                                            {createdProcessing.map((name) => (
+                                                <ListItem key={name} sx={{ height: 20 }}>
+                                                    <ListItemText primary={<>-  <strong>{name}</strong></>} />
                                                 </ListItem>
                                             ))}
                                         </List>
@@ -208,32 +206,28 @@ export default function Upload() {
                                     <Typography sx={{ mt: 6, ml: 8 }} variant="h6" component="div">
                                         Aucun jour spécial n'a été ajouté.
                                     </Typography>
-                                ))
-                            }
+                                )
+                            )}
                             {processed && successProcessing && (
                                 failedProcessing.length > 0 ? (
                                     <div>
                                         <Typography sx={{ mt: 0, ml: 8 }} variant="h6" component="div">
-                                            Les jours spéciaux suivants n'on pas été ajoutés:
+                                            Les jours spéciaux suivants n'ont pas été ajoutés :
                                         </Typography>
                                         <List sx={{ ml: 12 }}>
-                                            {failedProcessing.map(([code, err]) => (
-                                                <ListItem key={code} sx={{ height: 45 }}>
-                                                    {/* <ListItemIcon>
-                                                    <FiberManualRecordIcon fontSize="tiny" />
-                                                </ListItemIcon> */}
-                                                    <ListItemText primary={<>-  <strong>{code}</strong>: <em>{err}</em></>} />
+                                            {failedProcessing.map(([name, err]) => (
+                                                <ListItem key={name} sx={{ height: 45 }}>
+                                                    <ListItemText primary={<>-  <strong>{name}</strong> : <em>{err}</em></>} />
                                                 </ListItem>
                                             ))}
                                         </List>
                                     </div>
                                 ) : (
                                     <Typography sx={{ mt: 0, ml: 8 }} variant="h6" component="div">
-                                        Tout a bien été importé !
+                                        Tous les jours spéciaux ont bien été importés !
                                     </Typography>
                                 )
-                            )
-                            }
+                            )}
                         </Box>
                     </Grid>
                     <GridBreak />

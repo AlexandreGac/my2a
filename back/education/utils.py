@@ -1,5 +1,6 @@
 import csv
 from io import TextIOWrapper  # Import TextIOWrapper for handling file decoding
+from datetime import datetime
 
 from django.contrib import admin
 from django.contrib.auth import authenticate, login, logout
@@ -9,7 +10,7 @@ from django.shortcuts import redirect, render
 from django.urls import path
 from django.urls.conf import include
 
-from .models import Course, Department, Parcours, Student
+from .models import Course, Department, Parcours, Student, SpecialDay
 
 from my2a.mail import send_account_creation_mail
 
@@ -178,6 +179,54 @@ def importCourseCSV(csv_file):
     return error_rows, created_rows
 
 
+def importSpecialDayCSV(csv_file):
+    print("--- Reading CSV file for Special Days...")
+    csv_file_wrapper = TextIOWrapper(csv_file.file, encoding="utf-8-sig")
+    csv_reader = csv.DictReader(csv_file_wrapper, delimiter=";")
+
+    error_rows = []
+    created_rows = []
+
+    print("--- Creating special days:")
+    for row in csv_reader:
+        print(row)
+        try:
+            name = row["name"]
+            date = row["date"]
+
+            # Validate date format
+            try:
+                date = datetime.strptime(date, "%Y-%m-%d").date()
+            except ValueError:
+                print(f"------ Date {date} is not valid")
+                error_rows.append(
+                    [name, "Mauvais format de date. Veuillez utiliser 'AAAA-MM-JJ'."]
+                )
+                continue
+
+            # Check if a special day with the same name and date already exists
+            if SpecialDay.objects.filter(name=name, date=date).exists():
+                print(f"------ Special Day {name} on {date} already exists")
+                error_rows.append([name, f"Le jour spécial '{name}' le '{date}' existe déjà."])
+                continue
+
+            # Create and save the SpecialDay object
+            special_day = SpecialDay(
+                name=name,
+                date=date,
+            )
+            special_day.save()
+
+            created_rows.append(name)
+            print(f"------ Special Day {special_day} created")
+
+        except Exception as e:
+            print(f"------ {e}")
+            error_rows.append([name, str(e)])
+
+    return error_rows, created_rows
+
+
 def importStudentCSV(csv_file):
     print("--- Reading CSV file...")
     csv_file_wrapper = TextIOWrapper(
@@ -203,7 +252,7 @@ def importStudentCSV(csv_file):
             split = email.split("@")
             if split[1] == "eleves.enpc.fr":
                 username = email.split("@")[0]
-            else: 
+            else:
                 username = email
             password = User.objects.make_random_password()
             user, created = User.objects.get_or_create(

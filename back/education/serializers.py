@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Course, Opening_Week, Department, Enrollment, Parcours, Student, Parameter
+from .models import Course, SpecialDay, Department, Enrollment, Parcours, Student, Parameter
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -48,22 +48,13 @@ class CourseSerializer(serializers.ModelSerializer):
             "end_time",
         ]
 
-class Opening_WeekSerializer(serializers.ModelSerializer):
+class SpecialDaySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Opening_Week
+        model = SpecialDay
         fields = [
             "id",
             "name",
-            # Info pour la scolarité
-            "code",
-            "department",
-            "ects",
-            # Info détails
-            "description",
-            "teacher",
-            # Info sur l'horaire
-            "semester",
-            "week",
+            "date",
         ]
 
 

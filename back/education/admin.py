@@ -21,12 +21,6 @@ class CourseAdmin(admin.ModelAdmin):
     list_display = ["name", "code", "department"]
 
 
-class Opening_WeekAdmin(admin.ModelAdmin):
-    search_fields = ["name", "code", "department__name"]
-    list_filter = ["department", "semester", "week"]
-    list_display = ["name", "code", "department"]
-
-
 class ParcoursAdmin(admin.ModelAdmin):
     search_fields = ["name", "department__name"]
     list_filter = ["department"]
