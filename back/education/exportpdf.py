@@ -64,13 +64,6 @@ pedagogic_day = {
 }
 
 
-ouverture_week = {
-    (26,8) : "Semaine d'entrée",
-    (2,9) : "Semaine Gestion",
-    (9,9) : "Voyage de département",
-    (25,11) : "Semaine Athens"
-}
-
 hour_to_line = {
     "8h00": 1,
     "8h30": 2,
@@ -164,7 +157,7 @@ def write_specil_week(specil_weeks, table_data, style,color):
 def on_post_migrate(sender, **kwargs):
     try:
         from .models import YearInformation
-        def get_semester_begin(year):
+        def get_semester_begin():
             """
             Calculates the start dates of each semester based on the given year.
 
@@ -193,7 +186,7 @@ def on_post_migrate(sender, **kwargs):
             }
             return semester_begin
 
-        def get_vacation_dates(year):
+        def get_vacation_dates():
             """
             Retrieves vacation dates from the YearInformation model.
 
@@ -226,9 +219,30 @@ def on_post_migrate(sender, **kwargs):
             }
             return vacation
 
-        semester_starts = get_semester_begin(year)
-        vacation_periods = get_vacation_dates(year)
-        return semester_starts,vacation_periods
+        def get_public_holidays():
+            try:
+                year_info = YearInformation.objects.get()
+                public_holiday = {
+                    "Fête du Travail" : (1, 5),
+                    "Victoire 1945" : (8, 5),
+                    "Armistice 1918" : (11, 11),
+                }
+
+                public_holiday["Lundi de Pâques"] =(year_info.easter_monday.day, year_info.easter_monday.month)
+                public_holiday["Jeune Ascension"] = (year_info.ascension_day.day, year_info.ascension_day.month)
+                public_holiday["Pentecôte"] = (year_info.whit_monday.day, year_info.whit_monday.month)
+                return public_holiday
+            except YearInformation.DoesNotExist:
+                # Handle the case where no YearInformation record exists
+                # You might want to create a default record or raise an exception
+                raise ValueError("YearInformation record not found")
+
+            public_holiday = {}
+
+        semester_starts = get_semester_begin()
+        vacation_periods = get_vacation_dates()
+        public_holiday = get_public_holidays()
+        return semester_starts,vacation_periods, public_holiday
     except Exception:
         return {
     0 : (26,8),
@@ -239,8 +253,27 @@ def on_post_migrate(sender, **kwargs):
     5 : (16,6)
     },{}
 
-semester_begin,vacation = on_post_migrate(None)
 
+
+@receiver(post_migrate)
+def get_special_days_dict(sender, **kwargs):
+    try:
+        from .models import SpecialDay
+        special_days = SpecialDay.objects.all()
+        special_days_dict = {}
+        for day in special_days:
+            special_days_dict[day.name] = (day.date.day, day.date.month)
+        return special_days_dict
+    except Exception:
+        print("Pb during importation of Special days")
+        return {}
+
+
+
+
+
+semester_begin,vacation, public_holiday = on_post_migrate(None)
+special_days = get_special_days_dict(None)
 
 
 code_to_hour_line = {}
@@ -359,7 +392,7 @@ def generate_table(elements, courses, semester):
         style.add("LINEAFTER", (2*i, 0), (2*i, -1), 1, colors.black)
 
     for course in courses:
-        if not (course["semester"][:2] == semester):
+        if not (course["semester"][:2] == semester) or course["day"] not in table_data[0]:
             continue
         start_line = hour_to_line[date_to_hour_id(round_time(course["start_time"]))]
         end_line = hour_to_line[date_to_hour_id(ceil_time(course["end_time"]))]
@@ -531,9 +564,7 @@ def add_course(course, table_data, sem, day = None,emplacement = None, dire = No
 
 
             day = add_one_week(day)
-            print(day != semester_begin[sem+1])
             if day != semester_begin[sem+1]:
-                print(1)
                 add_course(course, table_data, sem, day,emplacement)
 
 
@@ -577,9 +608,17 @@ def generate_annual_table(elements, courses):
     for i in range(1,5):
         style.add("LINEAFTER", (4*i, 0), (4*i, -1), 1, colors.black,)
 
+    ouverture_week = {}
+
     for course in courses:
-        for sem in semester_to_int[course["semester"]]:
-            add_course(course, table_data, sem)
+        if course["day"] in table_data[0]:
+            for sem in semester_to_int[course["semester"]]:
+                add_course(course, table_data, sem)
+        else:
+            monday = semester_begin[0]
+            for i in range(int(course["day"]) - 1):
+                monday = add_one_week(monday)
+            ouverture_week[monday] = course["name"]
 
     course_color = {}
 
@@ -591,12 +630,25 @@ def generate_annual_table(elements, courses):
                 style.add("BACKGROUND", (j, i), (j, i), course_color[table_data[i][j]],)
 
 
-    for key in pedagogic_day:
-        weeks, days = find_day_and_week(pedagogic_day[key])
-        style.add("BACKGROUND", (4*(days) + 1, weeks), (4*(days)+4, weeks), colors.Color(red=1, blue =0.25, green = 0.25),)
-        for i in range(1,5):
-            table_data[weeks][4*days+i] = ""
-        table_data[weeks][4*days+1] = "JOURNÉE PÉDAGOGIQUE"
+    for key in special_days:
+        weeks, days = find_day_and_week(special_days[key])
+        if days >= 5:
+            print("The {key} is during week-end, can't add it to the timetable")
+        else:
+            style.add("BACKGROUND", (4*(days) + 1, weeks), (4*(days)+4, weeks), colors.Color(red=1, blue =0.25, green = 0.25),)
+            for i in range(1,5):
+                table_data[weeks][4*days+i] = ""
+            table_data[weeks][4*days+1] = key
+
+    for key in public_holiday:
+        weeks, days = find_day_and_week(public_holiday[key])
+        if days >= 5:
+            print(f"The {key} is during week-end, can't add it to the timetable")
+        else:
+            style.add("BACKGROUND", (4*(days) + 1, weeks), (4*(days)+4, weeks), colors.Color(red=0.5, blue =0.5, green = 0.5),)
+            for i in range(1,5):
+                table_data[weeks][4*days+i] = ""
+            table_data[weeks][4*days+1] = key
 
     write_specil_week(vacation, table_data, style, colors.lightgrey)
     write_specil_week(ouverture_week, table_data, style,colors.Color(blue = 1, green = 0.85, red = 0.25))
