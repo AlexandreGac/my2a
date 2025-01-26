@@ -142,7 +142,7 @@ def find_day_and_week(day):
     while is_after(day, old_monday):
         days += 1
         old_monday = add_n_day(old_monday,1)
-    return weeks,days
+    return weeks,days%7
 
 
 def write_specil_week(specil_weeks, table_data, style,color):
@@ -274,6 +274,7 @@ def get_special_days_dict(sender, **kwargs):
 
 semester_begin,vacation, public_holiday = on_post_migrate(None)
 special_days = get_special_days_dict(None)
+
 
 
 code_to_hour_line = {}
@@ -633,7 +634,7 @@ def generate_annual_table(elements, courses):
     for key in special_days:
         weeks, days = find_day_and_week(special_days[key])
         if days >= 5:
-            print("The {key} is during week-end, can't add it to the timetable")
+            print(f"The {key} is during week-end, can't add it to the timetable, {days}")
         else:
             style.add("BACKGROUND", (4*(days) + 1, weeks), (4*(days)+4, weeks), colors.Color(red=1, blue =0.25, green = 0.25),)
             for i in range(1,5):
@@ -643,7 +644,7 @@ def generate_annual_table(elements, courses):
     for key in public_holiday:
         weeks, days = find_day_and_week(public_holiday[key])
         if days >= 5:
-            print(f"The {key} is during week-end, can't add it to the timetable")
+            print(f"The {key} is during week-end, can't add it to the timetable, {days}")
         else:
             style.add("BACKGROUND", (4*(days) + 1, weeks), (4*(days)+4, weeks), colors.Color(red=0.5, blue =0.5, green = 0.5),)
             for i in range(1,5):
