@@ -237,7 +237,6 @@ def on_post_migrate(sender, **kwargs):
                 # You might want to create a default record or raise an exception
                 raise ValueError("YearInformation record not found")
 
-            public_holiday = {}
 
         semester_starts = get_semester_begin()
         vacation_periods = get_vacation_dates()
@@ -251,7 +250,7 @@ def on_post_migrate(sender, **kwargs):
     3 : (3,2),
     4 : (14,4),
     5 : (16,6)
-    },{}
+    },{},{}
 
 
 
