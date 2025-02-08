@@ -23,12 +23,14 @@ from education.views import (
     EnrollmentViewset,
     ExportStudentsView,
     ImportCourseCSV,
+    ImportSpecialDayCSV,
     ImportStudentCSV,
     ParcoursViewset,
     StudentViewset,
     TranslationView,
     ViewContractPDF,
-    ParameterView
+    ParameterView,
+    ModifyYearInformations,
 )
 from rest_framework import routers
 
@@ -49,8 +51,11 @@ urlpatterns = [
     path("", include(router.urls)),
     path("labels/", TranslationView.as_view()),
     path("upload/course", ImportCourseCSV.as_view(), name="upload_course_csv"),
+    path("upload/specialday", ImportSpecialDayCSV.as_view(), name="upload_special_day_csv"),
     path("upload/student", ImportStudentCSV.as_view(), name="upload_student_csv"),
     path("contract/<int:id>", ViewContractPDF.as_view(), name="contract_pdf"),
     path("students/export", ExportStudentsView.as_view(), name="export_students"),
     path("parameters", ParameterView.as_view(), name="parameters"),
+    path("yearinformations", ModifyYearInformations.as_view(), name="modify_year_informations"),
+
 ]

@@ -57,13 +57,6 @@ semester_to_int = {
 
 
 
-pedagogic_day = {
-    0 : (28,3),
-    1 : (15,1),
-    2 : (10,6)
-}
-
-
 hour_to_line = {
     "8h00": 1,
     "8h30": 2,
@@ -158,18 +151,6 @@ def on_post_migrate(sender, **kwargs):
     try:
         from .models import YearInformation
         def get_semester_begin():
-            """
-            Calculates the start dates of each semester based on the given year.
-
-            Args:
-                year (int): The year for which to calculate semester start dates.
-
-            Returns:
-                dict: A dictionary where keys are semester numbers (0-5)
-                    and values are tuples of (day, month) representing
-                    the start date of each semester.
-            """
-
             try:
                 year_info = YearInformation.objects.get()
             except YearInformation.DoesNotExist:
@@ -187,16 +168,6 @@ def on_post_migrate(sender, **kwargs):
             return semester_begin
 
         def get_vacation_dates():
-            """
-            Retrieves vacation dates from the YearInformation model.
-
-            Args:
-                year (int): The year for which to retrieve vacation dates.
-
-            Returns:
-                dict: A dictionary where keys are tuples of (day, month)
-                    and values are strings representing the vacation names.
-            """
 
             try:
                 year_info = YearInformation.objects.get()
@@ -242,7 +213,8 @@ def on_post_migrate(sender, **kwargs):
         vacation_periods = get_vacation_dates()
         public_holiday = get_public_holidays()
         return semester_starts,vacation_periods, public_holiday
-    except Exception:
+    except Exception as e:
+        print("Y'a eu une erreur", e)
         return {
     0 : (26,8),
     1 : (16,9),
@@ -578,6 +550,7 @@ def generate_annual_table(elements, courses):
         colors.lightcyan,
     ]
 
+
     table_data = [
         [" ", "Lundi", "" , "" , "" ,"Mardi", "" , "" , "" , "Mercredi", "" , "" , "" , "Jeudi", "" , "" , "" , "Vendredi", "" , "" , ""]
     ]
@@ -659,6 +632,7 @@ def generate_annual_table(elements, courses):
 
 
     table = Table(table_data, colWidths=27, rowHeights=18)
+
 
     table.setStyle(style)
 
