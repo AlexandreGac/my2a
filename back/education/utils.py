@@ -324,10 +324,3 @@ def course_list_to_string(course_list):
     if len(text) > 2:
         text = text[:-2]
     return text
-
-def ModifyYearInformation():
-    """Modify the YearInformation object to update the current year."""
-    year = datetime.now().year
-    year_information = YearInformation.objects.get(id=1)
-    year_information.year = year
-    year_information.save()
