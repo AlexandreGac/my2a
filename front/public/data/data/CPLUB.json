@@ -1,0 +1,16 @@
+{
+    "Cr\u00e9neau": "Sem 2/Sem 4Sem 4",
+    "": "Personal computer",
+    "Pr\u00e9requis": "Introduction \u00e0 la programmation C++, 1\u00e8re partie",
+    "Enseignants responsables": "Pascal MONASSE",
+    "Equipe enseignante": "Pascal MONASSE, Thibault LOISEAU, Corentin SAUTIER",
+    "Objectifs du module": "Les concepts de base du C++ ayant \u00e9t\u00e9 introduits dans la premi\u00e8re partie, l'objectif principal de ce module est d'introduire la progammation orient\u00e9e objet dans ce langage. Cela consiste en l'encapsulation des fonctions agissant sur les objets dans leur structure propre. En particulier, le cycle de vie des objets, construction et destruction, sera \u00e9tudi\u00e9 et son exploitation pour la gestion des ressources sera d\u00e9taill\u00e9e. Ce cours d'introduction laisse n\u00e9anmoins de c\u00f4t\u00e9 deux concepts importants de la programmation orient\u00e9e objet : l'h\u00e9ritage et le polymorphisme. \u00c0 l'issue de ce module, les \u00e9tudiants seront capables de structurer le code en objets et de g\u00e9rer leur construction et destruction.",
+    "Programme du module": "S\u00e9ance 1. Allocation de m\u00e9moire dynamique S\u00e9ance 2. Introduction aux objets S\u00e9ance 3. Constructeur et destructeur S\u00e9ance 4. Gestion des classes et m\u00e9moire S\u00e9ance 5. Compl\u00e9ments divers : fichiers, cha\u00eenes de caract\u00e8res S\u00e9ance 6. TP S\u00e9ance 7. Examen sur machine",
+    "Modalit\u00e9s": "Les s\u00e9ances 1 \u00e0 5 comportent une heure de cours et une heure et demie de TP sur machine. La s\u00e9ance 6 sera enti\u00e8rement d\u00e9di\u00e9e au TP long, qui est un mini-projet.",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Un rendu de TP/projet (40 %) et un examen final sur machine (60 %).",
+    "Documents p\u00e9dagogiques - Bibliographie": "Code source initial pour les TPs, biblioth\u00e8ques Imagine++ pour faire des interfaces graphiques de fa\u00e7on simple, polycopi\u00e9 couvrant l'int\u00e9gralit\u00e9 du cours. SITE WEB : https://educnet.enpc.fr",
+    "Effectif maximal": "Effectif limit\u00e9 \u00e0 30 \u00e9l\u00e8ves",
+    "D\u00e9partement de rattachement": "D\u00e9partement de 1\u00e8re ann\u00e9e",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Code": "CPLUB"
+}

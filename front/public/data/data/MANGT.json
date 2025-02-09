@@ -1,0 +1,13 @@
+{
+    "Cr\u00e9neau": "Sem. 1",
+    "Enseignants responsables": "Romain MESNIL",
+    "Equipe enseignante": "Robin OVAL, Tristan GOBIN",
+    "Objectifs du module": "La g\u00e9om\u00e9trie architecturale est une discipline \u00e0 l'intersection de l'ing\u00e9nierie, de l'architecture et de la g\u00e9om\u00e9trie diff\u00e9rentielle discr\u00e8te. Les concepteurs peuvent utiliser des concepts de g\u00e9om\u00e9trie architecturale pour rationaliser la construction de structures et d'enveloppes de b\u00e2timents courbes. Il est int\u00e9ressant de noter que certains concepts peuvent \u00eatre transcrits en de nouveaux objets fabriqu\u00e9s num\u00e9riquement. Le cours est divis\u00e9 en deux parties : -\" Architectural geometry\" concerne les concepts de base de la g\u00e9om\u00e9trie architecturale. Ce cours d'un semestre introduit les premiers concepts fondamentaux en g\u00e9om\u00e9trie lisse et discr\u00e8te. La conception d'enveloppes courbes est abord\u00e9e \u00e0 travers des familles sp\u00e9cifiques de surfaces. - \"Advanced Architectural Geometry\" traite de sujets avanc\u00e9s pour les \u00e9tudiants qui souhaitent acqu\u00e9rir une capacit\u00e9 op\u00e9rationnelle en g\u00e9om\u00e9trie architecturale. La conception de structures et d'enveloppes courbes est abord\u00e9e par le biais de l'optimisation discr\u00e8te. Des exemples repr\u00e9sentatifs sont pr\u00e9sent\u00e9s aux \u00e9tudiants lors de sessions pratiques",
+    "Programme du module": "1. D\u00e9fis actuels en morphologie structurelle (2 heures) 2. Courbure des courbes (2 heures) 3. Courbure des surfaces (2 heures) 4. Surfaces d\u00e9veloppables 5. Des lignes remarquables sur des surfaces 6. Projet de conception : gridshells 7. Surfaces cin\u00e9matiques 8. Origami 9. Conception avec des mailles PQ (2,5 heures) 10. \u00c9tude de cas 11. G\u00e9om\u00e9trie des syst\u00e8mes imbriqu\u00e9s (2,5 heures) 12. Evaluation finale (1 heure)",
+    "Modalit\u00e9s": "12 s\u00e9ances, 26 heures",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Examen (20%), contr\u00f4les des connaissances (50%) et rapport de projet (30%).",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "MS Digital Building Design",
+    "Nombre de cr\u00e9dits ECTS": "3 cr\u00e9dits ECTS",
+    "Code": "MANGT"
+}

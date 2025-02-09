@@ -1,0 +1,14 @@
+{
+    "Cr\u00e9neau": "Sem 1 MS",
+    "": "Ce module est en lien p\u00e9dagogique avec les modules Conceptual Design Structure, Management of Complex Geometry et Performance-Driven Design.",
+    "Pr\u00e9requis": "Les m\u00eames que pour candidater au MS Design by Data",
+    "Enseignants responsables": "Xavier TELLIER",
+    "Objectifs du module": "Depuis toujours l'homme a cherch\u00e9 \u00e0 utiliser \u00e0 optimiser les ressources dont il disposait. Aujourd'hui les outils num\u00e9riques modernes permettent d'optimiser des projets de construction sur des aspects m\u00e9caniques, constructifs, d'apport de lumi\u00e8re, de flux des personnes dans le b\u00e2timent ... Il existe beaucoup de m\u00e9thodes plus ou moins efficaces suivant le type de probl\u00e8me rencontr\u00e9. Devant ce risque de confusion, un aper\u00e7u des types de probl\u00e8mes ainsi que des m\u00e9thodes disponibles sera pr\u00e9sent\u00e9. Des travaux dirig\u00e9s permettront la prise en main d'outils d'optimisation \u00e0 travers des exemples.",
+    "Programme du module": "pr\u00e9sentation des diff\u00e9rents types d'optimisations ; pr\u00e9sentation des diff\u00e9rents types d'algorithmes ; pr\u00e9sentation de Galapagos sous Grasshopper ; limites de l'optimisation multivari\u00e9e, notion de front de Pareto diff\u00e9rences entre algorithmes g\u00e9n\u00e9tiques et \u00e9volutifs.",
+    "Modalit\u00e9s": "Cours magistraux Travaux dirig\u00e9s aux outils d'optimisation",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "- 50% Examen - 50% Pr\u00e9sentation du projet r\u00e9alis\u00e9 pendant les TD.",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "MS Digital Building Design",
+    "Nombre de cr\u00e9dits ECTS": "3 cr\u00e9dits ECTS",
+    "Code": "ALGOR"
+}

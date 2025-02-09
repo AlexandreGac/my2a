@@ -1,0 +1,15 @@
+{
+    "Cr\u00e9neau": "Sem 5",
+    "Pr\u00e9requis": "PR\u00c9REQUIS* Cours de Master 2. Connaissances pr\u00e9alables : calcul stochastique, mod\u00e8le de Black-Scholes",
+    "Enseignants responsables": "Julien GUYON",
+    "Objectifs du module": "La volatilit\u00e9 est le facteur crucial pour d\u00e9terminer le prix et la couverture des produits d\u00e9riv\u00e9s en finance et pour quantifier et g\u00e9rer les risques financiers. Il est donc extr\u00eamement important de bien conna\u00eetre les diff\u00e9rentes notions et produits de volatilit\u00e9s et de mod\u00e9liser pr\u00e9cis\u00e9ment la volatilit\u00e9 des march\u00e9s financiers afin de (1) correctement \u00e9valuer et couvrir les produits d\u00e9riv\u00e9s, (2) g\u00e9n\u00e9rer des sc\u00e9narios futurs r\u00e9alistes en vue de quantifier et ma\u00eetriser les risques de gestion, (3) pr\u00e9dire la volatilit\u00e9 future. \u00c0 l\u2019issue du module les \u00e9l\u00e8ves connaitront les mod\u00e8les de volatilit\u00e9 les plus importants, les raisons pour lesquelles ils ont \u00e9t\u00e9 introduits, leurs propri\u00e9t\u00e9s, leurs avantages et leurs d\u00e9fauts, comment les calibrer aux donn\u00e9es de march\u00e9. Ils auront aussi impl\u00e9ment\u00e9 plusieurs mod\u00e8les en Python (pricing, calibration). Dans la vie professionnelle, ce module permettra aux \u00e9l\u00e8ves de choisir correctement un mod\u00e8le de volatilit\u00e9 en fonction du probl\u00e8me \u00e0 r\u00e9soudre et comment le calibrer aux donn\u00e9es de march\u00e9.",
+    "Programme du module": "- Les diff\u00e9rents types de volatilit\u00e9 - Les diff\u00e9rents types de d\u00e9riv\u00e9s de volatilit\u00e9 - Le smile de volatilit\u00e9 - Mod\u00e9lisation de la volatilit\u00e9 : un bref historique - Propri\u00e9t\u00e9s statiques et propri\u00e9t\u00e9s dynamiques des mod\u00e8les de volatilit\u00e9 - Mod\u00e8le de Black-Scholes - Volatilit\u00e9 locale - Volatilit\u00e9 stochastique - Mod\u00e8les de courbe de variance (deuxi\u00e8me g\u00e9n\u00e9ration de mod\u00e8les de volatilit\u00e9 stochastique) - Le smile des mod\u00e8les de courbes de variance - Volatilit\u00e9 locale et stochastique - Calibration au smile : la m\u00e9thode particulaire - Volatilit\u00e9 rugueuse et volatilit\u00e9 path-dependent",
+    "Modalit\u00e9s": "8 s\u00e9ances de 3h en petite classe m\u00e9langeant cours magistral et TD",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Examen \u00e9crit et projets informatiques.",
+    "Documents p\u00e9dagogiques - Bibliographie": "Transparents. References: - Bergomi, L.: Stochastic Volatility Modeling, Chapman & Hall, 2016. - Gatheral, J.: The Volatility Surface, A Practitioner's Guide, Wiley Finance, 2006. - Guyon, J. and Henry-Labord\u00e8re, P.: Nonlinear Option Pricing, Chapman & Hall, 2014.",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement Ing\u00e9nierie Math\u00e9matique et Informatique",
+    "Nombre de cr\u00e9dits ECTS": "6 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "04/04/2024",
+    "Code": "DMVOL"
+}

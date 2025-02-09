@@ -1,0 +1,16 @@
+{
+    "Cr\u00e9neau": "Sem 3/Sem 5 Me 8 h 30 - 11 h 15SL",
+    "Pr\u00e9requis": "Notions de programmation ; alg\u00e8bre lin\u00e9aire",
+    "Enseignants responsables": "Axel PARMENTIER",
+    "Objectifs du module": "La Recherche Op\u00e9rationnelle (RO) est la discipline des math\u00e9matiques appliqu\u00e9es qui traite des questions d'utilisation optimale des ressources dans l'industrie et la logistique. Planifier une tourn\u00e9e de v\u00e9hicules, remplir de mani\u00e8re optimale un conteneur, ordonnancer les t\u00e2ches sur un chantier sont des probl\u00e9matiques typiques de la Recherche Op\u00e9rationnelle. Elle est un des outils scientifiques essentiels pour un ing\u00e9nieur travaillant dans le domaine du g\u00e9nie industriel, de la logistique ou de la supply-chain. Depuis quelques ann\u00e9es, on commence \u00e0 la trouver dans des nouveaux domaines comme le marketing, la sant\u00e9 ou la finance. Les outils math\u00e9matiques qui sous-tendent cette discipline sont les graphes, l'alg\u00e8bre lin\u00e9aire, l'algorithmique, pour ne citer que les principaux. A l'issue de ce module, l'\u00e9l\u00e8ve saura identifier un probl\u00e8me de recherche op\u00e9rationnelle, en fournir une mod\u00e9lisation, et proposer un algorithme de r\u00e9solution. De plus, il sera capable de justifier ses choix et de discuter la qualit\u00e9 des solutions propos\u00e9es.",
+    "Programme du module": "1. Introduction 2. Plus courts chemins et programmation dynamique 3. Programmation lin\u00e9aire : algorithme du simplexe 4. Programmation lin\u00e9aire : dualit\u00e9 5. Flots et coupes 6. Graphes bipartis (affectation, transport, mariages stables) 7. Branch-and-bound, heuristiques et m\u00e9taheuristiques 8. Chargement de conteneurs 9. Positionnement d'entrep\u00f4ts 10. Conception de r\u00e9seaux 11. Tourn\u00e9es 12. Ordonnancement 13. Conclusion et contr\u00f4le",
+    "Modalit\u00e9s": "13 s\u00e9ances de 3h. Trois intervenants de l'industrie sont pr\u00e9vus - chaque intervention duren environ 1h30",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "1 mini-projet, 2 QCM de 15 minutes, et 1 contr\u00f4le final de 2h. En cas de note inf\u00e9rieure ou \u00e9gale \u00e0 8/20, aucun examen de rattrapage n'est pr\u00e9vu.",
+    "Adresse du site du module": "educnet.enpc.fr/course/view.php?id=297",
+    "Documents p\u00e9dagogiques - Bibliographie": "Polycopi\u00e9.",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement G\u00e9nie Industriel",
+    "Nombre de cr\u00e9dits ECTS": "3 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "01 Septembre 2024",
+    "Code": "REOP"
+}

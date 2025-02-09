@@ -1,0 +1,17 @@
+{
+    "Cr\u00e9neau": "Ouv 3",
+    "Pr\u00e9requis": "Connaissances de base en m\u00e9canique des structures du g\u00e9nie civil",
+    "Enseignants responsables": "Olivier BAVEREL",
+    "Equipe enseignante": "Olivier BAVEREL, Paul VERGONJEANNE, Pierre NAVARO AUBURTIN",
+    "Objectifs du module": "L\u2019objectif du module est de pr\u00e9parer les futurs ing\u00e9nieurs \u00e0 participer \u00e0 la r\u00e9alisation de projets demandant la validation et/ou la conception optimale des structures en ma\u00e7onnerie ou en pierre de taille. Pour garantir une application pratique, le module pr\u00e9voit le dessin des plans d\u2019ex\u00e9cution et la r\u00e9alisation de la maquette d\u2019une arche en PXB de quelques m\u00e8tres de port\u00e9 ou d\u2019une structure similaire. A l\u2019issu de ce module les \u00e9l\u00e8ves connaitront les principales morphologies et caract\u00e9ristiques structurelles des syst\u00e8mes ma\u00e7onn\u00e9s, les m\u00e9thodes de calcul \u00e0 la rupture adapt\u00e9es \u00e0 leur analyse et les m\u00e9thodes de conception bas\u00e9es sur la recherche de g\u00e9om\u00e9tries sollicit\u00e9es, sous charge, par la moindre \u00e9nergie de flexion. Les \u00e9l\u00e8ves seront capables d\u2019estimer la charge de ruine des structures en ma\u00e7onnerie et en pierre de taille et d\u2019appliquer ces connaissances tant \u00e0 l\u2019analyse de l\u2019existant que \u00e0 la conception de nouveaux syst\u00e8mes.",
+    "Programme du module": "S\u00e9ance 1 : Conf\u00e9rence sur la construction et r\u00e9habilitation structures en ma\u00e7onnerie. Arcs et vo\u00fbtes, calcul \u00e0 la rupture, introduction au calcul d'un arc funiculaire S\u00e9ance 2 : Statique graphique. Calcul \u00e0 la rupture, \u00e9tude cin\u00e9matique, flambement d'une pile de voussoirs, manipulation d'arc \u00e0 \u00e9chelle r\u00e9duite. S\u00e9ance 3 : Conception de l'arc et optimisation. Conception sur Scilab ou Excel. Fabrication S\u00e9ance 4 : Fabrication (fin) S\u00e9ance 5 : Interpr\u00e9tation des r\u00e9sultats et r\u00e9daction du rapport final",
+    "Modalit\u00e9s": "Une semaine - petites classes.",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Rapport \u00e9crit par groupe de TP faisant l'objet d'une notation.",
+    "Adresse du site du module": "educnet.enpc.fr/course/view.php?id=489",
+    "Documents p\u00e9dagogiques - Bibliographie": "Divers documents sont distribu\u00e9s par des intervenants.",
+    "Effectif maximal": "Effectif limit\u00e9 \u00e0 23 \u00e9l\u00e8ves",
+    "D\u00e9partement de rattachement": "D\u00e9partement G\u00e9nie Civil et Construction",
+    "Nombre de cr\u00e9dits ECTS": "1 cr\u00e9dit ECTS",
+    "Mise \u00e0 jour": "1er septembre 2024",
+    "Code": "O3ATT"
+}

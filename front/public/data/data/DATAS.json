@@ -1,0 +1,15 @@
+{
+    "Cr\u00e9neau": "Sem 1 MS",
+    "": "Aucune",
+    "Pr\u00e9requis": "Aucun, \u00e0 part ceux pour int\u00e9grer le mast\u00e8re sp\u00e9cialis\u00e9",
+    "Enseignants responsables": "Nicolas MONTAGNE",
+    "Objectifs du module": "Gr\u00e2ce au d\u00e9veloppement du num\u00e9rique et \u00e0 la croissante capacit\u00e9 des ordinateurs, les outils pour la mod\u00e9lisation ont beaucoup progress\u00e9. De simples outils de dessin en plan, les logiciels de mod\u00e9lisation permettent d\u00e9sormais la repr\u00e9sentation de formes courbes complexes. Pour cr\u00e9er ces g\u00e9om\u00e9tries et mieux les appr\u00e9hender, il est n\u00e9cessaire de comprendre les objets et les processus \u00e0 la base de leur g\u00e9n\u00e9ration. Ainsi, ce module a pour objectif de pr\u00e9senter et de familiariser les \u00e9tudiants avec les types, et les structures de donn\u00e9\u00e9es couramment utilis\u00e9es dans les logiciels de dessins assist\u00e9s par ordinateur (CAD). En plus de s'int\u00e9resser aux aspects de mod\u00e9lisation, des notions compl\u00e9tentaires seront \u00e9tudi\u00e9es pour complexifier et enrichir la conception. Les \u00e9tudiants apprendront donc par exemple \u00e0 int\u00e9grer des mesures et des bases de donn\u00e9es externes pendant la conception ainsi qu\u00e0' d\u00e9velopper des outils personnalis\u00e9s.",
+    "Programme du module": "Utilisation avanc\u00e9e de Rhinoceros et Grasshopper. Repr\u00e9sentations G\u00e9om\u00e9triques Discr\u00e9tis\u00e9es. Repr\u00e9sentations G\u00e9om\u00e9triques Continues. Import, export et formatage. Cr\u00e9ation d'outils personnalis\u00e9s pour la Mod\u00e9lisation.",
+    "Modalit\u00e9s": "S\u00e9ances hebdomadaires de 3h. Les s\u00e9ances seront divis\u00e9es en 2, avec une premi\u00e8re partie de cours magistral permettant de pr\u00e9senter les aspects th\u00e9oriques, puis la seconde partie sera consacr\u00e9e \u00e0 la pratique au travers de TD.",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Plusieurs crit\u00e8res d'\u00e9valuations seront pris en compte : La pr\u00e9sence et l'investissement tout au long du module, Deux s\u00e9ances de travaux dirig\u00e9s relev\u00e9s, Un projet final en groupe de 2 \u00e0 3 personnnes sur une application.",
+    "Documents p\u00e9dagogiques - Bibliographie": "Grasshoper Primer par Modelab. Rhinoceros and Grasshopper Developer Documentation Effective Computational Geometry for Curves and Surfaces par J.D Boissonat and M.Teillaud",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "MS Digital Building Design",
+    "Nombre de cr\u00e9dits ECTS": "4 cr\u00e9dits ECTS",
+    "Code": "DATAS"
+}

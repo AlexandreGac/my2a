@@ -1,0 +1,16 @@
+{
+    "Cr\u00e9neau": "Sem 5",
+    "Pr\u00e9requis": "Thermodynamique, programmation, langage python",
+    "Enseignants responsables": "Ana\u00ebl LEMAITRE",
+    "Equipe enseignante": "Ana\u00ebl LEMAITRE",
+    "Objectifs du module": "L'objectif du module est de fournir une introduction aux m\u00e9thodes et algorithmes les plus courants de simulation atomistique. A l'issue du module, les \u00e9l\u00e8ves seront capables de : \" Identifier les mod\u00e8les num\u00e9riques les mieux adapt\u00e9s \u00e0 la r\u00e9alisation de diff\u00e9rents ensembles thermodynamiques \" R\u00e9duire un probl\u00e8me physique \u00e0 un ensemble d'\u00e9quations sans dimension, et relier les unit\u00e9s de la simulation aux unit\u00e9s physiques \" Impl\u00e9menter des simulations num\u00e9riques atomistiques en utilisant soit des m\u00e9thodes de Monte-Carlo, soit des m\u00e9thodes de dynamique mol\u00e9culaire \" Impl\u00e9menter des algorithmes permettant de calculer diff\u00e9rentes propri\u00e9t\u00e9s thermodynamiques instantan\u00e9es (\u00e9nergies cin\u00e9tique et potentielle, composantes des contraintes) \" Comprendre comment on extrait des informations statistiques d'une simulation, et particulier sur l'exemple de la fonction de corr\u00e9lation de paire.",
+    "Programme du module": "\" Thermodynamique et physique statistique : micro et macro-\u00e9tats ; syst\u00e8mes \u00e0 l'\u00e9lquilibre et hors \u00e9quilibre ; formulation d'un probl\u00e8me num\u00e9rique \" M\u00e9thodes num\u00e9riques : \u00e9chantillonnage de Monte-Carlo, dynamique mol\u00e9culaire (Verlet, Verlet vitesse, \" leap-frog \", Runge-Kutta,\u2026) \" Identification de champs localement moyenn\u00e9s (densit\u00e9, quantit\u00e9 de mouvement, contrainte) et analyse statistique de donn\u00e9es num\u00e9riques",
+    "Modalit\u00e9s": "Six s\u00e9ances de trois heures.",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Un devoir \u00e0 la maison; un examen \u00e9crit. Validation si la note est sup\u00e9rieure ou \u00e9gale \u00e0 10 sur 20.",
+    "Documents p\u00e9dagogiques - Bibliographie": "Copies de transparents, programmes informatiques",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "Coll\u00e8ge Doctoral",
+    "Nombre de cr\u00e9dits ECTS": "3 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "26/01/2024",
+    "Code": "DSMMM"
+}

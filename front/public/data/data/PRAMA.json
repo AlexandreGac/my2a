@@ -1,0 +1,16 @@
+{
+    "Cr\u00e9neau": "Sem 4/Sem 6/Sem 4 M Je 18 h - 20 h 30LS/SLSL",
+    "Pr\u00e9requis": "Cours de probabilit\u00e9s et statistiques (1A) Cours de statistiques num\u00e9riques (2A)",
+    "Enseignants responsables": "Vincent LEFIEUX",
+    "Equipe enseignante": "Vincent LEFIEUX, Valentin CADORET",
+    "Objectifs du module": "Ce cours vise \u00e0 doter les \u00e9l\u00e8ves ing\u00e9nieurs de m\u00e9thodes d'apprentissage statistique (machine learning) leur permettant de disposer d'un \u00e9ventail \u00e9largi, et \" moderne \", pour analyser les donn\u00e9es auxquelles ils seront confront\u00e9s dans le cadre de leur vie professionnelle. Ce cours met l'accent sur les principales id\u00e9es et r\u00e9sultats des m\u00e9thodes abord\u00e9es, et leur mise en pratique. Les r\u00e9sultats th\u00e9oriques sont donn\u00e9s en r\u00e9f\u00e9rences bibliographiques compl\u00e9mentaires. A l'issue de ce module, les \u00e9l\u00e8ves sauront mettre en \u0153uvre des techniques de machine learning sur des probl\u00e9matiques de r\u00e9gression (pr\u00e9voir un ph\u00e9nom\u00e8ne quantitatif) ou de classification supervis\u00e9e (pr\u00e9voir un ph\u00e9nom\u00e8ne qualitatif). Les m\u00e9thodes rencontr\u00e9es seront mises en \u0153uvre sur des jeux de donn\u00e9es r\u00e9els, \u00e0 l'aide du logiciel R et/ou Python, dans le cadre de travaux pratiques (r\u00e9alis\u00e9s \u00e0 distance), ainsi que d'un projet sur un jeu de donn\u00e9es r\u00e9elles (par groupe).",
+    "Programme du module": "Principes de l'apprentissage statistique. R\u00e9gression r\u00e9gularis\u00e9e (Ridge, Lasso, Lars). M\u00e9thodes d'approximation locale (plus proches voisins, noyaux de lissage). R\u00e9gression spline & Mod\u00e8les additifs g\u00e9n\u00e9ralis\u00e9s (GAM). Arbres de r\u00e9gression et de d\u00e9cision. Bagging (dont RandomForest) Boosting (AdaBoost, gradient boosting) SVM Introduction aux r\u00e9seaux de neurones",
+    "Modalit\u00e9s": "1) Travail distanciel : Consultation des vid\u00e9os et polycopi\u00e9s de cours. R\u00e9ponse aux quizz d'auto-\u00e9valuation. R\u00e9alisation de TP en bin\u00f4me. R\u00e9alisation du projet au fil de l'eau. 2) S\u00e9ances en pr\u00e9sentiel : 4 s\u00e9ances optionnelles de 2h pour interagir sur le cours (pr\u00e9parer des questions). 4 entrevues de suivi de projet (obligatoires).",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Quizz d'auto-\u00e9valuation (10% de la note et obligation de les effectuer). Compte-rendus de TP (45%). Rapport de projet (45%).",
+    "Documents p\u00e9dagogiques - Bibliographie": "Polycopi\u00e9 du cours, vid\u00e9os de cours, site internet",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement Ing\u00e9nierie Math\u00e9matique et Informatique",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "01 Septembre 2024",
+    "Code": "PRAMA"
+}

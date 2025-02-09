@@ -1,0 +1,16 @@
+{
+    "Cr\u00e9neau": "Sem 3/Sem 5 Lu 13 h 45 - 16 h 30SL",
+    "Pr\u00e9requis": "1PROG ou connaissance d'un langage de programmation et notions d'algorithmique",
+    "Enseignants responsables": "Xavier CLERC",
+    "Objectifs du module": "Le premier objectif est d'apporter aux \u00e9l\u00e8ves une formation aux m\u00e9thodes de d\u00e9veloppement rigoureuses permettant d'\u00e9crire efficacement un programme correct et de v\u00e9rifier sa correction par le test. Le second objectif est d'initier les \u00e9l\u00e8ves \u00e0 la gestion d'un projet logiciel et de pr\u00e9senter les outils n\u00e9cessaires. Le troisi\u00e8me objectif est de donner aux \u00e9l\u00e8ves une culture g\u00e9n\u00e9rale dans le domaine du d\u00e9veloppement logiciel. Un projet utilisant des composants logiciels externes et possiblement plusieurs langages de programmation permet d'\u00e9prouver ces m\u00e9thodes et outils sur un projet de taille significative.",
+    "Programme du module": "Programmation orient\u00e9e objet en Python, gestion de projet, architecture, test, bases de donn\u00e9es, concurrence, interop\u00e9rabilit\u00e9, programmation r\u00e9seau et web.",
+    "Modalit\u00e9s": "Pr\u00e9sentiel : 4 s\u00e9ances de TP, 1 s\u00e9ance de conf\u00e9rence, 7 s\u00e9ances de projet, 1 s\u00e9ance de soutenances Distanciel : vid\u00e9os de pr\u00e9sentation des concepts",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Si projet : Travaux pratiques (20%), examens \u00e9crits (20%) et projet (60%) sinon : Travaux pratiques (50%), examens \u00e9crits (50%) Formule : si la note d'une composante est inf\u00e9rieure \u00e0 7/20, cette note est retenue comme finale, sinon les coefficients ci-dessus sont appliqu\u00e9s",
+    "Adresse du site du module": "educnet.enpc.fr/course/view.php?id=298",
+    "Documents p\u00e9dagogiques - Bibliographie": "Polycopi\u00e9, transparents, sujets et corrig\u00e9s de TP, aide-m\u00e9moires",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement Ing\u00e9nierie Math\u00e9matique et Informatique",
+    "Nombre de cr\u00e9dits ECTS": "3 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "01 Septembre 2024",
+    "Code": "TDLOG"
+}

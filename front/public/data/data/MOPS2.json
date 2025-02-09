@@ -1,0 +1,12 @@
+{
+    "Cr\u00e9neau": "Sem 3/Sem 5 Ma 8 h 30 - 11 h 45SL",
+    "Enseignants responsables": "Eric CANCES , Amaury HAYAT",
+    "Equipe enseignante": "Eric CANCES, Amaury HAYAT",
+    "Objectifs du module": "L'objectif de ce cours est d'introduire et de mettre en pratique de nouvelles notions fondamentales d'analyse (convergence faible dans les espaces de Hilbert, injections de Sobolev\u2026) essentielle pour traiter de nombreux probl\u00e8mes d'optimisation en dimension infinie. On se focalisera sur deux types d'applications : - les probl\u00e8mes aux limites (EDP lin\u00e9aires ou non-lin\u00e9aires avec conditions aux bords) ou aux valeurs propres pouvant \u00eatre trait\u00e9s par des m\u00e9thodes variationnelles (les solutions correspondent \u00e0 des minimiseurs ou des points critiques de probl\u00e8mes d'optimisation avec ou sans contraintes). On en profitera pour consolider les bases d'analyse fonctionnelle et de th\u00e9orie des EDP acquises en premi\u00e8re ann\u00e9e ; - le contr\u00f4le optimal de syst\u00e8mes dynamiques (on cherche les trajectoires qui minimisent un certain crit\u00e8re). On approfondira \u00e0 cette occasion l'\u00e9tude des syst\u00e8mes dynamiques (courbes int\u00e9grales, analyse de stabilit\u00e9, crit\u00e8res de contr\u00f4labilit\u00e9\u2026), et on verra comment mettre en \u0153uvre concr\u00e8tement le principe du minimum de Pontryagine dans le cadre d'un TP informatique sur le probl\u00e8me de rendez-vous spatial.",
+    "Modalit\u00e9s": "Examen final",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement Ing\u00e9nierie Math\u00e9matique et Informatique",
+    "Nombre de cr\u00e9dits ECTS": "3 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "01 Septembre 2024",
+    "Code": "MOPS2"
+}

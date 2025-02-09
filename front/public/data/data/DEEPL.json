@@ -1,0 +1,17 @@
+{
+    "Cr\u00e9neau": "Sem 3/Sem 5T/Sem 5 Je 8 h 30 - 11 h 45Sem 6T",
+    "": "NA",
+    "Pr\u00e9requis": "Ouvert \u00e0 tous les \u00e9l\u00e8ves de 2A.",
+    "Enseignants responsables": "Mathieu aubry",
+    "Objectifs du module": "Les outils d'apprentissage profond ont pris ces derni\u00e8res ann\u00e9es une importance consid\u00e9rable dans les applications industrielles, au point que de tr\u00e8s nombreux \u00e9l\u00e8ves de l'\u00c9cole des Ponts s'y trouvent confront\u00e9s pendant leur stage/ann\u00e9e de c\u00e9sure ou m\u00eame durant leurs projets de d\u00e9partement. L'enjeu de ce module est donc de les amener \u00e0 utiliser ces outils de mani\u00e8re efficace, critique et pertinente. \u00c0 l'issue du module, les \u00e9l\u00e8ves auront compris les composantes essentielles de l'apprentissage profond : (i) architectures ; (ii) fonctions de co\u00fbts ; (iii) optimisation. Les \u00e9l\u00e8ves seront \u00e9galement sensibilis\u00e9s \u00e0 la pratique de l'apprentissage profond, et en particulier aux probl\u00e8mes du sur/sous apprentissage, aux strat\u00e9gies d'optimisation, aux sources d'erreur et aux pratiques courantes, aux outils d'analyse des r\u00e9sultats et \u00e0 l'utilisation d'une librairie d'apprentissage profond moderne (PyTorch)",
+    "Programme du module": "Le module sera organis\u00e9 en trois blocs comprenant chacun cour et TP/TD : - Introduction et bases des r\u00e9seaux de neurones (perceptron, perceptron multi-couches, fonction de co\u00fbt, backpropagation..). Le TP/TD visera \u00e0 impl\u00e9menter compl\u00e8tement des r\u00e9seaux de neurones simples, sans utiliser de librairie particuli\u00e8re. 2 s\u00e9ances de cours, 1,5 s\u00e9ances de TP. - R\u00e9seaux de neurones modernes et profonds (Adam, batch normalization, architectures r\u00e9siduelles, data augmentation, fine-tunning, impl\u00e9mentation efficace...) Le TP/TD portera sur l'entrainer un mod\u00e8le convolutionnel profond avec PyTorch, en mettant en relief les choix cl\u00e9s \u00e0 effectuer. 1 s\u00e9ance de cours, 2 s\u00e9ances de TP. - Th\u00e9matiques avanc\u00e9es, \u00e9l\u00e9ments de r\u00e9f\u00e9rence sur un certain nombre de th\u00e8mes populaires (attention, transformers, r\u00e9seaux g\u00e9n\u00e9ratifs adversariaux/GANs, auto-encodeur variationnel/VAE, apprentissage non et faiblement supervis\u00e9, \"one-shot\", donn\u00e9es 3D\u2026). 1 s\u00e9ance de cours, 1,5 s\u00e9ances de TP.",
+    "Modalit\u00e9s": "11 s\u00e9ances de 2,5h comprenant cours magistraux (~10h) et aides \u00e0 la r\u00e9alisation des TPs/TDs (~12.5h) qui seront \u00e0 finir et rendre individuellement.",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "La validation sera effectu\u00e9e par des QCM en d\u00e9but de session (10%) et les rendus des TPs/TDs (90%).",
+    "Adresse du site du module": "http://gede.enpc.fr/Programme/Fiche.aspx",
+    "Documents p\u00e9dagogiques - Bibliographie": "Deep Learning, Goodfellow, Bengio and Courville, MIT press 2016: https://www.deeplearningbook.org",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement Ing\u00e9nierie Math\u00e9matique et Informatique",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "01 Septembre 2024",
+    "Code": "DEEPL"
+}

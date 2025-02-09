@@ -1,0 +1,17 @@
+{
+    "Cr\u00e9neau": "ProlongSem 4/Sem 6 Je 8 h 30 - 11 h 45Sem 6 Je 8 h 30 - 11 h 45",
+    "Pr\u00e9requis": "Bonne ma\u00eetrise des cours \" Optimisation \" et \" Probabilit\u00e9s \" de premi\u00e8re ann\u00e9e. Connaissance du langage python.",
+    "Enseignants responsables": "David PICARD",
+    "Equipe enseignante": "David PICARD",
+    "Objectifs du module": "Depuis quelques ann\u00e9es, l'augmentation conjointe, rapide et massive des quantit\u00e9s de donn\u00e9es et des puissances de calcul a permis l'essor d'algorithmes de prise de d\u00e9cision issus de l'apprentissage statistique (machine learning en anglais). On les retrouve aujourd'hui dans tous les domaines industriels li\u00e9s \u00e0 des applications num\u00e9riques (vision artificielle, robotique, traitement du langage, syst\u00e8mes de recommandation, etc). Les objectifs du module sont d'acqu\u00e9rir les intuitions qui sont au fondement de la th\u00e9orie de l'apprentissage statistique, de ma\u00eetriser les algorithmes les plus usuels qui permettent de r\u00e9soudre les t\u00e2ches les plus communes (classification, r\u00e9gression, clustering), et d'\u00eatre capable d'en analyser la pertinence. Le module permettra d'avoir de solides bases pour poursuivre dans un cursus sp\u00e9cialis\u00e9 en apprentissage statistique, mais \u00e9galement d'\u00eatre capable d'utiliser ces algorithmes dans un cadre pratique.",
+    "Programme du module": "Introduction \u00e0 la th\u00e9orie de l'apprentissage statistique (minimisation du risque empirique, PAC learning). Algorithmes supervis\u00e9s : KNN, classification lin\u00e9aire, r\u00e9gr\u00e9ssion lin\u00e9aire, LDA, r\u00e9gression logistique, SVM, Kernel SVM, Boosting, Decision trees, Neural networks. Algorithmes non-supervis\u00e9s : k-Means, GMM, Dictionary learning Applications : vision, traitement du langage, traitement des s\u00e9ries temporelles.",
+    "Modalit\u00e9s": "7 s\u00e9ances de cours, 5 s\u00e9ances de TP, 1 s\u00e9ance d'examen. 1 projet optionnel par trin\u00f4me de 25h mettant en \u0153uvre une \u00e9tude bibliographique d'un algorithme d'apprentissage et agr\u00e9ment\u00e9e de petites exp\u00e9riences.",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Un examen \u00e9crit (50 % de la note), comptes rendus de TP (50% de la note) et rapport de projet optionnel (remplace 25% de la note de TP).",
+    "Adresse du site du module": "educnet.enpc.fr/course/view.php?id=547",
+    "Documents p\u00e9dagogiques - Bibliographie": "The Elements of Statistical Learning (ESL), Trevor Hastie, Rob Tibshirani, Jerome Friedman, Springer (2010). Understanding machine learning: From theory to algorithms, Shalev-Shwartz, S., & Ben-David, S., Cambridge university press (2014).",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement Ing\u00e9nierie Math\u00e9matique et Informatique",
+    "Nombre de cr\u00e9dits ECTS": "3 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "01 Septembre 2024",
+    "Code": "MALAP"
+}

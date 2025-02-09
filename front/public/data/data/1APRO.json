@@ -1,0 +1,14 @@
+{
+    "Cr\u00e9neau": "Sem 2/Sem 2/Sem 4SL",
+    "Pr\u00e9requis": "Le cours \" Introduction \u00e0 la Programmation \" (S1)",
+    "Enseignants responsables": "Pascal MONASSE",
+    "Equipe enseignante": "Pascal MONASSE",
+    "Objectifs du module": "Ce cours d'ouverture en informatique a pour objectif d'apporter une exp\u00e9rience de programmation aux \u00e9l\u00e8ves en leur proposant des sujets ludiques comme des jeux vid\u00e9o d'action ou de r\u00e9flexion, des logiciels de retouche d'images num\u00e9riques, etc. Ce sera l'occasion de leur faire utiliser les outils disponibles au d\u00e9veloppeur, en particulier pour la gestion d'un programme complexe. Le but est de leur enseigner de bonnes pratiques dans le d\u00e9veloppement et l'organisation du code.",
+    "Programme du module": "La premi\u00e8re s\u00e9ance est consacr\u00e9e dans une premi\u00e8re partie (1h30) \u00e0 des rappels de C++ et \u00e0 la pr\u00e9sentation des projets. En deuxi\u00e8me partie de cette s\u00e9ance (1h), quelques exercices sur les outils informatiques seront appliqu\u00e9s en salle machine. Les autres s\u00e9ances (2h30) seront consacr\u00e9es au d\u00e9veloppement des projets en bin\u00f4mes en salle machine. La 7\u00e8me et derni\u00e8re s\u00e9ance est consacr\u00e9e \u00e0 la pr\u00e9sentation du projet et d\u00e9monstration de leur programme par les \u00e9l\u00e8ves. Th\u00e8mes abord\u00e9s : 1. Utilisation de l'environnement de programmation, d\u00e9bogage, gestion de versions 2. Qualit\u00e9 de code, organisation du code, documentation 3. Code efficace, clair, structur\u00e9 4. Utilisation de la programmation objet, constructeurs et destructeurs",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "La validation se fait sur la soutenance orale (20%) et la fonctionnalit\u00e9 (40%) et la qualit\u00e9 (40%) du code.",
+    "Documents p\u00e9dagogiques - Bibliographie": "Documents p\u00e9dagogiques : Des fiches r\u00e9capitulatives sur le C++, les classes et les outils de d\u00e9veloppement, biblioth\u00e8ques C++ pour l'interface graphique. Site du module : http://imagine.enpc.fr/~monasse/Info2a/",
+    "Effectif maximal": "Effectif limit\u00e9 \u00e0 30 \u00e9l\u00e8ves",
+    "D\u00e9partement de rattachement": "D\u00e9partement de 1\u00e8re ann\u00e9e",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Code": "1APRO"
+}

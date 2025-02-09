@@ -1,0 +1,17 @@
+{
+    "Cr\u00e9neau": "Sem 3/Sem 5/Sem 1 MS Ma 8 h 30 - 11 h 45Sem 1 MS Ma 8 h 30 - 11 h 45",
+    "Pr\u00e9requis": "Certaines connaissances en math\u00e9matiques sont indispensables (probabilit\u00e9s, int\u00e9gration, d\u00e9riv\u00e9es partielles).",
+    "Enseignants responsables": "Zoi CHRISTOFOROU",
+    "Equipe enseignante": "Zoi CHRISTOFOROU, Yeltsin VALERO",
+    "Objectifs du module": "Conna\u00eetre les m\u00e9thodes scientifiques - en particulier la th\u00e9orie du trafic - n\u00e9cessaires \u00e0 l'exploitation des r\u00e9seaux routiers et \u00e0 la mise en \u0153uvre des nouveaux syst\u00e8mes t\u00e9l\u00e9matiques pour la route. A l'issue du cours, les \u00e9tudiants sauront : - Traiter les donn\u00e9es r\u00e9elles de circulation, - Appliquer les principales lois de trafic pour d\u00e9terminer les caract\u00e9ristiques de fonctionnement des infrastructures et \u00e9valuer les effets des diff\u00e9rents ph\u00e9nom\u00e8nes de circulation. Par ailleurs, ils seront initi\u00e9s aux enjeux techniques li\u00e9s au v\u00e9hicule autonome et, surtout, \u00e0 sa cohabitation avec les v\u00e9hicules actuels. Enfin, ils auront d\u00e9couvert un des outils majeurs de microsimulation utilis\u00e9 par grand nombre de bureaux d\u2019\u00e9tudes en France et \u00e0 l\u2019\u00e9tranger.",
+    "Programme du module": "Le cours est organis\u00e9 en 13 s\u00e9ances de trois heures. Les 7 premi\u00e8res s\u00e9ances offrent des \u00e9l\u00e9ments de base. Les 6 suivantes offrent des \u00e9l\u00e9ments d\u2019approfondissement sur certains aspects. S1. Variables fondamentales du trafic routier et nouvelles donn\u00e9es S2. Capacit\u00e9 et m\u00e9thodes d\u2019estimation empiriques ; Cartographie du trafic S3. Capacit\u00e9 th\u00e9orique et niveaux de service S4. Ondes cin\u00e9matiques et ondes de choc S5. Exploitation routi\u00e8re \u2013 contexte p\u00e9riurbain S6. Ph\u00e9nom\u00e8nes d'attente et m\u00e9thode de la demande cumul\u00e9e S7. Etude de cas et \u00e9valuation S8. R\u00e9gulation urbaine \u2013 carrefour \u00e0 feux isol\u00e9s S9. Coordination des feux et ph\u00e9nom\u00e8nes d\u2019attente S10. Initiation au logiciel de simulation dynamique S11. V\u00e9hicule autonome : principes, contraintes, simulation S12. S\u00e9ance simulation S13. Etudes de cas. Evaluation",
+    "Modalit\u00e9s": "Un projet en option sera propos\u00e9 aux \u00e9tudiants lors de la premi\u00e8re s\u00e9ance du cours. Ils travailleront sur ce projet en autonomie pendant deux mois.",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "\u2022 Assiduit\u00e9 et participation active au cours (10%) \u2022 Examen sur table (90%)",
+    "Adresse du site du module": "educnet.enpc.fr/course/view.php?id=257&userid=guest",
+    "Documents p\u00e9dagogiques - Bibliographie": "- Supports des cours, polycopi\u00e9, donn\u00e9es sur educnet. - Bibliographie indicative : Cohen, S., 1998. Ing\u00e9nierie du trafic routier. Presses des ponts, ISBN-10: 2859781544. Highway Capacity Manual, 2010. Transportation Research Board, ISBN: 978-0-309-16077-3. Wolshon, B., Pande, A., 2016. Traffic Engineering Handbook, 7th Edition, John Wiley and Sons Inc, ISBN: 978-1-118-76230-1.",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement Ville Environnement Transport",
+    "Nombre de cr\u00e9dits ECTS": "3,5 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "2 septembre",
+    "Code": "ITRA1"
+}

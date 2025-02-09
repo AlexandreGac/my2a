@@ -1,0 +1,12 @@
+{
+    "Cr\u00e9neau": "Ouv 2/Ouv 3Sem 4/Sem 6Sem 6",
+    "Enseignants responsables": "Mohamed Saad EL HARRAB",
+    "Equipe enseignante": "Sotiris MANITSARIS, Alina GLUSHKOVA",
+    "Objectifs du module": "Ce cours introduit les \u00e9tudiants aux m\u00e9thodes fondamentales en ing\u00e9nierie, calcul et exp\u00e9rimentation dans le domaine de la collaboration homme-robot (Human-Robot Collaboration, HRC), avec un accent sur l\u2019intelligence artificielle et le raisonnement robotique. Les \u00e9tudiants d\u00e9couvriront les concepts cl\u00e9s de la collaboration homme-robot et leurs applications r\u00e9elles (industrie, sant\u00e9, assistants personnels, apprentissage humain). Des outils et m\u00e9thodes seront fournis pour analyser la conception des postes de travail et l\u2019utilisation des robots en termes de productivit\u00e9, flexibilit\u00e9, s\u00e9curit\u00e9 et ergonomie.",
+    "Programme du module": "Le cours couvre les th\u00e9matiques suivantes : Intelligence artificielle pour l\u2019interaction homme-robot : Estimation de pose (Open Pose), reconnaissance de gestes (CNN 2D et 3D), d\u00e9tection d\u2019objets (Yolo, Mask RCNN, Vision Transformers), apprentissage par renforcement (value-based, policy-based, model-based) et apprentissage par d\u00e9monstration (Learning from Demonstration, LfD). Robotique : Cin\u00e9matique (directe, inverse, matrice Jacobienne), Robot Operating System (ROS), analyse des capteurs embarqu\u00e9s (cam\u00e9ras RGB, capteurs de couple). Conception des postes de travail : R\u00e9gulations de s\u00e9curit\u00e9 (normes ISO) et analyses ergonomiques. Les \u00e9tudiants travailleront \u00e9galement sur des projets de recherche HRC, analyseront des articles r\u00e9cents et pr\u00e9senteront leurs travaux en classe.",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement G\u00e9nie Industriel",
+    "Nombre de cr\u00e9dits ECTS": "1 cr\u00e9dit ECTS",
+    "Mise \u00e0 jour": "01 Septembre 2024",
+    "Code": "ROBCO"
+}
