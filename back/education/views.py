@@ -457,13 +457,17 @@ class ImportSpecialDayCSV(APIView):
     def post(self, request):
         try:
             csv_file = request.FILES.get("csv_file")
+            # Récupération du paramètre "replace" depuis le formulaire, par défaut "false"
+            replace_flag = request.POST.get("replace", "false").lower() == "true"
+
             if csv_file:
-                failed, created = importSpecialDayCSV(csv_file)
+                # Transmet le flag à la fonction d'import pour réaliser le remplacement
+                failed, created = importSpecialDayCSV(csv_file, replace=replace_flag)
                 if failed:
                     return Response(
                         {
                             "success": True,
-                            "error": "Some rows failed to import",
+                            "error": "Certaines lignes n'ont pas pu être importées",
                             "failed": failed,
                             "created": created,
                         },
@@ -473,7 +477,7 @@ class ImportSpecialDayCSV(APIView):
                     return Response(
                         {
                             "success": True,
-                            "error": "CSV file processed successfully",
+                            "error": "Fichier CSV traité avec succès",
                             "failed": failed,
                             "created": created,
                         },
@@ -481,7 +485,7 @@ class ImportSpecialDayCSV(APIView):
                     )
             else:
                 return Response(
-                    {"success": False, "error": "No CSV file provided"},
+                    {"success": False, "error": "Aucun fichier CSV fourni"},
                     status=status.HTTP_400_BAD_REQUEST,
                 )
         except Exception as e:
@@ -489,7 +493,6 @@ class ImportSpecialDayCSV(APIView):
                 {"success": False, "error": str(e)},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
-
 
 class ImportStudentCSV(APIView):
     def post(self, request):

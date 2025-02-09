@@ -181,49 +181,52 @@ def importCourseCSV(csv_file):
     return error_rows, created_rows
 
 
-def importSpecialDayCSV(csv_file):
+def importSpecialDayCSV(csv_file, replace=False):
     print("--- Reading CSV file for Special Days...")
+    
+    # Si le flag replace est True, supprimer tous les anciens jours spéciaux
+    if replace:
+        print("--- Replace flag activé : suppression des anciens jours spéciaux")
+        SpecialDay.objects.all().delete()
+    
     csv_file_wrapper = TextIOWrapper(csv_file.file, encoding="utf-8-sig")
     csv_reader = csv.DictReader(csv_file_wrapper, delimiter=";")
 
     error_rows = []
     created_rows = []
 
-    print("--- Creating special days:")
+    print("--- Création des jours spéciaux:")
     for row in csv_reader:
         print(row)
         try:
             name = row["name"]
-            date = row["date"]
+            date_str = row["date"]
 
-            # Validate date format
+            # Validation du format de la date
             try:
-                date = datetime.strptime(date, "%Y-%m-%d").date()
+                date = datetime.strptime(date_str, "%Y-%m-%d").date()
             except ValueError:
-                print(f"------ Date {date} is not valid")
+                print(f"------ La date {date_str} n'est pas valide")
                 error_rows.append(
                     [name, "Mauvais format de date. Veuillez utiliser 'AAAA-MM-JJ'."]
                 )
                 continue
 
-            # Check if a special day with the same name and date already exists
-            if SpecialDay.objects.filter(name=name, date=date).exists():
-                print(f"------ Special Day {name} on {date} already exists")
+            # Si replace n'est pas activé, on vérifie si un jour spécial identique existe déjà
+            if not replace and SpecialDay.objects.filter(name=name, date=date).exists():
+                print(f"------ Le jour spécial {name} du {date} existe déjà")
                 error_rows.append([name, f"Le jour spécial '{name}' le '{date}' existe déjà."])
                 continue
 
-            # Create and save the SpecialDay object
-            special_day = SpecialDay(
-                name=name,
-                date=date,
-            )
+            # Création et sauvegarde de l'objet SpecialDay
+            special_day = SpecialDay(name=name, date=date)
             special_day.save()
 
             created_rows.append(name)
-            print(f"------ Special Day {special_day} created")
+            print(f"------ Le jour spécial {special_day} a été créé")
 
         except Exception as e:
-            print(f"------ {e}")
+            print(f"------ Erreur : {e}")
             error_rows.append([name, str(e)])
 
     return error_rows, created_rows
