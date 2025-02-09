@@ -31,6 +31,9 @@ import Box from '@mui/material/Box';
 import Cookies from 'js-cookie';
 import TextField from '@mui/material/TextField';
 
+// Utile pour la vérification que les jours rentrés sont corrects
+import { validateYearInfo } from "../utils/ValidateYearInformations";
+
 const GridBreak = styled('div')(({ theme }) => ({
     width: '100%',
 }))
@@ -50,7 +53,6 @@ const VisuallyHiddenInput = styled('input')({
 export default function ModifyYearInformations() {
     const [yearInfo, setYearInfo] = useState({
         start_of_the_school_year: '',
-        start_of_S4A: '',
         start_of_S3B: '',
         start_of_S4A: '',
         start_of_S4B: '',
@@ -59,11 +61,31 @@ export default function ModifyYearInformations() {
         monday_of_xmas_holiday: '',
         monday_of_winter_holiday: '',
         monday_of_spring_holiday: '',
+        easter_monday: '',
+        ascension_day: '',  
+        whit_monday: '',    
     });
     const [openSnackbar, setOpenSnackbar] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState("");
     const [snackbarSeverity, setSnackbarSeverity] = useState("success");
     const [isAdmin, setIsAdmin] = useState(false);
+
+
+    /*     Dictionnaire utile pour traduire les clés des informations de l'année qui sont en anglais*/    
+    const translations = {
+        start_of_the_school_year: "Début de l'année scolaire",
+        start_of_S3B: "Début de S3B",
+        start_of_S4A: "Début de S4A",
+        start_of_S4B: "Début de S4B",
+        end_of_school_year: "Fin de l'année scolaire",
+        monday_of_autumn_holiday: "Lundi des vacances d'automne",
+        monday_of_xmas_holiday: "Lundi des vacances de Noël",
+        monday_of_winter_holiday: "Lundi des vacances d'hiver",
+        monday_of_spring_holiday: "Lundi des vacances de printemps",
+        easter_monday : "Lundi de Pâques",
+        ascension_day : "Jeudi de l'Ascension",
+        whit_monday : "Lundi de Pentecôte",
+    };
 
     useEffect(() => {
         fetch("/api/yearinformations", {
@@ -94,6 +116,16 @@ export default function ModifyYearInformations() {
     };
 
     const handleSubmit = () => {
+        // Vérification de la validité des dates rentrées
+        const errors = validateYearInfo(yearInfo);
+
+        if (errors.length > 0) {
+            setOpenSnackbar(true);
+            setSnackbarMessage(errors.join("\n"));
+            setSnackbarSeverity("error");
+            return;
+        }
+
         fetch("/api/yearinformations", {
             method: "POST",
             credentials: "include",
@@ -119,6 +151,7 @@ export default function ModifyYearInformations() {
     const handleCloseSnackbar = () => {
         setOpenSnackbar(false);
     };
+    
 
     useEffect(() => {
         fetch("/api/student/current", {
@@ -157,7 +190,7 @@ export default function ModifyYearInformations() {
                                     <Grid item xs={12} key={key}>
                                         <TextField
                                             fullWidth
-                                            label={key.replace(/_/g, ' ')}
+                                            label={translations[key] || key.replace(/_/g, ' ')}
                                             name={key}
                                             value={yearInfo[key]}
                                             onChange={handleChange}
@@ -189,3 +222,5 @@ export default function ModifyYearInformations() {
         </div>
     )
 }
+
+

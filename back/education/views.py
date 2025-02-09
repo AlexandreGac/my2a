@@ -457,13 +457,17 @@ class ImportSpecialDayCSV(APIView):
     def post(self, request):
         try:
             csv_file = request.FILES.get("csv_file")
+            # Récupération du paramètre "replace" depuis le formulaire, par défaut "false"
+            replace_flag = request.POST.get("replace", "false").lower() == "true"
+
             if csv_file:
-                failed, created = importSpecialDayCSV(csv_file)
+                # Transmet le flag à la fonction d'import pour réaliser le remplacement
+                failed, created = importSpecialDayCSV(csv_file, replace=replace_flag)
                 if failed:
                     return Response(
                         {
                             "success": True,
-                            "error": "Some rows failed to import",
+                            "error": "Certaines lignes n'ont pas pu être importées",
                             "failed": failed,
                             "created": created,
                         },
@@ -473,7 +477,7 @@ class ImportSpecialDayCSV(APIView):
                     return Response(
                         {
                             "success": True,
-                            "error": "CSV file processed successfully",
+                            "error": "Fichier CSV traité avec succès",
                             "failed": failed,
                             "created": created,
                         },
@@ -481,7 +485,7 @@ class ImportSpecialDayCSV(APIView):
                     )
             else:
                 return Response(
-                    {"success": False, "error": "No CSV file provided"},
+                    {"success": False, "error": "Aucun fichier CSV fourni"},
                     status=status.HTTP_400_BAD_REQUEST,
                 )
         except Exception as e:
@@ -489,7 +493,6 @@ class ImportSpecialDayCSV(APIView):
                 {"success": False, "error": str(e)},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
-
 
 class ImportStudentCSV(APIView):
     def post(self, request):
@@ -750,7 +753,6 @@ class ModifyYearInformations(View):
             if year_info:
                 data = {
                     "start_of_the_school_year": year_info.start_of_the_school_year,
-                    "start_of_S4A": year_info.start_of_S4A,
                     "start_of_S3B": year_info.start_of_S3B,
                     "start_of_S4A": year_info.start_of_S4A,
                     "start_of_S4B": year_info.start_of_S4B,
@@ -759,6 +761,9 @@ class ModifyYearInformations(View):
                     "monday_of_xmas_holiday": year_info.monday_of_xmas_holiday,
                     "monday_of_winter_holiday": year_info.monday_of_winter_holiday,
                     "monday_of_spring_holiday": year_info.monday_of_spring_holiday,
+                    "easter_monday": year_info.easter_monday,
+                    "ascension_day": year_info.ascension_day,
+                    "whit_monday": year_info.whit_monday,
                 }
                 return JsonResponse(data)
             else:
@@ -771,7 +776,6 @@ class ModifyYearInformations(View):
             data = json.loads(request.body)
             year_info, created = YearInformation.objects.get_or_create(pk=1)
             year_info.start_of_the_school_year = data.get("start_of_the_school_year")
-            year_info.start_of_S4A = data.get("start_of_S4A")
             year_info.start_of_S3B = data.get("start_of_S3B")
             year_info.start_of_S4A = data.get("start_of_S4A")
             year_info.start_of_S4B = data.get("start_of_S4B")
@@ -780,6 +784,9 @@ class ModifyYearInformations(View):
             year_info.monday_of_xmas_holiday = data.get("monday_of_xmas_holiday")
             year_info.monday_of_winter_holiday = data.get("monday_of_winter_holiday")
             year_info.monday_of_spring_holiday = data.get("monday_of_spring_holiday")
+            year_info.easter_monday = data.get("easter_monday")
+            year_info.ascension_day = data.get("ascension_day")
+            year_info.whit_monday = data.get("whit_monday")
             year_info.save()
             return JsonResponse({"success": "Year information updated successfully"})
         except Exception as e:

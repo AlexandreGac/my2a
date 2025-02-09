@@ -92,6 +92,8 @@ export default function Upload() {
     const sendFile = () => {
         const formData = new FormData();
         formData.append("csv_file", selectedFile);
+        // On indique au backend de remplacer l'ancienne base
+        formData.append("replace", "true");
     
         fetch("/api/upload/specialday", {
             method: "POST",
@@ -107,16 +109,18 @@ export default function Upload() {
                 setSelectedFile(null);
                 if (result.success) {
                     setSuccessProcessing(true);
+                    // On met à jour createdProcessing, que le tableau soit vide ou non
+                    setCreatedProcessing(result.created);
                     if (result.failed.length > 0) {
                         setOpenSnackbar(true);
-                        setSnackbarMessage("Import partiellement réussi pour les jours spéciaux");
+                        setSnackbarMessage("Import partiellement réussi : la base a été remplacée mais certains jours n'ont pas pu être importés.");
                         setSnackbarSeverity("warning");
                         setFailedProcessing(result.failed);
-                        setCreatedProcessing(result.created);
                     } else {
                         setOpenSnackbar(true);
-                        setSnackbarMessage("Import des jours spéciaux réussi");
+                        setSnackbarMessage("Import et remplacement des jours spéciaux réussi");
                         setSnackbarSeverity("success");
+                        // Dans ce cas, result.created contient la liste des jours créés (peut être non vide)
                     }
                 } else {
                     setSuccessProcessing(false);
@@ -127,6 +131,7 @@ export default function Upload() {
             });
     };
     
+        
     const handleImportClick = () => {
         if (selectedFile) {
             setOpenSnackbar(true);
@@ -155,93 +160,160 @@ export default function Upload() {
             })
 
     }, []);
-
+                                
     return (
         <div>
-            {isAdmin && <>
-                <TopBar title="Gestion My2A > Imports" />
-                <Grid container style={{ marginTop: '30px', alignItems: "center", justifyContent: "center" }}>
-                    <Grid item md={6} rowGap={8} spacing={12}>
-                        <Box sx={{ backgroundColor: "white", paddingBottom: 2, borderRadius: "0 0 16px 16px" }}>
-                            <SectionBar
-                                title="Importer des jours spéciaux"
-                                infos={"Le fichier doit être au format CSV. La première ligne doit être la même que dans l'exemple à télécharger ci-dessous."}
-                                showInfo={true}
-                                exampleFile="/exempleJourSpecial.csv"
-                            />
-                            {/* Les deux boutons pour importer */}
-                            <div style={{ marginBottom: 40 }}></div>
-                            <Grid container justifyContent="center" columnGap={4}>
-                                <Button component="label" variant="contained" disableElevation color="secondary" startIcon={<CloudUploadIcon />} disabled={selectedFile !== null}>
-                                    {selectedFile ? selectedFile.name : "Sélectionner un fichier"}
-                                    <VisuallyHiddenInput type="file" onChange={handleFileChange} />
-                                </Button>
-                                {selectedFile && (
-                                    <IconButton color="error" onClick={() => setSelectedFile(null)} style={{ marginLeft: -30 }}
-                                    >
-                                        <DeleteIcon />
-                                    </IconButton>
-                                )}
-                                <Button variant="contained" color="secondary" endIcon={<SendIcon />} disableElevation disabled={selectedFile === null} onClick={handleImportClick}>
-                                    Importer
-                                </Button>
-                            </Grid>
-
-                            {/* Afficher les erreurs si il y en a */}
-                            {processed && (
-                                createdProcessing.length > 0 ? (
-                                    <div>
-                                        <Typography sx={{ mt: 6, ml: 8 }} variant="h6" component="div">
-                                            Les jours spéciaux suivants ont été créés :
-                                        </Typography>
-                                        <List sx={{ ml: 12 }}>
-                                            {createdProcessing.map((name) => (
-                                                <ListItem key={name} sx={{ height: 20 }}>
-                                                    <ListItemText primary={<>-  <strong>{name}</strong></>} />
-                                                </ListItem>
-                                            ))}
-                                        </List>
-                                    </div>
-                                ) : (
-                                    <Typography sx={{ mt: 6, ml: 8 }} variant="h6" component="div">
-                                        Aucun jour spécial n'a été ajouté.
-                                    </Typography>
-                                )
-                            )}
-                            {processed && successProcessing && (
-                                failedProcessing.length > 0 ? (
-                                    <div>
-                                        <Typography sx={{ mt: 0, ml: 8 }} variant="h6" component="div">
-                                            Les jours spéciaux suivants n'ont pas été ajoutés :
-                                        </Typography>
-                                        <List sx={{ ml: 12 }}>
-                                            {failedProcessing.map(([name, err]) => (
-                                                <ListItem key={name} sx={{ height: 45 }}>
-                                                    <ListItemText primary={<>-  <strong>{name}</strong> : <em>{err}</em></>} />
-                                                </ListItem>
-                                            ))}
-                                        </List>
-                                    </div>
-                                ) : (
-                                    <Typography sx={{ mt: 0, ml: 8 }} variant="h6" component="div">
-                                        Tous les jours spéciaux ont bien été importés !
-                                    </Typography>
-                                )
-                            )}
-                        </Box>
-                    </Grid>
-                    <GridBreak />
-                    <Grid item md={6} xs={11} sm={11}>
-                    </Grid>
-                </Grid >
-                <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar}>
-                    <MuiAlert onClose={handleCloseSnackbar} sx={{ width: '100%' }} severity={snackbarSeverity} variant="standard"
-                    >
-                        {snackbarMessage}
-                    </MuiAlert>
-                </Snackbar>
-            </>
+        {isAdmin && (
+            <>
+            <TopBar title="Gestion My2A > Imports" />
+            <Grid
+            container
+            style={{ marginTop: '30px', alignItems: "center", justifyContent: "center" }}
+            >
+            <Grid item md={6} rowGap={8} spacing={12}>
+            <Box
+            sx={{
+                backgroundColor: "white",
+                paddingBottom: 2,
+                borderRadius: "0 0 16px 16px",
+            }}
+            >
+            <SectionBar
+            title="Importer des jours spéciaux"
+            infos={
+                "Le fichier doit être au format CSV. La première ligne doit être la même que dans l'exemple à télécharger ci-dessous. Attention, le fichier doit comporter l'ensemble des jours spéciaux puisqu'il supprimera les anciens jours."
             }
-        </div >
-    )
-}
+            showInfo={true}
+            exampleFile="/exempleJourSpecial.csv"
+            />
+            {/* Les deux boutons pour importer */}
+            <div style={{ marginBottom: 40 }}></div>
+            <Grid container justifyContent="center" columnGap={4}>
+            <Button
+            component="label"
+            variant="contained"
+            disableElevation
+            color="secondary"
+            startIcon={<CloudUploadIcon />}
+            disabled={selectedFile !== null}
+            >
+            {selectedFile ? selectedFile.name : "Sélectionner un fichier"}
+            <VisuallyHiddenInput type="file" onChange={handleFileChange} />
+            </Button>
+            {selectedFile && (
+                <IconButton
+                color="error"
+                onClick={() => setSelectedFile(null)}
+                style={{ marginLeft: -30 }}
+                >
+                <DeleteIcon />
+                </IconButton>
+            )}
+            <Button
+            variant="contained"
+            color="secondary"
+            endIcon={<SendIcon />}
+            disableElevation
+            disabled={selectedFile === null}
+            onClick={handleImportClick}
+            >
+            Importer
+            </Button>
+            </Grid>
+            
+            {/* Affichage du résultat de l'import */}
+            {processed && (
+                <>
+                {(createdProcessing.length > 0 || failedProcessing.length > 0) ? (
+                    <>
+                    {createdProcessing.length > 0 && (
+                        <>
+                        <Typography
+                        sx={{ mt: 6, ml: 8 }}
+                        variant="h6"
+                        component="div"
+                        >
+                        Les jours spéciaux suivants ont été créés :
+                        </Typography>
+                        <List sx={{ ml: 12 }}>
+                        {createdProcessing.map((name) => (
+                            <ListItem key={name} sx={{ height: 20 }}>
+                            <ListItemText
+                            primary={
+                                <>
+                                - <strong>{name}</strong>
+                                </>
+                            }
+                            />
+                            </ListItem>
+                        ))}
+                        </List>
+                        </>
+                    )}
+                    {failedProcessing.length > 0 && (
+                        <>
+                        <Typography
+                        sx={{ mt: 2, ml: 8 }}
+                        variant="h6"
+                        component="div"
+                        >
+                        Les jours spéciaux suivants n'ont pas été ajoutés :
+                        </Typography>
+                        <List sx={{ ml: 12 }}>
+                        {failedProcessing.map(([name, err]) => (
+                            <ListItem key={name} sx={{ height: 45 }}>
+                            <ListItemText
+                            primary={
+                                <>
+                                - <strong>{name}</strong> : <em>{err}</em>
+                                </>
+                            }
+                            />
+                            </ListItem>
+                        ))}
+                        </List>
+                        </>
+                    )}
+                    {failedProcessing.length === 0 && createdProcessing.length > 0 && (
+                        <Typography
+                        sx={{ mt: 2, ml: 8 }}
+                        variant="h6"
+                        component="div"
+                        >
+                        Tous les jours spéciaux ont bien été importés !
+                        </Typography>
+                    )}
+                    </>
+                ) : (
+                    <Typography
+                    sx={{ mt: 6, ml: 8 }}
+                    variant="h6"
+                    component="div"
+                    >
+                    Aucun jour spécial n'a été ajouté.
+                    </Typography>
+                )}
+                </>
+            )}
+            </Box>
+            </Grid>
+            <GridBreak />
+            <Grid item md={6} xs={11} sm={11}>
+            {/* Zone réservée pour d'autres composants */}
+            </Grid>
+            </Grid>
+            <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar}>
+            <MuiAlert
+            onClose={handleCloseSnackbar}
+            sx={{ width: '100%' }}
+            severity={snackbarSeverity}
+            variant="standard"
+            >
+            {snackbarMessage}
+            </MuiAlert>
+            </Snackbar>
+            </>
+        )}
+            </div>
+        );
+    }
