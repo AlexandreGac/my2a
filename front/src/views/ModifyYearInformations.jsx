@@ -31,6 +31,9 @@ import Box from '@mui/material/Box';
 import Cookies from 'js-cookie';
 import TextField from '@mui/material/TextField';
 
+// Utile pour la vérification que les jours rentrés sont corrects
+import { validateYearInfo } from "../utils/ValidateYearInformations";
+
 const GridBreak = styled('div')(({ theme }) => ({
     width: '100%',
 }))
@@ -113,6 +116,16 @@ export default function ModifyYearInformations() {
     };
 
     const handleSubmit = () => {
+        // Vérification de la validité des dates rentrées
+        const errors = validateYearInfo(yearInfo);
+
+        if (errors.length > 0) {
+            setOpenSnackbar(true);
+            setSnackbarMessage(errors.join("\n"));
+            setSnackbarSeverity("error");
+            return;
+        }
+
         fetch("/api/yearinformations", {
             method: "POST",
             credentials: "include",
@@ -209,3 +222,5 @@ export default function ModifyYearInformations() {
         </div>
     )
 }
+
+
