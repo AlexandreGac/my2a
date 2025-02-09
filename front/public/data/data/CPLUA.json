@@ -1,0 +1,17 @@
+{
+    "Cr\u00e9neau": "Sem 2/Sem 4Sem 4",
+    "": "Ordinateur personnel.",
+    "Pr\u00e9requis": "Aucun",
+    "Enseignants responsables": "Pascal MONASSE",
+    "Equipe enseignante": "Pascal MONASSE, Thibault LOISEAU, Corentin SAUTIER, Thomas DAUMAIN",
+    "Objectifs du module": "L'objectif principal de ce module est d'apporter aux \u00e9l\u00e9ves de premi\u00e8re ann\u00e9e de cycle d'ing\u00e9nieur une formation de base \u00e0 la programmation dans le langage C++. L'int\u00e9r\u00eat de changer de langage par rapport \u00e0 Python est d'avoir un contact plus intime avec la machine : beaucoup de concepts tenus pour implicites en Python et trait\u00e9s en coulisses par son interpr\u00e9teur doivent \u00eatre trait\u00e9s explicitement en C++ pour \u00eatre compris par la machine, comme la d\u00e9claration des types des variables et la gestion de la m\u00e9moire pour les tableaux. La nouveaut\u00e9 la plus saillante est aussi que le langage est compil\u00e9 et non interpr\u00e9t\u00e9, r\u00e9sultant en un programme moins gourmand en m\u00e9moire et plus rapide. \u00c0 l'issue de ce module, les \u00e9tudiants sauront utiliser un environnement de d\u00e9veloppement pour mettre au point un programme en C++ et le structurer de fa\u00e7on propre.",
+    "Programme du module": "S\u00e9ance 1. Environnement de programmation, compilation S\u00e9ance 2. Fonctions, variables, boucles S\u00e9ance 3. Tableaux S\u00e9ance 4. Structures S\u00e9ance 5. Organisation du code en plusieurs fichiers S\u00e9ance 6. M\u00e9moire, fonctions r\u00e9cursives, file et pile S\u00e9ance 7. Examen sur machine",
+    "Modalit\u00e9s": "Chaque s\u00e9ance comporte une heure de cours et une heure et demie de TP sur machine.",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Un rendu de TP (20 %), trois petits exercices DM (30 %) et un examen final sur machine (50 %).",
+    "Documents p\u00e9dagogiques - Bibliographie": "Code source initial pour les TPs, biblioth\u00e8ques Imagine++ pour faire des interfaces graphiques de fa\u00e7on simple, polycopi\u00e9 couvrant l'int\u00e9gralit\u00e9 du cours. Site : https://educnet.enpc.fr",
+    "Effectif maximal": "Effectif limit\u00e9 \u00e0 30 \u00e9l\u00e8ves",
+    "D\u00e9partement de rattachement": "D\u00e9partement de 1\u00e8re ann\u00e9e",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "23/09/2024",
+    "Code": "CPLUA"
+}

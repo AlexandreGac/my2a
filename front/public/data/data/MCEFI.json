@@ -1,0 +1,15 @@
+{
+    "Cr\u00e9neau": "Sem 5",
+    "Enseignants responsables": "Bernard LAPEYRE , Benjamin JOURDAIN",
+    "Equipe enseignante": "Bernard LAPEYRE, Benjamin JOURDAIN",
+    "Objectifs du module": "L'objectif de ce cours est de dresser un panorama des m\u00e9thodes de Monte-Carlo. Ces m\u00e9thodes num\u00e9riques bas\u00e9es sur la simulation de variables al\u00e9atoires figurent parmi les dix algorithmes ayant eu le plus d'influence sur le d\u00e9veloppement et la pratique de la science et de l'ing\u00e9nierie au XXe si\u00e8cle. Leur d\u00e9veloppement se poursuit tr\u00e8s activement motiv\u00e9 par des applications aussi bien en sciences des donn\u00e9es qu'en finance, en fiabilit\u00e9 ou en simulation mol\u00e9culaire.",
+    "Programme du module": "M\u00e9thodes de Monte-Carlo pour le calcul d'int\u00e9grales : moyenne empirique de variables al\u00e9atoire ind\u00e9pendantes et identiquement distribu\u00e9es (convergenc et intervalles de confiance), m\u00e9thodes de r\u00e9duction de variance (variables de contr\u00f4le, fonction d'importance, techniques de stratication, conditionnement, \u2026), suites a discr\u00e9pances faibles (\u00e9l\u00e9ments th\u00e9oriques, exemples classiques des suites de Halton, Faure, Sobol, Niederreiter) , calcul d'esperances conditionnelles (regression, quantication,...) et application au calcul d'options americaines. Algorithmes stochastiques : algorithme de Robbins-Monro (applications \u00e0 l'optimisation et \u00e0 la r\u00e9duction de variance), m\u00e9thodes de Monte-Carlo par cha\u00eenes de Markov (algorithme de Metropolis-Hastings et recuit simul\u00e9), m\u00e9thodes particulaires pour le filtrage et la simulation d'\u00e9v\u00e9nements rares. Simulation de processus stochastiques : discr\u00e9tisation d'\u00e9quations diff\u00e9rentielles stochastiques (schemas classiques d'Euler et de Milshtein), vitesses de convergence, techniques d'extrapolation, simulation de mod\u00e8les avec sauts.",
+    "Modalit\u00e9s": "Cours magistraux et TPs informatiques",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Examen final (3h00) et projet",
+    "Adresse du site du module": "http://cermics.enpc.fr/~jourdain/MC/MonteCarlo.html",
+    "Documents p\u00e9dagogiques - Bibliographie": "Notes de cours",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement Ing\u00e9nierie Math\u00e9matique et Informatique",
+    "Nombre de cr\u00e9dits ECTS": "6 cr\u00e9dits ECTS",
+    "Code": "MCEFI"
+}

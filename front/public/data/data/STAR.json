@@ -1,0 +1,15 @@
+{
+    "Cr\u00e9neau": "Sem 3/Sem 5 Lu 16 h 45 - 19 h 30Sem 5 Lu 16 h 45 - 19 h 30",
+    "Pr\u00e9requis": "Il est pr\u00e9f\u00e9rable de poss\u00e9der des notions de base en m\u00e9canique des fluides incompressibles et, dans une moindre mesure, sur l\u2019utilisation de l\u2019environnement Linux.",
+    "Enseignants responsables": "Gilles BOUCHET",
+    "Equipe enseignante": "Lionel MEISTER, Gilles BOUCHET",
+    "Objectifs du module": "A l\u2019issue de ce cours, les \u00e9l\u00e8ves auront une connaissance g\u00e9n\u00e9rale et concr\u00e8te de la mod\u00e9lisation num\u00e9rique d\u2019un ph\u00e9nom\u00e8ne physique complexe faisant intervenir un \u00e9coulement en interaction avec un solide (rigide, d\u00e9formable ou en mouvement). Ils sauront utiliser un code de calcul de m\u00e9canique des fluides (CFD) tr\u00e8s r\u00e9pandu dans l\u2019industrie \u00e0 travers le monde (Star - CCM+) et permettant de concevoir un objet, d\u2019analyser les \u00e9coulements g\u00e9n\u00e9r\u00e9s, de mesurer les contraintes exerc\u00e9es, de comprendre les ph\u00e9nom\u00e8nes complexes mis en jeu, et d\u2019am\u00e9liorer les performances. Le cours sera orient\u00e9 sur l\u2019\u00e9tude de cas concrets (tutoriaux) en insistant sur la qualit\u00e9 des maillages (discr\u00e9tisation spatiale), sur la d\u00e9finition des conditions aux limites et des propri\u00e9t\u00e9s physiques, sur les sch\u00e9mas num\u00e9riques utilis\u00e9s et sur l\u2019analyse physique des r\u00e9sultats. Il se conclura par un projet que les \u00e9l\u00e8ves m\u00e8neront seuls ou en groupe.",
+    "Programme du module": "S\u00e9ance 1 : Hydrodynamique interne avec \u00e9change de chaleur. S\u00e9ance 2 : A\u00e9rodynamique externe autour d\u2019un v\u00e9hicule automobile. S\u00e9ance 3 : \u00c9tude d\u2019une turbine et d\u2019une \u00e9olienne (objet mobile en interaction avec un \u00e9coulement). S\u00e9ance 4 : \u00c9coulement instationnaire \u00e0 surface libre (rupture d\u2019un barrage \u2013 \u00e9coulement diphasique). S\u00e9ance 5 : Interaction fluide - structure (sillage d\u2019un navire) ; couplage fluide - structure (fluttering d\u2019une aile d\u2019avion). S\u00e9ance 6 : \u00e9coulement autour d\u2019une aile d\u2019avion. S\u00e9ance 7 : \u00e9coulement supersonique. S\u00e9ances 8 \u00e0 12 : Bureau d\u2019\u00e9tude (projet d\u00e9velopp\u00e9 individuellement ou en groupe). S\u00e9ance 13 : Bureau d\u2019\u00e9tude (validation du module).",
+    "Modalit\u00e9s": "13 S\u00e9ances de 2,5 heures",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Le contr\u00f4le des connaissances s'effectue sous forme de bureau d'\u00e9tude avec un rapport \u00e0 rendre.",
+    "Effectif maximal": "50 \u00e9l\u00e8ves maximum",
+    "D\u00e9partement de rattachement": "D\u00e9partement G\u00e9nie M\u00e9canique et Mat\u00e9riaux",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "01/09/2024",
+    "Code": "STAR"
+}

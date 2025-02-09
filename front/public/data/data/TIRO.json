@@ -1,0 +1,12 @@
+{
+    "Cr\u00e9neau": "Sem 3/Sem 5 Me 16h 45 - 19h30",
+    "Enseignants responsables": "Edouard THISSE",
+    "Objectifs du module": "La Recherche Op\u00e9rationnelle (RO) est la discipline des math\u00e9matiques appliqu\u00e9es qui traite des questions d'utilisation optimale des ressources dans l'industrie et la logistique. Planifier une tourn\u00e9e de v\u00e9hicules, remplir de mani\u00e8re optimale un conteneur, ordonnancer les t\u00e2ches sur un chantier sont des probl\u00e9matiques typiques de la Recherche Op\u00e9rationnelle. Les outils math\u00e9matiques qui sous-tendent cette discipline sont les graphes, l'alg\u00e8bre lin\u00e9aire, l'algorithmique, pour ne citer que les principaux. \u00c0 l'issue du module, les \u00e9l\u00e8ves seront capables de : r\u00e9\u00e9crire un probl\u00e8me sous forme d'optimisation sous contrainte ; mobiliser les algorithmes adapt\u00e9s pour r\u00e9soudre un probl\u00e8me d'optimisation lin\u00e9aire ; mobiliser la th\u00e9orie des graphes pour d\u00e9finir des lignes de d\u00e9serte, des sch\u00e9mas logistiques ; utiliser les prix duaux pour hi\u00e9rarchiser les contraintes",
+    "Programme du module": "Plus courts chemins et programmation dynamique Programmation lin\u00e9aire : algorithme du simplexe Programmation lin\u00e9aire : dualit\u00e9 Ph\u00e9nom\u00e8nes al\u00e9atoires Files d'attentes",
+    "Modalit\u00e9s": "18h (2 ECTS)",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "examen final",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "Master Transport et D\u00e9veloppement Durable",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Code": "TIRO"
+}

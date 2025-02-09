@@ -1,0 +1,14 @@
+{
+    "Cr\u00e9neau": "Sem 5",
+    "Enseignants responsables": "Vlad BALLY",
+    "Equipe enseignante": "Vlad BALLY, Aurelien ALFONSI, Christophe MICHEL",
+    "Objectifs du module": "Le but du cours est de pr\u00e9senter les mod\u00e8les de taux d'int\u00e9r\u00eat \u00e0 temps continu et d'introduire les techniques n\u00e9cessaires \u00e0 l'\u00e9valuation des produits d\u00e9riv\u00e9s sur les taux d'int\u00e9r\u00eat.",
+    "Programme du module": "I : G\u00e9n\u00e9ralit\u00e9s sur les taux d'int\u00e9r\u00eat : D\u00e9finitions : z\u00e9ro-coupons, taux forward instantan\u00e9s, obligations \u00e0 taux fixe, \u00e0 taux variable, swap, taux swap. Pr\u00e9sentation des produits sur les taux (par un professionnel). Premi\u00e8re approche : mod\u00e9lisation du taux instantan\u00e9 et formules pour le prix de certains produits. Equation de structure et interpr\u00e9tation probabiliste. Propri\u00e9t\u00e9 de structure affine de taux, mod\u00e8les de Vasicek, Cox-Ingersoll-Ross, Hull et White. Estimation des param\u00e8tres par calibration, probl\u00e8me d'inversion de la courbe des taux. Deuxi\u00e8me approche : Heath-Jarrow-Morton : \u00e9quations des taux, non arbitrage et condition de d\u00e9rive. II : Techniques de changement de num\u00e9raire et applications G\u00e9n\u00e9ralit\u00e9s : num\u00e9raire, probabilit\u00e9 martingale associ\u00e9e \u00e0 un num\u00e9raire donn\u00e9, probabilit\u00e9 forward, formule de Black. Application au pricing et \u00e0 la couverture des options sur z\u00e9ro-coupons, swaps, caplets, swaptions Mod\u00e8les LGM et BGM : pricing des caplets et des swaptions, calibration pour ces mod\u00e8les (avec l'intervention d'un professionnel)",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Examen \u00e9crit.",
+    "Adresse du site du module": "educnet.enpc.fr/course/view.php?id=417",
+    "Documents p\u00e9dagogiques - Bibliographie": "Documents p\u00e9dagogiques - Bibliographie Polycopi\u00e9",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement Ing\u00e9nierie Math\u00e9matique et Informatique",
+    "Nombre de cr\u00e9dits ECTS": "6 cr\u00e9dits ECTS",
+    "Code": "MODTI"
+}

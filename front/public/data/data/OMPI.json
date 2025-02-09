@@ -1,0 +1,14 @@
+{
+    "Cr\u00e9neau": "Sem 1",
+    "Enseignants responsables": "Luc DORMIEUX",
+    "Equipe enseignante": "Luc DORMIEUX, Ghazi HASSEN, Xavier CHATEAU, Gwendal CUMUNEL, Alice GRIBONVAL, Eric LEMARCHAND, Sarah ROPERT, Benjamin TERRADE",
+    "Objectifs du module": "Le coeur de l'enseignement de la M\u00e9canique en premi\u00e8re ann\u00e9e \u00e0 l'ENPC est l'\u00e9tude du mod\u00e8le de milieu continu \u00e9lastique d\u00e9formable. Pour s'y pr\u00e9parer, il est n\u00e9cessaire d'acqu\u00e9rir ou de revisiter un certain nombre de notions de math\u00e9matique et de physique qui ne sont plus au programme de toutes les fili\u00e8res des classes pr\u00e9paratoires. Le module OMPM est donc principalement \u00e0 vis\u00e9e prop\u00e9deutique. Pour bien aborder l'\u00e9tude de la d\u00e9formation d'un syst\u00e8me mat\u00e9riel, il importe dans un premier temps de conna\u00eetre les propri\u00e9t\u00e9s cin\u00e9matiques du mouvement de corps rigide, que l'on caract\u00e9rise math\u00e9matiquement par le torseur cin\u00e9matique. La notion de torseur est \u00e9galement indispensable pour d\u00e9crire les efforts ext\u00e9rieurs qui sont appliqu\u00e9s \u00e0 un syst\u00e8me mat\u00e9riel. L'\u00e9tude de cet objet math\u00e9matique et de ses applications en M\u00e9canique constitue le premier objectif du module OMPM. La notion de torseur permet la description globale d'un chargement m\u00e9canique ext\u00e9rieur. En revanche, elle est insuffisante pour l'\u00e9tude locale des efforts int\u00e9rieurs \u00e0 un syst\u00e8me mat\u00e9riel pour lesquels on doit faire appel \u00e0 la notion de tenseur, c'est-\u00e0-dire de forme n-lin\u00e9aire. Cette notion est \u00e9galement indispensable pour quantifier les d\u00e9formations. C'est le deuxi\u00e8me objet math\u00e9matique fondamental dont le module OMPM propose l'\u00e9tude. Elle comporte une initiation \u00e0 l'analyse tensorielle qui s'inscrit dans le prolongement de l'analyse vectorielle abord\u00e9e en classes pr\u00e9paratoires.",
+    "Modalit\u00e9s": "6 s\u00e9ances de 3h en TD",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "La validation est jug\u00e9e sur le r\u00e9sultat d'un examen \u00e9crit en fin de module.",
+    "Documents p\u00e9dagogiques - Bibliographie": "Livre : M\u00e9canique des milieux continus : cours et exercices corrig\u00e9s (L. Dormieux, E. Lemarchand, D.Kondo) Editions Ellipses. Recueil de TD corrig\u00e9s (site educnet)",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement de 1\u00e8re ann\u00e9e",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "12/11/2024",
+    "Code": "OMPI"
+}

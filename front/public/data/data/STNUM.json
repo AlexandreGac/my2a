@@ -1,0 +1,17 @@
+{
+    "Cr\u00e9neau": "Sem 3/Sem 5 Ve 13 h - 15 hLS/SLSL",
+    "Pr\u00e9requis": "Cours de probabilit\u00e9s et statistiques (1A)",
+    "Enseignants responsables": "Vincent LEFIEUX",
+    "Equipe enseignante": "Vincent LEFIEUX",
+    "Objectifs du module": "Ce cours vise \u00e0 doter les \u00e9l\u00e8ves ing\u00e9nieurs de m\u00e9thodes statistiques leur permettant d'analyser les donn\u00e9es statistiques auxquelles ils seront confront\u00e9s dans le cadre de leur vie professionnelle. A l'issue de ce module, les \u00e9l\u00e8ves auront d\u00e9velopp\u00e9 les comp\u00e9tences suivantes : 1. Savoir mener et interpr\u00e9ter des tests statistiques. 2. Comprendre et mettre en \u0153uvre un mod\u00e8le de r\u00e9gression (r\u00e9gression lin\u00e9aire & r\u00e9gression r\u00e9gularis\u00e9e) 3. Comprendre et mettre en \u0153uvre un mod\u00e8le de classification supervis\u00e9e (r\u00e9gression logistique) Les m\u00e9thodes rencontr\u00e9es seront mises en \u0153uvre sur des jeux de donn\u00e9es r\u00e9els, \u00e0 l'aide des logiciels R ou Python, dans le cadre de travaux pratiques, ainsi que d'un projet sur un jeu de donn\u00e9es r\u00e9elles.",
+    "Programme du module": "Estimation ponctuelle, intervalle de confiance et tests d'hypoth\u00e8ses R\u00e9gression lin\u00e9aire Analyse de la variance R\u00e9gression logistique R\u00e9gression r\u00e9gularis\u00e9e",
+    "Modalit\u00e9s": "Travail distanciel : Consultation des vid\u00e9os et polycopi\u00e9s de cours R\u00e9ponse aux quizz d'auto-\u00e9valuation R\u00e9alisation de TP en bin\u00f4me Conduite d'un projet data science en groupe S\u00e9ances en pr\u00e9sentiel : Compl\u00e9ments de cours Lancement des TP Suivi de projet",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Quizz d'auto-\u00e9valuation (10% de la note) TP (40% de la note) Projet (50% de la note)",
+    "Adresse du site du module": "educnet.enpc.fr/course/view.php?id=1391",
+    "Documents p\u00e9dagogiques - Bibliographie": "Polycopi\u00e9 du cours, vid\u00e9os de cours, site internet",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement Ing\u00e9nierie Math\u00e9matique et Informatique",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "01 Septembre 2024",
+    "Code": "STNUM"
+}

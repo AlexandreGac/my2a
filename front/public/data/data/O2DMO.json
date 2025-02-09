@@ -1,0 +1,15 @@
+{
+    "Cr\u00e9neau": "Ouv 2Sem 1",
+    "Enseignants responsables": "Ignacio OLALQUIAGA",
+    "Equipe enseignante": "Arnaud MADELENAT, Thomas KOCHER, Adele GILSON, Patrick BARBIER, Hicham AMRANE",
+    "Objectifs du module": "L'ing\u00e9nierie s'appuie sur trois langages principaux : les math\u00e9matique, le langage verbal et le dessin. Les villes que nous pratiquons, les b\u00e2timents dans lesquels nous vivons, les objets que nous utilisons, ont tous la particularit\u00e9 d'avoir \u00e9t\u00e9 \" dessin\u00e9s \" avant d'\u00eatre construits ou fabriqu\u00e9s. L'enseignement du dessin a ici la particularit\u00e9 de m\u00ealer l'apprentissage des techniques et des codes de la repr\u00e9sentation spatiale \" \u00e0 la main\" et en informatique avec la mod\u00e9lisation 3D. Lors de cette semaine intensive, vous allez acqu\u00e9rir les bases du dessin technique, le g\u00e9om\u00e9tral, l'axonom\u00e9trie et de la perspective conique \" \u00e0 la main \". En informatique on vous enseignera la prise en main des logiciels Rhinoc\u00e9ros et Grashopper, servant \u00e0 la mod\u00e9lisation 3D. Samedi, une sortie \u00e0 Paris est organis\u00e9e afin d'exp\u00e9rimenter le dessin d'observation en perspective \u00e0 grande \u00e9chelle.",
+    "Programme du module": "Le programme de la semaine : 1 / le g\u00e9om\u00e9tral et l'axonom\u00e9trie 2 / la perspective conique 3 / interfaces 4/ courbes surfaces nurbs 5 / dessin in-situ",
+    "Modalit\u00e9s": "Chaque jour : 10 h \u00e0 17h15",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Evaluation : L'ensemble des diff\u00e9rents types de dessins \"\u00e0 la main\" produits pendant la semaine Exercice de mod\u00e9lisation dans Rhinoc\u00e9ros 3D un composant du b\u00e2timent de l'ENPC et produire un tutoriel d\u00e9taillant chaque \u00e9tape de construction. La mod\u00e9lisation doit \u00eatre effectu\u00e9e dans Rhino, sans utiliser Grasshopper. Le composant doit \u00eatre mod\u00e9lis\u00e9 \u00e0 l'\u00e9chelle 1.",
+    "Adresse du site du module": "https://educnet.enpc.fr/course/view.php?id=734",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement G\u00e9nie Civil et Construction",
+    "Nombre de cr\u00e9dits ECTS": "1 cr\u00e9dit ECTS",
+    "Mise \u00e0 jour": "1er septembre 2024",
+    "Code": "O2DMO"
+}

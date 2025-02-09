@@ -1,0 +1,15 @@
+{
+    "Cr\u00e9neau": "Sem 2/Sem 4Sem 4",
+    "Pr\u00e9requis": "Cours de probabilit\u00e9s et d'optimisation de tronc commun.",
+    "Enseignants responsables": "Vincent LEFIEUX , Julien REYGNER",
+    "Equipe enseignante": "Faten BEN SAID, Vincent LEFIEUX, Julien REYGNER, Emanuele CONCAS, Marine DUMON, Lucie FAYETTE, Nadege POLETTE, Guillaume SZULDA",
+    "Objectifs du module": "Ce cours d'introduction \u00e0 la science des donn\u00e9es pr\u00e9sente le principe et les premi\u00e8res m\u00e9thodes d'analyse des donn\u00e9es et d'apprentissage statistique, dans le cadre rigoureux fourni par les cours de math\u00e9matiques appliqu\u00e9es de tronc commun, afin que les \u00e9l\u00e8ves en comprennent de mani\u00e8re tr\u00e8s transparente le fonctionnement et sachent les mettre en \u0153uvre en ayant conscience de leurs limites. Ces m\u00e9thodes ont de nombreuses applications, en \u00e9conomie, \u00e9cologie et science du climat, simulation num\u00e9rique pour la m\u00e9canique, marketing, informatique, etc.",
+    "Programme du module": "1) Introduction \u00e0 l'apprentissage statistique 2) R\u00e9gression lin\u00e9aire 3) Classification supervis\u00e9e (approche bay\u00e9sienne et r\u00e9gression logistique) 4) R\u00e9duction de dimension 5) Clustering 6) Introduction aux r\u00e9seaux de neurones profonds",
+    "Modalit\u00e9s": "6 s\u00e9ances divis\u00e9es en - 1h de cours magistral assur\u00e9 par un des responsables du cours, en amphi - 1h30 de travaux pratiques sur machine (avec Python), en petite classe Les travaux pratiques porteront sur des jeux de donn\u00e9es r\u00e9els, issus de domaines diff\u00e9rents : reconnaissance de chiffres manuscrits, identification de zones climatiques, typologies de pays en fonctions d\u2019indicateurs \u00e9cnomiques, pr\u00e9vsion de la consommation \u00e9lectrique ou de pic d\u2019ozone ; ainsi que des donn\u00e9es concernant la scolarit\u00e9 des \u00e9l\u00e8ves de l'\u00c9cole.",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "- 1 examen \u00e9crit sur les principaux concepts de cours (poids : 1/3)? - 2 comptes-rendus de TP portant sur deux s\u00e9ances chacun (poids : 1/3 par compte-rendu)",
+    "Documents p\u00e9dagogiques - Bibliographie": "Supports de cours : diaporamas, syllabus et notebooks",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement de 1\u00e8re ann\u00e9e",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Code": "1ISDO"
+}

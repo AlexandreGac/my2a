@@ -1,0 +1,17 @@
+{
+    "Cr\u00e9neau": "Sem 3/Sem 5 Me 13 h 45 - 16 h 30Sem 5 Me 13 h 45 - 16 h 30",
+    "Pr\u00e9requis": "M\u00e9canique des milieux continus, Abaqus",
+    "Enseignants responsables": "Tien HOANG",
+    "Equipe enseignante": "Tien HOANG",
+    "Objectifs du module": "Ce cours sert \u00e0 transmettre les bases th\u00e9oriques et techniques utiles \u00e0 la r\u00e9alisation d'\u00e9tudes par El\u00e9ments Finis (EF). Au travers des projets, il met l'accent au d\u00e9veloppement d'une vision critique des possibilit\u00e9s et des limitations de la m\u00e9thode des EF et du logiciel Abaqus. Il cible aussi \u00e0 faire d\u00e9couvrir des techniques de mod\u00e9lisation avanc\u00e9es. A la fin du module les \u00e9tudiants seront capables de : \" connaitre les bases th\u00e9oriques et techniques utiles \u00e0 la r\u00e9alisation d'\u00e9tudes par El\u00e9ments Finis (EF) de probl\u00e8mes concrets de m\u00e9canique des solides et des structures ; \" utiliser des techniques de mod\u00e9lisation avanc\u00e9es ; \" programmer la m\u00e9thode des \u00e9l\u00e9ments finis ; \" avoir une vision critique des possibilit\u00e9s et des limitations de la m\u00e9thode des EF.",
+    "Programme du module": "S\u00e9ance 1 : Formulation EF (approche g\u00e9n\u00e9rale, non-lin\u00e9arit\u00e9s) S\u00e9ance 2 : Substructuring S\u00e9ance 3 : Fluid-structure interaction, ALE S\u00e9ance 4 : Projets (Endommagement/Instabilit\u00e9s/Contact/Programmation EF/Arc-length/Lois de comportement) S\u00e9ance 5 : Projets (Endommagement/Instabilit\u00e9s/Contact/Programmation EF/Arc-length/Lois de comportement) S\u00e9ance 6 : Soutenance de projets",
+    "Modalit\u00e9s": "Petites classes",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Le contr\u00f4le des connaissances s'effectue sous forme : (a) des devoirs maison pendant les trois premi\u00e8res s\u00e9ances et (b) d'une soutenance du projet (par group) \u00e0 la derni\u00e8re s\u00e9ance avec un rapport \u00e9crit.",
+    "Adresse du site du module": "https://educnet.enpc.fr/course/view.php?id=946",
+    "Documents p\u00e9dagogiques - Bibliographie": "Polycopi\u00e9 sur la m\u00e9thode des \u00e9l\u00e9ments finis (I.Stefanou, M.Godio), mat\u00e9riel didactique pour chaque s\u00e9ance. Le mat\u00e9riel n\u00e9cessaire est \u00e0 t\u00e9l\u00e9charger avant chaque s\u00e9ance sur le site internet du cours (educnet).",
+    "Effectif maximal": "effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement G\u00e9nie M\u00e9canique et Mat\u00e9riaux",
+    "Nombre de cr\u00e9dits ECTS": "1,5 cr\u00e9dit ECTS",
+    "Mise \u00e0 jour": "01/09/2024",
+    "Code": "ABAQ2"
+}

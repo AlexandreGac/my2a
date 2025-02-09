@@ -1,0 +1,16 @@
+{
+    "Cr\u00e9neau": "Sem 4/Sem 6 Lu 16 h 45 - 19 h 30Sem 6 Lu 16 h 45 - 19 h 30",
+    "Enseignants responsables": "Felipe Jos\u00e9 GARCIA CASTELLO",
+    "Equipe enseignante": "Felipe Jos\u00e9 GARCIA CASTELLO, Nathalie SIMEON",
+    "Objectifs du module": "Les mod\u00e8les de choix discret sont un outil tr\u00e8s puissant pour simuler la demande d'un nouveau service, sp\u00e9cialement la demande de transport. Ce module porte sur l'\u00e9conom\u00e9trie des choix discrets appliqu\u00e9e \u00e0 la demande de transport, de leurs bases th\u00e9oriques aux diff\u00e9rentes \u00e9tapes de la construction d'un mod\u00e8le (formulation, enqu\u00eates, sp\u00e9cification ou validation). A la fin de ce module, les \u00e9l\u00e8ves seront capables de : \" construire un mod\u00e8le de choix discret et l'appliquer dans un cas pratique. \" construire des enqu\u00eates de pr\u00e9f\u00e9rences d\u00e9clar\u00e9es ou r\u00e9v\u00e9l\u00e9es. \" analyser des donn\u00e9es d'enqu\u00eate et les r\u00e9sultats d'un mod\u00e8le. Ce mod\u00e8le donne aux \u00e9tudiants les outils de base pour construire et appliquer un mod\u00e8le de choix discret ou suivre son d\u00e9veloppement. Ils auront \u00e9galement un regard critique sur les r\u00e9sultats et sur les donn\u00e9es d'entr\u00e9e.",
+    "Programme du module": "Introduction \u00e0 la mod\u00e9lisation : \u00e9l\u00e9ments, choix discrets, utilit\u00e9 al\u00e9atoire\u2026 Mod\u00e8les de choix discret : familles, mod\u00e8les logit (multinomial, hi\u00e9rarchique, mixte). Construction d'un mod\u00e8le : donn\u00e9es, univers de choix, variables explicatives. Estimation et validation d'un mod\u00e8le : indicateurs statistiques, \u00e9chantillonnage, \u00e9lasticit\u00e9s\u2026 Mod\u00e8les appliqu\u00e9s : mod\u00e8les \u00e0 quatre \u00e9tapes et mod\u00e8les d\u00e9sagr\u00e9g\u00e9s. Enqu\u00eates de pr\u00e9f\u00e9rences d\u00e9clar\u00e9es et r\u00e9v\u00e9l\u00e9es.",
+    "Modalit\u00e9s": "Dix s\u00e9ances (25 h), combinant des cours th\u00e9oriques et le travail en groupe.",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Un projet en groupe (construction d'un mod\u00e8le) et un examen.",
+    "Adresse du site du module": "educnet.enpc.fr/course/view.php?id=311",
+    "Documents p\u00e9dagogiques - Bibliographie": "Polycopi\u00e9 comprenant les pr\u00e9sentations des s\u00e9ances th\u00e9orique Polycopie pour les 'travaux dirig\u00e9s' : introduction au logiciel Biogeme, description de cas et de bases de donn\u00e9es exemplaires Articles pour la bibliographie li\u00e9e au projet Tous les documents du cours seront accessibles sur Educnet",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement Ville Environnement Transport",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "2 septembre 2024",
+    "Code": "ECCHD"
+}

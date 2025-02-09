@@ -1,0 +1,16 @@
+{
+    "Cr\u00e9neau": "ProlongSem 3/Sem 5 Ve 13 h - 15 h 45Sem 5 Ve 13 h - 15 h 45",
+    "Enseignants responsables": "Julien REYGNER",
+    "Equipe enseignante": "Julien REYGNER, Guillaume PERRIN, Vincent CHABRIDON, Loucas PILLAUD-VIVIEN",
+    "Objectifs du module": "- Ma\u00eetriser les bases math\u00e9matiques et la mise en application des principales m\u00e9thodes de statistique math\u00e9matique employ\u00e9es dans tous les domaines de l'ing\u00e9nierie (industrie et services). - Acqu\u00e9rir les notions fondamentales th\u00e9oriques n\u00e9cessaires pour suivre un cursus de sciences des donn\u00e9es.",
+    "Programme du module": "- Cadre math\u00e9matique de l'inf\u00e9rence statistique, mod\u00e8les d'\u00e9chantillonnage et de r\u00e9gressions - Estimation param\u00e9trique, intervalles de confiance, principe du maximum de vraisemblance - Introduction \u00e0 l'estimation bay\u00e9sienne - Tests d'hypoth\u00e8ses dans les cadres param\u00e9trique et non-param\u00e9triques",
+    "Modalit\u00e9s": "Le cours est dispens\u00e9 en 12 s\u00e9ances de petites classes, dont deux s\u00e9ances de classes invers\u00e9es. Il est compl\u00e9t\u00e9 par un examen sur table. Des exercices obligatoires sont \u00e0 pr\u00e9parer chaque semaine, ils contiennent n\u00e9cessairement une partie d'impl\u00e9mentation informatique \u00e0 r\u00e9aliser en R ou Python.",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "R\u00e8gles de validation du module : La note de module tient compte de l'examen final, des expos\u00e9s de classe invers\u00e9e et du contr\u00f4le continu.",
+    "Adresse du site du module": "educnet.enpc.fr/course/view.php?id=595",
+    "Documents p\u00e9dagogiques - Bibliographie": "Bibliographie Un polycopi\u00e9 est distribu\u00e9 au d\u00e9but du module",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement Ing\u00e9nierie Math\u00e9matique et Informatique",
+    "Nombre de cr\u00e9dits ECTS": "3 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "01 Septembre 2024",
+    "Code": "STAT"
+}

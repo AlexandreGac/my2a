@@ -1,0 +1,17 @@
+{
+    "Cr\u00e9neau": "Ouv 1Sem 1/Sem 3Sem 2",
+    "Pr\u00e9requis": "Cours d'informatique au lyc\u00e9e et classes pr\u00e9paratoires, ou notion de base en Python",
+    "Enseignants responsables": "Xavier CLERC",
+    "Equipe enseignante": "Xavier CLERC, Thomas BOYER, Louis CARILLO, Guillaume DESFORGES, Maxence LAB, Brice MAZEAU, Etienne POLACK, Giulia SAMBATARO",
+    "Objectifs du module": "L'objectif premier du module est de pr\u00e9senter les concepts clefs de la programmation orient\u00e9e objet et d'illustrer ces concepts, largement ind\u00e9pendants du langage de programmation, \u00e0 l'aide du langage Python. Le module se place donc dans la suite de l'enseignement du Python imp\u00e9ratif au lyc\u00e9e et en classes pr\u00e9paratoires. Le second objectif du module est de montrer comment la programmation orient\u00e9e objet permet de produire un code de meilleure qualit\u00e9, et ainsi plus facile \u00e0 comprendre, maintenir, et \u00e9tendre. Pour cela, les aspects de base de la mod\u00e9lisation sont abord\u00e9s, c'est-\u00e0-dire les techniques, pratiques et notations qui permettent de passer du descriptif d'un probl\u00e8me en langage naturel \u00e0 un programme. Ces deux objectifs compl\u00e9mentaires doivent permettre aux \u00e9tudiants d'\u00eatre efficaces dans l'\u00e9criture et la mise au point de programmes Python, de telle sorte que les aspects de programmation ne sont pas causes de difficult\u00e9s ou de ralentissements dans le cadre d'autres modules.",
+    "Programme du module": "Th\u00e8mes abord\u00e9s : Annotations de types Abstraction et documentation Classes, instances, constructeurs et m\u00e9thodes H\u00e9ritages simple et multiple, dispatch dynamique \u00c9l\u00e9ments abstraits et statiques Mod\u00e9lisation et notation UML Exceptions et gestion d'erreurs Principes de programmation et bonnes pratiques",
+    "Modalit\u00e9s": "6 s\u00e9ances de 1h de cours et 1h30 de travaux pratiques, une s\u00e9ance de 2h30 de travail personnel encadr\u00e9, et un examen \u00e9crit de 2h",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "TPs rendus en fin de s\u00e9ance (20 %), tests flash en d\u00e9but de s\u00e9ance (20 %) et examen \u00e9crit (60 %)",
+    "Adresse du site du module": "http://imagine.enpc.fr/~monasse/Info1/",
+    "Documents p\u00e9dagogiques - Bibliographie": "Polycopi\u00e9, transparents, sujets et corrig\u00e9s de TPs. Tous les documents seront disponibles sur Educnet",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement de 1\u00e8re ann\u00e9e",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "25/09/2024",
+    "Code": "1PROG"
+}
