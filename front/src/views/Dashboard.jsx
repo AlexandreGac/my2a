@@ -235,19 +235,24 @@ export default function Dashboard() {
             .then((data) => {
                 const doc = new jsPDF();
 
-
+                doc.setFont('times', 'bold');
                 doc.setFontSize(16);
                 doc.text(`Description du cours ${cleanedCode}`, 10, 20);
 
                 doc.setFontSize(12);
                 let yPosition = 30;
                 Object.keys(data).forEach((key) => {
-
-                    const text = `${key} : ${data[key]}`;
-
+                    doc.setFont('times', 'bold');
+                    const text = `${key} : `;
                     const lines = doc.splitTextToSize(text, 180);
                     doc.text(lines, 10, yPosition);
-                    yPosition += lines.length * 10;
+                    yPosition += 5;
+                    doc.setFont('times', 'normal');
+                    const text2 = `${data[key]}`;
+                    const lines2 = doc.splitTextToSize(text2, 180);
+                    doc.text(lines2, 10, yPosition);
+                    yPosition += lines2.length * 6;
+
 
                     if (yPosition > 280) {
                         doc.addPage();
@@ -258,6 +263,7 @@ export default function Dashboard() {
                 const pdfBlob = doc.output("blob");
                 const pdfUrl = URL.createObjectURL(pdfBlob);
                 setDisplayedPdf(pdfUrl);
+                setSemester(1);
             })
             .catch((error) => {
                 console.error("Erreur lors du chargement du fichier JSON :", error);
@@ -920,7 +926,7 @@ export default function Dashboard() {
                                     sinon, on affiche le planning selon le semestre choisi */}
                                     <Page
                                         size="A2"
-                                        pageNumber={displayedPdf ? 1 : semester}
+                                        pageNumber={semester}
                                         scale={1}
                                         renderTextLayer={false}
                                     />

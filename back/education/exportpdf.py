@@ -135,7 +135,7 @@ def find_day_and_week(day):
     while is_after(day, old_monday):
         days += 1
         old_monday = add_n_day(old_monday,1)
-    return weeks,days%7
+    return (weeks,days) if days < 7 else (weeks+1,days%7)
 
 
 def write_specil_week(specil_weeks, table_data, style,color):
@@ -145,6 +145,16 @@ def write_specil_week(specil_weeks, table_data, style,color):
         table_data[week[key]][len(table_data[0])//2] = specil_weeks[key]
         style.add("BACKGROUND", (1, week[key]), (-1, week[key]), color,)
 
+def write_days(spec_days, table_data, style, color):
+    for key in spec_days:
+        weeks, days = find_day_and_week(spec_days[key])
+        if days >= 5:
+            print(f"The {key} is during week-end, can't add it to the timetable, {days}")
+        else:
+            style.add("BACKGROUND", (4*(days) + 1, weeks), (4*(days)+4, weeks), color,)
+            for i in range(1,5):
+                table_data[weeks][4*days+i] = ""
+            table_data[weeks][4*days+1] = key
 
 @receiver(post_migrate)
 def on_post_migrate(sender, **kwargs):
@@ -244,7 +254,7 @@ def get_special_days_dict(sender, **kwargs):
 
 
 semester_begin,vacation, public_holiday = on_post_migrate(None)
-special_days = get_special_days_dict(None)
+
 
 
 
@@ -316,33 +326,15 @@ def generate_table(elements, courses, semester):
         colors.lightcyan,
     ]
     table_data = [
-        [" ", "Lundi", "" ,"Mardi", "" , "Mercredi", "" , "Jeudi", "" , "Vendredi", ""],
-        ["8h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["8h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["9h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["9h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["10h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["10h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["11h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["11h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["12h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["12h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["13h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["13h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["14h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["14h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["15h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["15h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["16h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["16h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["17h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["17h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["18h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["18h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["19h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["19h30", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
-        ["20h", " ", " ", " ", " ", " "," ", " ", " ", " ", " "],
+        [" ", "Lundi", "", "Mardi", "", "Mercredi", "", "Jeudi", "", "Vendredi", ""],
     ]
+
+    for hour in range(8, 21):  # Hours from 8 to 20 (inclusive)
+        table_data.append([f"{hour}h", "", "", "", "", "", "", "", "", "", ""])
+        if hour < 20: # Add half hour rows until 19:30
+            table_data.append([f"{hour}h30", "", "", "", "", "", "", "", "", "", ""])
+    table_data.append(["20h", "", "", "", "", "", "", "", "", "", ""])
+
     style = TableStyle(
         [
             ("FONTNAME", (0, 0), (-1, -1), "Times-Bold"),
@@ -541,6 +533,7 @@ def add_course(course, table_data, sem, day = None,emplacement = None, dire = No
 
 
 def generate_annual_table(elements, courses):
+    special_days = get_special_days_dict(None)
 
     actual_monday = semester_begin[0]
 
@@ -603,25 +596,9 @@ def generate_annual_table(elements, courses):
                 style.add("BACKGROUND", (j, i), (j, i), course_color[table_data[i][j]],)
 
 
-    for key in special_days:
-        weeks, days = find_day_and_week(special_days[key])
-        if days >= 5:
-            print(f"The {key} is during week-end, can't add it to the timetable, {days}")
-        else:
-            style.add("BACKGROUND", (4*(days) + 1, weeks), (4*(days)+4, weeks), colors.Color(red=1, blue =0.25, green = 0.25),)
-            for i in range(1,5):
-                table_data[weeks][4*days+i] = ""
-            table_data[weeks][4*days+1] = key
 
-    for key in public_holiday:
-        weeks, days = find_day_and_week(public_holiday[key])
-        if days >= 5:
-            print(f"The {key} is during week-end, can't add it to the timetable, {days}")
-        else:
-            style.add("BACKGROUND", (4*(days) + 1, weeks), (4*(days)+4, weeks), colors.Color(red=0.5, blue =0.5, green = 0.5),)
-            for i in range(1,5):
-                table_data[weeks][4*days+i] = ""
-            table_data[weeks][4*days+1] = key
+    write_days(special_days, table_data, style, colors.Color(red=1, blue =0.25, green = 0.25))
+    write_days(public_holiday, table_data, style, colors.Color(red=0.5, blue =0.5, green = 0.5))
 
     write_specil_week(vacation, table_data, style, colors.lightgrey)
     write_specil_week(ouverture_week, table_data, style,colors.Color(blue = 1, green = 0.85, red = 0.25))
