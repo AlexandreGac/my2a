@@ -1,5 +1,6 @@
 import csv
 from io import TextIOWrapper  # Import TextIOWrapper for handling file decoding
+from datetime import datetime
 
 from django.contrib import admin
 from django.contrib.auth import authenticate, login, logout
@@ -9,7 +10,7 @@ from django.shortcuts import redirect, render
 from django.urls import path
 from django.urls.conf import include
 
-from .models import Course, Department, Parcours, Student
+from .models import Course, Department, Parcours, Student, SpecialDay, YearInformation
 
 from my2a.mail import send_account_creation_mail
 
@@ -76,25 +77,29 @@ def importCourseCSV(csv_file):
                 )
                 continue
 
-            if semester not in ["S3", "S4"]:
+            if semester not in ["S3", "S4", "S3A", "S3B", "S4A", "S4B"]:
                 print("------ " + f"Semester {semester} does not exist")
                 error_rows.append(
                     [
                         row["code"],
                         "Le semestre '"
                         + semester
-                        + "' n'existe pas. Veuillez utiliser 'S3' ou 'S4'",
+                        + "' n'existe pas. Veuillez utiliser 'S3', 'S3A', 'S3B', 'S4', 'S4A' ou 'S4B'.",
                     ]
                 )
                 continue
             # Match semester name to semester value
             semester_mapping = {
                 "S3": Course.Semester.S3,
+                "S3A": Course.Semester.S3A,
+                "S3B": Course.Semester.S3B,
                 "S4": Course.Semester.S4,
+                "S4A": Course.Semester.S4A,
+                "S4B": Course.Semester.S4B,
             }
             semester = semester_mapping.get(semester)
 
-            if day not in ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]:
+            if (day not in ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]) and not day.isdigit():
                 print("------ " + f"Day {day} does not exist")
                 error_rows.append(
                     [
@@ -106,6 +111,7 @@ def importCourseCSV(csv_file):
                 )
                 continue
 
+            """
             # Match day name to day value
             day_mapping = {
                 "Lundi": Course.Day.LUN,
@@ -116,6 +122,7 @@ def importCourseCSV(csv_file):
             }
 
             day = day_mapping.get(day)
+            """
 
             # # Catch “AAA” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] format.
             # try:
@@ -174,6 +181,57 @@ def importCourseCSV(csv_file):
     return error_rows, created_rows
 
 
+def importSpecialDayCSV(csv_file, replace=False):
+    print("--- Reading CSV file for Special Days...")
+    
+    # Si le flag replace est True, supprimer tous les anciens jours spéciaux
+    if replace:
+        print("--- Replace flag activé : suppression des anciens jours spéciaux")
+        SpecialDay.objects.all().delete()
+    
+    csv_file_wrapper = TextIOWrapper(csv_file.file, encoding="utf-8-sig")
+    csv_reader = csv.DictReader(csv_file_wrapper, delimiter=";")
+
+    error_rows = []
+    created_rows = []
+
+    print("--- Création des jours spéciaux:")
+    for row in csv_reader:
+        print(row)
+        try:
+            name = row["name"]
+            date_str = row["date"]
+
+            # Validation du format de la date
+            try:
+                date = datetime.strptime(date_str, "%Y-%m-%d").date()
+            except ValueError:
+                print(f"------ La date {date_str} n'est pas valide")
+                error_rows.append(
+                    [name, "Mauvais format de date. Veuillez utiliser 'AAAA-MM-JJ'."]
+                )
+                continue
+
+            # Si replace n'est pas activé, on vérifie si un jour spécial identique existe déjà
+            if not replace and SpecialDay.objects.filter(name=name, date=date).exists():
+                print(f"------ Le jour spécial {name} du {date} existe déjà")
+                error_rows.append([name, f"Le jour spécial '{name}' le '{date}' existe déjà."])
+                continue
+
+            # Création et sauvegarde de l'objet SpecialDay
+            special_day = SpecialDay(name=name, date=date)
+            special_day.save()
+
+            created_rows.append(name)
+            print(f"------ Le jour spécial {special_day} a été créé")
+
+        except Exception as e:
+            print(f"------ Erreur : {e}")
+            error_rows.append([name, str(e)])
+
+    return error_rows, created_rows
+
+
 def importStudentCSV(csv_file):
     print("--- Reading CSV file...")
     csv_file_wrapper = TextIOWrapper(
@@ -199,7 +257,7 @@ def importStudentCSV(csv_file):
             split = email.split("@")
             if split[1] == "eleves.enpc.fr":
                 username = email.split("@")[0]
-            else: 
+            else:
                 username = email
             password = User.objects.make_random_password()
             user, created = User.objects.get_or_create(

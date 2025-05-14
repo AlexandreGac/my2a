@@ -1,0 +1,15 @@
+{
+    "Cr\u00e9neau": "Sem 1 MSSem 2 MS",
+    "Enseignants responsables": "Tatiana SEREGINA",
+    "Equipe enseignante": "Tatiana SEREGINA, Tarek CHOUAKI, Pierre ARGOUL, Mathieu GARDRAT",
+    "Objectifs du module": "Le module \"Mod\u00e9lisation des transports et du trafic\" vise \u00e0 initier les \u00e9tudiants aux comp\u00e9tences et techniques n\u00e9cessaires pour la planification de nouveaux services de mobilit\u00e9. Ceci se traduit par les objectifs suivants : - Comprendre le besoin de mod\u00e9lisation du trafic et des transports ; - Se familiariser avec les \u00e9tapes cl\u00e9s de la mod\u00e9lisation ; - Apprendre le mod\u00e8le de transport classique \u00e0 4 \u00e9tapes et d\u00e9couvrir les approches avanc\u00e9es de la mod\u00e9lisation des transports avec des exemples d'applications. La partie projet tient une place importante au sein du module et vise \u00e9galement \u00e0 mobiliser et d\u00e9velopper les comp\u00e9tences transf\u00e9rables telles que travailler en mode projet et la collaboration en \u00e9quipe. A l'issue du module les \u00e9tudiants seront capables d'adopter l'attitude du mod\u00e9lisateur pour soutenir la prise de d\u00e9cision dans le secteur des transports.",
+    "Programme du module": "- Introduction \u00e0 la mod\u00e9lisation du trafic ; Mod\u00e8le de transport \u00e0 quatre \u00e9tapes ; - Mod\u00e9lisation bas\u00e9e sur les activit\u00e9s et les agents ; Exemple de simulateur multi-agent ; - Mod\u00e9lisation pour d\u00e9carboner les transports ; - Le mod\u00e8le de mobilit\u00e9s partag\u00e9es ; - Mod\u00e9lisation du fret urbain ; Mod\u00e8le FRETURB et exemple d'application ; - Mod\u00e8les probabilistes : simulation des foules cas des gares. - TD et Projet d'analyse de la mobilit\u00e9 d'une agglom\u00e9ration. - Pr\u00e9sentation de projets par les \u00e9tudiants et discussion. M\u00e9thodes p\u00e9dagogiques : - Cours magistraux - Travaux dirig\u00e9s et projet",
+    "Modalit\u00e9s": "La validation est bas\u00e9e sur le projet en petit groupe avec l'expos\u00e9 (80%) et l'assiduit\u00e9 (20%)",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "La validation est bas\u00e9e sur le projet en petit groupe avec l'expos\u00e9 (80%) et l'assiduit\u00e9 (20%). Aucune \u00e9preuve de rattrapage n'est pr\u00e9vue.",
+    "Documents p\u00e9dagogiques - Bibliographie": "Diapositives du cours et documents annexes",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "Mast\u00e8re Smart Mobility",
+    "Nombre de cr\u00e9dits ECTS": "3 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "31/01/2024",
+    "Code": "MTTD6"
+}

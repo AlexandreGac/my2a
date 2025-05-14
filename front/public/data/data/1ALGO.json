@@ -1,0 +1,16 @@
+{
+    "Cr\u00e9neau": "Sem 2/Sem 4SL",
+    "": "Aucune",
+    "Pr\u00e9requis": "1PROG ou connaissances de base Python",
+    "Enseignants responsables": "Xavier CLERC",
+    "Equipe enseignante": "Xavier CLERC, Laura CALEM, Salah CHADLI",
+    "Objectifs du module": "Les objectifs du module sont de pr\u00e9senter les notions \u00e9l\u00e9mentaires d'analyse des algorithmes et les structures de donn\u00e9es de base en jeu dans la cr\u00e9ation ou param\u00e9trisation d'algorithmes complexes. On s'int\u00e9resse en particulier aux notions de complexit\u00e9 (en temps et en espace), \u00e0 quelques algorithmes classiques (p. ex. algorithmes de tri), et aux structures de donn\u00e9es de base et leurs utilisations (p. ex. piles / files et parcours d'arbres). Les exercices illustrent l'importance de ces concepts sur des cas pratiques, extraits notamment de la programmation de jeux.",
+    "Programme du module": "Notions de complexit\u00e9, algorithmes de tri, diviser pour r\u00e9gner, structures de donn\u00e9es lin\u00e9aires, structures de donn\u00e9es arborescentes",
+    "Modalit\u00e9s": "5 s\u00e9ances de 1h de cours et 1h30 de TP (travaux pratiques), une s\u00e9ance de pr\u00e9sentations de 2h30, et un examen \u00e9crit de 2h",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "TPs rendus en fin de s\u00e9ance (30 %), pr\u00e9sentation (30 %) et examen \u00e9crit (40 %)",
+    "Documents p\u00e9dagogiques - Bibliographie": "Polycopi\u00e9, transparents, sujets et corrig\u00e9s de TPs. Tous les documents seront disponibles sur Educnet.",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement de 1\u00e8re ann\u00e9e",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Code": "1ALGO"
+}

@@ -1,0 +1,15 @@
+{
+    "Cr\u00e9neau": "Sem 3/Sem 5 Ma 8 h 30 - 11 h 45Sem 5 Ma 8 h 30 - 11 h 45",
+    "Pr\u00e9requis": "M\u00e9canique des milieux continus.",
+    "Enseignants responsables": "Jean-Fran\u00e7ois CARON",
+    "Equipe enseignante": "Jean-Fran\u00e7ois CARON",
+    "Objectifs du module": "Il s'agit d'aborder l'ensemble des aspects li\u00e9s au dimensionnement et \u00e0 l'usage des mat\u00e9riaux composites utilis\u00e9s dans l'industrie. Les s\u00e9ances technologiques ou exp\u00e9rimentales garantissent un fort ancrage avec la r\u00e9alit\u00e9 de ces nouveaux mat\u00e9riaux. Apr\u00e8s quelques pr\u00e9sentations g\u00e9n\u00e9rales, une formation th\u00e9orique de base sur la m\u00e9canique des mat\u00e9riaux anisotropes multicouches est propos\u00e9e. Les mod\u00e8les propos\u00e9s sont confront\u00e9s \u00e0 l'exp\u00e9rience en laboratoire. Plusieurs concepts sont introduits illustr\u00e9s par des TD. L'\u00e9l\u00e8ve (en groupe) devra aussi prendre en main des outils de dimensionnement EF composite (Abaqus). Il pourra alors suivre le cheminement complet de l'ing\u00e9nieur confront\u00e9 \u00e0 un probl\u00e8me de dimensionnement. 2 s\u00e9ances en autonomie permettent d'approfondir les exp\u00e9rimentation et le calcul EF (projets).",
+    "Programme du module": "IIntroduction - 1. Composites \u00e0 matrices polym\u00e8res, g\u00e9n\u00e9ralit\u00e9s, modes d'\u00e9laboration - 2. TP : Fabrication de plaques carbone-epoxy / Cours : Anisotropie Mod\u00e9lisation des multicouches (5 s\u00e9ances) - 3. Cours : Mod\u00e8le de plaque multicouche de Reissner (I), TD : plaques en chargement de membrane - 4. Cours : Mod\u00e8les de plaque multicouche de Reissner (II), Cisaillement transverse, TD : Flexion - 5. TP traction (test des plaques de la s\u00e9ance 2) - 6. Cours : Mod\u00e8les de plaque multicouche de Reissner (III), Cisaillement transverse, TD : Flexion - 7 Cours/TD :Rupture, Endommagement TD - 8. Formation EF Abaqus - 9. Cours/TD :Rupture, Endommagement (II) : rupture de plaques -10.S\u00e9ance de TD - 11. Examen - 12 et 13 : s\u00e9ance en autonomie",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "L'\u00e9valuation est de type contr\u00f4le continu (un devoir surveill\u00e9 + compte rendu de TP) + rendu d'un rapport de groupe pour s\u00e9ances en autonomie.",
+    "Documents p\u00e9dagogiques - Bibliographie": "Cours Anisotropie et Calcul de plaques composites (Alain Ehrlacher/Jean-Fran\u00e7ois Caron).",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement G\u00e9nie M\u00e9canique et Mat\u00e9riaux",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "01/09/2024",
+    "Code": "MATCO"
+}

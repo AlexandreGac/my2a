@@ -1,95 +1,95 @@
-{% block subject %}[2A] Confirmation du choix des cours ({{student.name}} {{student.surname}}){% endblock %}
+  {% block subject %}[2A] Confirmation du choix des cours ({{student.name}} {{student.surname}}){% endblock %}
 
-{% block html %}
-<!doctype html>
-<html>
-<body style="font-family: sans-serif;-webkit-font-smoothing: antialiased;line-height: 1.4;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+  {% block html %}
+  <!doctype html>
+  <html>
+  <body style="font-family: sans-serif;-webkit-font-smoothing: antialiased;line-height: 1.4;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
 
-  <p>
-    Bonjour {{ student.name}},
-  </p>
+    <p>
+      Bonjour {{ student.name}},
+    </p>
 
-  <p>
-    Tu as bien rempli tes choix de cours pour ta 2A dans le département <strong>{{ student.department.name }}</strong>, parcours <strong>{{ parcours_name }}</strong> :
-  </p>
+    <p>
+      Tu as bien rempli tes choix de cours pour ta 2A dans le département <strong>{{ student.department.name }}</strong>, parcours <strong>{{ parcours_name }}</strong> :
+    </p>
 
-  <table style="border: 1px solid black;margin: 25px;padding: 15px;width: calc(100% - 50px);border-collapse: collapse;">
-    <thead style="text-align: center;background-color: #d9d9d9;">
-      <tr>
-        <th>Cours</th>
-        <th>ECTS</th>
-        <th>Période</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for course in mandatory_courses %}
+    <table style="border: 1px solid black;margin: 25px;padding: 15px;width: calc(100% - 50px);border-collapse: collapse;">
+      <thead style="text-align: center;background-color: #d9d9d9;">
         <tr>
-          <td>{{ course.name }}</td>
-          <td style="text-align: center;">{{ course.ects }}</td>
-          <td style="text-align: center;">{{ course.semester }}</td>
+          <th>Cours</th>
+          <th>ECTS</th>
+          <th>Période</th>
         </tr>
-      {% endfor %}
-      <tr>
-          <td><b>Sous total Obligatoires</b></td> 
-          <td style="text-align: center;">{{ parcours_count }}</td>
-          <td style="text-align: center;"></td>
-        </tr>
-    </tbody>
-    <thead style="text-align: center;background-color: #d9d9d9;">
-      <tr>
-        <th>Cours obligatoires sur liste</th>
-        <th>ECTS</th>
-        <th>Période</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for course in onlist_courses %}
+      </thead>
+      <tbody>
+        {% for course in mandatory_courses %}
+          <tr>
+            <td>{{ course.name }}</td>
+            <td style="text-align: center;">{{ course.ects }}</td>
+            <td style="text-align: center;">{{ course.semester }}</td>
+          </tr>
+        {% endfor %}
         <tr>
-          <td>{{ course.course.name }}</td>
-          <td style="text-align: center;">{{ course.course.ects }}</td>
-          <td style="text-align: center;">{{ course.course.semester }}</td>
-        </tr>
-      {% endfor %}
-      <tr>
-          <td><b>Sous total obligatoires sur liste</b></td>
-          <td style="text-align: center;">{{ mandatory_count }}</td>
-          <td style="text-align: center;"></td>
-        </tr>
-    </tbody>
-    <thead style="text-align: center;background-color: #d9d9d9;">
-      <tr>
-        <th>Cours électifs</th>
-        <th>ECTS</th>
-        <th>Période</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for course in elective_courses %}
+            <td><b>Sous total Obligatoires</b></td> 
+            <td style="text-align: center;">{{ parcours_count }}</td>
+            <td style="text-align: center;"></td>
+          </tr>
+      </tbody>
+      <thead style="text-align: center;background-color: #d9d9d9;">
         <tr>
-          <td>{{ course.course.name }}</td>
-          <td style="text-align: center;">{{ course.course.ects }}</td>
-          <td style="text-align: center;">{{ course.course.semester }}</td>
+          <th>Cours obligatoires sur liste</th>
+          <th>ECTS</th>
+          <th>Période</th>
         </tr>
-      {% endfor %}
-      <tr>
-          <td><b>Sous total électifs<b></td>
-          <td style="text-align: center;">{{ elective_count }}</td>
-          <td style="text-align: center;">  </td>
-        </tr>
+      </thead>
+      <tbody>
+        {% for course in onlist_courses %}
+          <tr>
+            <td>{{ course.course.name }}</td>
+            <td style="text-align: center;">{{ course.course.ects }}</td>
+            <td style="text-align: center;">{{ course.course.semester }}</td>
+          </tr>
+        {% endfor %}
         <tr>
-          <td><b>Total ECTS<b></td>
-          <td style="text-align: center;">{{ total_count }}</td>
-          <td style="text-align: center;">  </td>
+            <td><b>Sous total obligatoires sur liste</b></td>
+            <td style="text-align: center;">{{ mandatory_count }}</td>
+            <td style="text-align: center;"></td>
+          </tr>
+      </tbody>
+      <thead style="text-align: center;background-color: #d9d9d9;">
+        <tr>
+          <th>Cours électifs</th>
+          <th>ECTS</th>
+          <th>Période</th>
         </tr>
-    </tbody>
-  </table>
-  <p>
-    <strong>Commentaire :</strong> {{ student.comment | default:'N/A' }}
-  </p>
+      </thead>
+      <tbody>
+        {% for course in elective_courses %}
+          <tr>
+            <td>{{ course.course.name }}</td>
+            <td style="text-align: center;">{{ course.course.ects }}</td>
+            <td style="text-align: center;">{{ course.course.semester }}</td>
+          </tr>
+        {% endfor %}
+        <tr>
+            <td><b>Sous total électifs<b></td>
+            <td style="text-align: center;">{{ elective_count }}</td>
+            <td style="text-align: center;">  </td>
+          </tr>
+          <tr>
+            <td><b>Total ECTS<b></td>
+            <td style="text-align: center;">{{ total_count }}</td>
+            <td style="text-align: center;">  </td>
+          </tr>
+      </tbody>
+    </table>
+    <p>
+      <strong>Commentaire :</strong> {{ student.comment | default:'N/A' }}
+    </p>
 
-  <p>
-    Si tu souhaites changer ton option ou changer ton choix de cours, tu dois te rapprocher de ton département qui pourra alors débloquer ton choix.
-  </p>
-</body>
-</html>
-{% endblock %}
+    <p>
+      Si tu souhaites changer ton option ou changer ton choix de cours, tu dois te rapprocher de ton département qui pourra alors débloquer ton choix.
+    </p>
+  </body>
+  </html>
+  {% endblock %}

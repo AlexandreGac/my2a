@@ -1,9 +1,13 @@
 from django.contrib.auth import models as models2
 from django.contrib.auth.models import User
 from django.db import models
+from solo.models import SingletonModel
 from django.utils import timezone
 
-from .exportpdf import generate_pdf_from_courses
+
+
+
+
 
 
 class Department(models.Model):
@@ -21,6 +25,38 @@ class Department(models.Model):
         return self.code
 
 
+class YearInformation(SingletonModel):
+    start_of_the_school_year = models.DateField(default=timezone.now)
+    start_of_S4A = models.DateField(default=timezone.now)
+    start_of_S3B = models.DateField(default=timezone.now)
+    start_of_S4A = models.DateField(default=timezone.now)
+    start_of_S4B = models.DateField(default=timezone.now)
+    end_of_school_year = models.DateField(default=timezone.now)
+
+    monday_of_autumn_holiday = models.DateField(default=timezone.now)
+    monday_of_xmas_holiday = models.DateField(default=timezone.now)
+    monday_of_winter_holiday = models.DateField(default=timezone.now)
+    monday_of_spring_holiday = models.DateField(default=timezone.now)
+
+    easter_monday = models.DateField(default=timezone.now)
+    ascension_day = models.DateField(default=timezone.now)
+    whit_monday = models.DateField(default=timezone.now)
+    def __str__(self):
+        return str(self.start_of_the_school_year)
+
+
+
+class SpecialDay(models.Model):
+    name = models.CharField(max_length=100)
+    date = models.DateField()
+    def __str__(self):
+        return self.name
+
+
+from .exportpdf import generate_pdf_from_courses
+
+
+
 class Course(models.Model):
     name = models.CharField(max_length=200)
     code = models.CharField(max_length=10)
@@ -30,17 +66,26 @@ class Course(models.Model):
     class Semester(models.TextChoices):
         S3 = "S3"
         S4 = "S4"
+        # Ajoute les demi-semestres
+        S3A = "S3A"
+        S3B = "S3B"
+        S4A = "S4A"
+        S4B = "S4B"
 
     semester = models.CharField(max_length=10, choices=Semester.choices)
 
+    """
+    # On modifie ça de manière à faire rentrer un chiffre
     class Day(models.TextChoices):
         LUN = "Lundi"
         MAR = "Mardi"
         MER = "Mercredi"
         JEU = "Jeudi"
         VEN = "Vendredi"
+    """
 
-    day = models.CharField(max_length=10, choices=Day.choices)
+    #day = models.CharField(max_length=10, choices=Day.choices)
+    day = models.CharField(max_length=10)
 
     # horaire de début et de fin - format hh:mm (24h) France
     start_time = models.TimeField()
@@ -50,8 +95,9 @@ class Course(models.Model):
 
     teacher = models.CharField(max_length=100, null=True, blank=True)
 
-    def __str__(self):
-        return self.code
+
+def __str__(self):
+    return self.code
 
 
 class Parcours(models.Model):
@@ -69,6 +115,8 @@ class Parcours(models.Model):
     courses_mandatory = models.ManyToManyField(
         Course, blank=True, related_name="mandatory_parcours"
     )  # ajouter les cours du tronc commun dedans
+
+    # Mandatory choice courses
     courses_on_list = models.ManyToManyField(
         Course, blank=True, related_name="on_list_parcours"
     )
@@ -117,12 +165,15 @@ class Student(models.Model):
                 min_start = min(s_courses.start_time, course.start_time)
                 max_start = max(s_courses.start_time, course.start_time)
                 min_end = min(s_courses.end_time, course.end_time)
+                # Tri des périodes/semestres
+                tiniest_period = max(s_courses.semester, course.semester)
+                widest_period = min(s_courses.semester, course.semester)
 
+                # Vérification de la compatibilité des cours
                 if (
-                    s_courses.semester == course.semester
-                    and s_courses.day == course.day
-                    and min_start <= max_start
-                    and max_start <= min_end
+                        widest_period in tiniest_period
+                        and s_courses.day == course.day
+                        and min_start <= max_start <= min_end
                 ):
                     incompatible_courses.append(course)
                     if course in compatible_courses:
@@ -213,3 +264,5 @@ class Parameter(models.Model):
     show = models.BooleanField(default=True)
     def __str__(self):
         return self.name
+
+

@@ -1,0 +1,14 @@
+{
+    "Cr\u00e9neau": "Sem 3/Sem 5 Lu 8 h 30 - 11 h 15Sem 5 Lu 8 h 30 - 11 h 15",
+    "Enseignants responsables": "Jean-Fran\u00e7ois DELMAS",
+    "Objectifs du module": "The course Stochastic Processes and Applications (SPA) presents models in discrete time and discrete state space such as Markov chains, with in particular a focus on their long time behaviors. It gives also an introduction to continuous models such as Brownian motion. An important r\u00f4le is played by conditional expectation and martingale theory. Some examples will illustrate how the concepts developed in this course can be used to solve problems from physics, biology, or engineers sciences. The course will be dispensed in French, but the documents will be in English.",
+    "Programme du module": "- Probability space, conditional expectation. - Discrete Markov chains: definition, properties and ergodic theorems. - Martingale: definition, properties and asymptotic theorems. - Optimal stopping in discrete time. - Brownian motion: an introduction.",
+    "Modalit\u00e9s": "Projet et examen final",
+    "Adresse du site du module": "http://cermics.enpc.fr/~delmas/Enseig/proba2.html",
+    "Documents p\u00e9dagogiques - Bibliographie": "References: In French: - Introduction aux Probabilit\u00e9s et aux Statistiques, J.-F. Delmas. Presse de l'ENSTA (2010). http://cermics.enpc.fr/~delmas/Enseig/ensta_cours.pdf - Mod\u00e8les al\u00e9atoires. Applications aux sciences de l'ing\u00e9nieur et du vivant, J.-F. Delmas et B. Jourdain. Math\u00e9matiques et Applications (SMAI), Vol. 57, Springer (2006). - Recueil de modeles aleatoires, D. Chafa et Fl. Malrieu. Collection Math\u00e9matiques & Applications Volume 78 Soci\u00e9t\u00e9 de Math\u00e9matiques Appliqu\u00e9es et Industrielles (SMAI) \u00c9ditions Springer (2016) https://hal.archives-ouvertes.fr/hal-01243589/document In English: Probability with martingale, D. Williams. Cambridge text book (1991). Probability and Random Processes, G. Grimmet and D. Stirzaker. Oxford Univ. Press (2001) One thousoand exercises in probability, G. Grimmet and D. Stirzaker. Oxford Univ. Press (2001) Essential of stochastic processes, R. Durrett. Springer (2012).",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement Ing\u00e9nierie Math\u00e9matique et Informatique",
+    "Nombre de cr\u00e9dits ECTS": "3 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "01 Septembre 2024",
+    "Code": "SPA"
+}

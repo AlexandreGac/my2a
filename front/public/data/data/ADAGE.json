@@ -1,0 +1,13 @@
+{
+    "Cr\u00e9neau": "Sem 1 MSSem 2 MS",
+    "Pr\u00e9requis": "Pr\u00e9requis de Digital Building Design, apr\u00e8s le premier semestre.",
+    "Enseignants responsables": "Romain MESNIL",
+    "Objectifs du module": "La g\u00e9om\u00e9trie architecturale est une discipline \u00e0 l'intersection de l'ing\u00e9nierie, de l'architecture et de la g\u00e9om\u00e9trie diff\u00e9rentielle discr\u00e8te. Les concepteurs peuvent utiliser des concepts de g\u00e9om\u00e9trie architecturale pour rationaliser la construction de structures et d'enveloppes de b\u00e2timents courbes. Il est int\u00e9ressant de noter que certains concepts peuvent \u00eatre transcrits en de nouveaux objets fabriqu\u00e9s num\u00e9riquement. Le cours est divis\u00e9 en deux parties : - G\u00e9om\u00e9trie architecturale I concerne les concepts de base de la g\u00e9om\u00e9trie architecturale. Ce cours d'un semestre introduit les premiers concepts fondamentaux en g\u00e9om\u00e9trie lisse et discr\u00e8te. La conception d'enveloppes courbes est abord\u00e9e \u00e0 travers des familles sp\u00e9cifiques de surfaces. - Le cours de g\u00e9om\u00e9trie architecturale II traite de sujets avanc\u00e9s pour les \u00e9tudiants qui souhaitent acqu\u00e9rir une capacit\u00e9 op\u00e9rationnelle en g\u00e9om\u00e9trie architecturale. La conception de structures et d'enveloppes courbes est abord\u00e9e par le biais de l'optimisation discr\u00e8te. Des exemples repr\u00e9sentatifs sont pr\u00e9sent\u00e9s aux \u00e9tudiants lors de sessions pratiques.",
+    "Programme du module": "1. D\u00e9calages discrets Partie I : Parall\u00e9lisme des maillages 2. D\u00e9calages discrets Partie II : maillages circulaires et coniques 3. Optimisation I : alg\u00e8bre lin\u00e9aire simple 4. Optimisation I : Exploration du sous-espace lin\u00e9aire SciLab 5. Optimisation II : Solveurs SciLab 6. Au-del\u00e0 de la conception param\u00e9trique : exploration de l'espace de conception trans-topologique Tutoriel : Robin Oval",
+    "Modalit\u00e9s": "24h d'enseignement (CM TD)",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Devoirs individuels apr\u00e8s chaque session.",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "MS Digital Building Design",
+    "Nombre de cr\u00e9dits ECTS": "3 cr\u00e9dits ECTS",
+    "Code": "ADAGE"
+}

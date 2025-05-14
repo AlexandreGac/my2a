@@ -1,0 +1,12 @@
+{
+    "Cr\u00e9neau": "Sem 5",
+    "Pr\u00e9requis": "Math\u00e9matiques de base et premi\u00e8re experience de programmation. Alg\u00e8bre lin\u00e9aire, topologie sur Rd, calcul diff\u00e9rentiel sur Rd. Optimisation continue. Probabilit\u00e9s",
+    "Enseignants responsables": "Mohamed SAAD",
+    "Objectifs du module": "Les \u00e9nergies renouvelables posent le probl\u00e8me de l'intermittence et de l'impr\u00e9visibilit\u00e9 de leur production. Ce module a pour objectif l'acquisition des outils d'optimisation permettant de g\u00e9rer ces deux inconv\u00e9nients. \u00c0 l'issue du module, les \u00e9l\u00e8ves seront capables de : concevoir des mod\u00e8les math\u00e9matiques pour l'optimisation sous incertitude mettre en \u0153uvre des algorithmes et d'utiliser des logiciels pour r\u00e9soudre num\u00e9riquement certains probl\u00e8mes.",
+    "Programme du module": "I. Pr\u00e9sentation transversale par des professionnels des impacts de l'intelligence artificielle sur le secteurs de l'assurance, la finance et le e-commerce et pr\u00e9sentation des consid\u00e9rations \u00e9thiques et r\u00e9glementaires associ\u00e9es (RGPD). II. Algorithmes de machine learning (R. Elie) II.1. Equilibre biais variance, suraprentissage, Risque, Oracle II.2 Penalisation et convexification, LASSO, Ridge, ElasticNet I.I3 Aggr\u00e9gation, For\u00eats al\u00e9atoires, Boosting II.4 Techniques de recommandation III Algorithmes de Deep Learning (R. Elie) III.1. Les principales architectures de r\u00e9seau de Neurone : feedforward, r\u00e9current, convolutif III.2. M\u00e9thodes g\u00e9n\u00e9ratives adversariales (GAN) III.3. Mise en \u0153uvre informatique sour Python et Keras, donn\u00e9es textuelles III.4. Introduction \u00e0 l'apprentissage par renforcement IV. Focus sur les pplications en gestion d'actif (J-Y Audibert et C. Geissler) IV.1 Reconnaissance de patterns et pr\u00e9vision de tendance IV.2 Investissement s\u00e9quentiel IV.3 Portefeuille universel a la cover",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "A la fin de chaque session num\u00e9rique, les \u00e9tudiants produisent un rapport sur l'analyse critique des r\u00e9sultats, qui est note. Des examens rapides, la pr\u00e9sence et la participation sont aussi not\u00e9s.",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "Master TET Transition Energ\u00e9tique et Territoire",
+    "Nombre de cr\u00e9dits ECTS": "4 cr\u00e9dits ECTS",
+    "Code": "TEOST"
+}

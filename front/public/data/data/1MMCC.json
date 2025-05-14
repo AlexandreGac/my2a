@@ -1,0 +1,15 @@
+{
+    "Cr\u00e9neau": "Sem 2/Sem 4SL",
+    "Pr\u00e9requis": "Module MMCA. Pr\u00e9requis math\u00e9matiques du module MMCA. Notion d'arc param\u00e9tr\u00e9, int\u00e9grale curvi-ligne. Le cours fait largement appel aux notions de programmation en langage python au programme des fi-li\u00e8res MP, PSI et PC.",
+    "Enseignants responsables": "Luc DORMIEUX",
+    "Equipe enseignante": "Xavier CHATEAU, Denis GARNIER, Eric LEMARCHAND, Luc DORMIEUX, S\u00e9bastien BOYAVAL",
+    "Objectifs du module": "Les outils math\u00e9matiques appropri\u00e9s \u00e0 la description de la cin\u00e9matique et des efforts int\u00e9rieurs ont \u00e9t\u00e9 mis en place dans le cadre du module 1MMC-A. Apr\u00e8s une br\u00e8ve description des mod\u00e8les de fluide parfait et de fluide visqueux newtonien, on s'int\u00e9resse principalement aux interactions d'un obstacle profil\u00e9 ave un \u00e9coulement plan irrotationnel de fluide parfait incompressible. L'objectif quantitatif est la d\u00e9termination de la portance. L'analyse du paradoxe de d'Alembert conduit \u00e0 introduire bri\u00e8vement la notion de couche limite en vue d'obtenir une estimation de la force de train\u00e9e.",
+    "Programme du module": "cin\u00e9matique eul\u00e9rienne \u00e9quations d'Euler ; \u00e9quations de Navier-Stokes ; nombre de Reynolds \u00e9coulements plans irrotationnels de fluide parfait incompressible potentiels r\u00e9els et potentiel complexe transformations conformes transformation et profils de Joukovski : calcul de l'interaction avec l'\u00e9coulement introduction \u00e0 la notion de couche limite th\u00e9orie lin\u00e9aris\u00e9e des ailes (dans le cadre d'un DM)",
+    "Modalit\u00e9s": "Le cours s'articule en amphi pour l'expos\u00e9 des notions principales et en petites classes pour leur mise en \u0153uvre",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "La validation est jug\u00e9e sur les r\u00e9sultats d'un examen \u00e9crit en fin de module, d'un DM diffus\u00e9 en deux parties, d'un TD not\u00e9 s'inscrivant dans le prolongement du DM. Elle int\u00e8gre le cas \u00e9ch\u00e9ant une \u00e9valuation d'un projet optionnel sous python.",
+    "Documents p\u00e9dagogiques - Bibliographie": "Livre : M\u00e9canique des milieux continus : cours et exercices corrig\u00e9s (L. Dormieux, E. Lemarchand, D.Kondo) Editions Ellipses. Polycopi\u00e9s des transparents d'amphi, exercices corrig\u00e9s et r\u00e9sum\u00e9s des cours, le tout sur Educnet",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement de 1\u00e8re ann\u00e9e",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Code": "1MMCC"
+}

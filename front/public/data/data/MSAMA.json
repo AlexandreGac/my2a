@@ -1,0 +1,14 @@
+{
+    "Cr\u00e9neau": "Sem 3/Sem 5T/Sem 5Sem 5",
+    "Pr\u00e9requis": "Bonnes connaissances en statistiques et probabilit\u00e9s. Id\u00e9alement, familiarit\u00e9 avec le logiciel Python.",
+    "Enseignants responsables": "Romuald ELIE",
+    "Equipe enseignante": "Romuald ELIE, Jean-Yves AUDIBERT",
+    "Objectifs du module": "Les algorithmes de machine learning, i.e. d'intelligence artificielle, ont fait des progr\u00e8s fulgurants des derni\u00e8res ann\u00e9es et ont des applications dans l'automatisation ou l'aide \u00e0 la prise de d\u00e9cision dans de nombreux secteurs d'activit\u00e9. L'objectif de ce cours est de pr\u00e9senter les fondements statistiques des pricipaux algorithmes de machine et deep learning et d'en d\u00e9tailler un panel d'applications industrielles concr\u00e8tes. Des intervenants professionnels des secteurs de l'assurance, de la finance et du e-commerce interviennent pour pr\u00e9senter l'impact de ces algorithmes sur leur secteur. Certains algorithmes de deep learning seront mis en \u0153uvre sous Python pendant le cours.",
+    "Programme du module": "I. Pr\u00e9sentation transversale par des professionnels des impacts de l'intelligence artificielle sur le secteurs de l'assurance, la finance et le e-commerce et pr\u00e9sentation des consid\u00e9rations \u00e9thiques et r\u00e9glementaires associ\u00e9es (RGPD). II. Algorithmes de machine learning (R. Elie) II.1. Equilibre biais variance, suraprentissage, Risque, Oracle II.2 Penalisation et convexification, LASSO, Ridge, ElasticNet I.I3 Aggr\u00e9gation, For\u00eats al\u00e9atoires, Boosting II.4 Techniques de recommandation III Algorithmes de Deep Learning (R. Elie) III.1. Les principales architectures de r\u00e9seau de Neurone : feedforward, r\u00e9current, convolutif III.2. M\u00e9thodes g\u00e9n\u00e9ratives adversariales (GAN) III.3. Mise en \u0153uvre informatique sour Python et Keras, donn\u00e9es textuelles III.4. Introduction \u00e0 l'apprentissage par renforcement IV. Focus sur les pplications en gestion d'actif (J-Y Audibert et C. Geissler) IV.1 Reconnaissance de patterns et pr\u00e9vision de tendance IV.2 Investissement s\u00e9quentiel IV.3 Portefeuille universel a la cover",
+    "Modalit\u00e9s": "Validation par projet consistant en la mise en \u0153uvre informatique d'un algorithme de machine learning sur un concours type Kaggle ou \u00e0 partir d'un article de recherche.",
+    "Documents p\u00e9dagogiques - Bibliographie": "[2] The elements of Statistical Learning, T. Hastie, R. Tibshirani et J. Friedman [3] Deep Learning, I. Goodfellow, Y. Bengio & A. Courville [4] Reinforcement Learning, an introduction, A. Barto & R; Sutton, 2018.",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement Ing\u00e9nierie Math\u00e9matique et Informatique",
+    "Nombre de cr\u00e9dits ECTS": "6 cr\u00e9dits ECTS",
+    "Code": "MSAMA"
+}

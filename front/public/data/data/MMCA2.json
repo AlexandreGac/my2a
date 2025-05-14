@@ -1,0 +1,17 @@
+{
+    "Cr\u00e9neau": "Sem 1/Sem 3Sem 2/Sem 4SL",
+    "Pr\u00e9requis": "L'enseignement de MMCA2 s'appuie sur les connaissances en Alg\u00e8bre lin\u00e9aire et en calcul diff\u00e9rentiel (fonctions de plusieurs variables) et calcul int\u00e9gral au programme des classes pr\u00e9paratoires",
+    "Enseignants responsables": "Luc DORMIEUX",
+    "Equipe enseignante": "Luc DORMIEUX, Ghazi HASSEN, Xavier CHATEAU, Eric LEMARCHAND, Antoine MARLOT, Alice GRIBONVAL, Sarah ROPERT",
+    "Objectifs du module": "Ce module qui s'inscrit dans la suite de MMCA-1 vient le compl\u00e9ter sur plusieurs points. En ce qui concerne les m\u00e9thodes de r\u00e9solution directe des probl\u00e8mes d'\u00e9lasticit\u00e9 lin\u00e9aire, il examine le cas particulier des probl\u00e8mes plans pour lesquels on introduit la notion de fonction de contrainte d'Airy. Cet outil est illustr\u00e9 notamment par l'\u00e9tude des singularit\u00e9s de contrainte en fond de fissure. Il pr\u00e9sente ensuite une nouvelle caract\u00e9risation de la solution d'un probl\u00e8me d'\u00e9lasticit\u00e9 lin\u00e9aire, dans le cadre des th\u00e9or\u00e8mes de minimum de l'\u00e9nergie potentielle et de l'\u00e9nergie compl\u00e9mentaire. Enfin, ce module pr\u00e9sente une br\u00e8ve initiation \u00e0 la m\u00e9thode des \u00e9l\u00e9ments finis qui est un cadre g\u00e9n\u00e9ral pour la r\u00e9solution num\u00e9rique des probl\u00e8mes d'\u00e9lasticit\u00e9 lin\u00e9aire, bas\u00e9 sur le th\u00e9or\u00e8me du minimum de l'\u00e9nergie potentielle. Cette m\u00e9thode est illustr\u00e9e par quelques applications pratiques.",
+    "Programme du module": "Fonction d'Airy Singularit\u00e9 de contrainte en pointe de fissure Principe du minimum de l'\u00e9nergie potentielle Principe du minimum de l'\u00e9nergie compl\u00e9mentaire Initiation \u00e0 la m\u00e9thode des \u00e9l\u00e9ments finis",
+    "Modalit\u00e9s": "Le cours comporte des amphis pour l'expos\u00e9 des notions principales et des travaux dirig\u00e9s pour leur mise en \u0153uvre.",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "La validation est jug\u00e9e sur le r\u00e9sultat d'un examen \u00e9crit.",
+    "Adresse du site du module": "educnet.enpc.fr/course/view.php?id=573",
+    "Documents p\u00e9dagogiques - Bibliographie": "Livre : M\u00e9canique des milieux continus : cours et exercices corrig\u00e9s (L. Dormieux, E. Lemarchand, D.Kondo) Editions Ellipses. Polycopi\u00e9s des transparents projet\u00e9s en amphi. Recueil de travaux dirig\u00e9s corrig\u00e9s (site educnet) R\u00e9sum\u00e9s des amphis et formulaire (site educnet)",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement de 1\u00e8re ann\u00e9e",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "22/11/24",
+    "Code": "MMCA2"
+}

@@ -7,7 +7,7 @@
 
   <p>
     Bonjour {{ first_name}},
-  </p>
+  </p>  
 
   <p>
     Votre compte vient d'être créé sur My2A pour vous permettre de choisir votre parcours de 2e année. Pour vous connecter, rendez-vous sur la page <a href="https://my2a.enpc.org/accounts/login/">https://my2a.enpc.org/accounts/login/</a> et entrez votre adresse mail et le mot de passe: {{password}}

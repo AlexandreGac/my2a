@@ -18,20 +18,22 @@ from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet, ViewSet
+import json
 
 from .admin import CourseAdmin
 from my2a.mail import send_confirmation_mail, send_account_status_change_mail
-from .models import Course, Department, Enrollment, Parcours, Student, Parameter
+from .models import Course, Department, Enrollment, Parcours, Student, Parameter, SpecialDay, YearInformation
 from .serializers import (
     CompleteStudentSerializer,
     CourseSerializer,
+    SpecialDaySerializer,
     DepartmentSerializer,
     EnrollmentSerializer,
     ParcoursSerializer,
     StudentSerializer,
     ParameterSerializer,
 )
-from .utils import course_list_to_string, importCourseCSV, importStudentCSV
+from .utils import course_list_to_string, importCourseCSV, importStudentCSV, importSpecialDayCSV
 
 
 def index(request):
@@ -451,6 +453,47 @@ class ImportCourseCSV(APIView):
             )
 
 
+class ImportSpecialDayCSV(APIView):
+    def post(self, request):
+        try:
+            csv_file = request.FILES.get("csv_file")
+            # Récupération du paramètre "replace" depuis le formulaire, par défaut "false"
+            replace_flag = request.POST.get("replace", "false").lower() == "true"
+
+            if csv_file:
+                # Transmet le flag à la fonction d'import pour réaliser le remplacement
+                failed, created = importSpecialDayCSV(csv_file, replace=replace_flag)
+                if failed:
+                    return Response(
+                        {
+                            "success": True,
+                            "error": "Certaines lignes n'ont pas pu être importées",
+                            "failed": failed,
+                            "created": created,
+                        },
+                        status=status.HTTP_200_OK,
+                    )
+                else:
+                    return Response(
+                        {
+                            "success": True,
+                            "error": "Fichier CSV traité avec succès",
+                            "failed": failed,
+                            "created": created,
+                        },
+                        status=status.HTTP_200_OK,
+                    )
+            else:
+                return Response(
+                    {"success": False, "error": "Aucun fichier CSV fourni"},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+        except Exception as e:
+            return Response(
+                {"success": False, "error": str(e)},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
+
 class ImportStudentCSV(APIView):
     def post(self, request):
         try:
@@ -575,7 +618,7 @@ class ExportStudentsView(APIView):
             content_type="text/csv",
             headers={"Content-Disposition": 'attachment; filename="etudiants.csv"'},
         )
-        response.write(u'\ufeff'.encode('utf8'))
+        response.write("\ufeff".encode("utf8"))
         writer = csv.writer(response, delimiter=";")
         writer.writerow(
             [
@@ -701,3 +744,51 @@ class ParameterView(APIView):
         parameters = Parameter.objects.filter(show=True)
         serializer = ParameterSerializer(parameters, many=True)
         return Response(serializer.data)
+    
+
+class ModifyYearInformations(View):
+    def get(self, request, *args, **kwargs):
+        try:
+            year_info = YearInformation.objects.first()
+            if year_info:
+                data = {
+                    "start_of_the_school_year": year_info.start_of_the_school_year,
+                    "start_of_S3B": year_info.start_of_S3B,
+                    "start_of_S4A": year_info.start_of_S4A,
+                    "start_of_S4B": year_info.start_of_S4B,
+                    "end_of_school_year": year_info.end_of_school_year,
+                    "monday_of_autumn_holiday": year_info.monday_of_autumn_holiday,
+                    "monday_of_xmas_holiday": year_info.monday_of_xmas_holiday,
+                    "monday_of_winter_holiday": year_info.monday_of_winter_holiday,
+                    "monday_of_spring_holiday": year_info.monday_of_spring_holiday,
+                    "easter_monday": year_info.easter_monday,
+                    "ascension_day": year_info.ascension_day,
+                    "whit_monday": year_info.whit_monday,
+                }
+                return JsonResponse(data)
+            else:
+                return JsonResponse({"error": "No year information found"}, status=404)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
+
+    def post(self, request, *args, **kwargs):
+        try:
+            data = json.loads(request.body)
+            year_info, created = YearInformation.objects.get_or_create(pk=1)
+            year_info.start_of_the_school_year = data.get("start_of_the_school_year")
+            year_info.start_of_S3B = data.get("start_of_S3B")
+            year_info.start_of_S4A = data.get("start_of_S4A")
+            year_info.start_of_S4B = data.get("start_of_S4B")
+            year_info.end_of_school_year = data.get("end_of_school_year")
+            year_info.monday_of_autumn_holiday = data.get("monday_of_autumn_holiday")
+            year_info.monday_of_xmas_holiday = data.get("monday_of_xmas_holiday")
+            year_info.monday_of_winter_holiday = data.get("monday_of_winter_holiday")
+            year_info.monday_of_spring_holiday = data.get("monday_of_spring_holiday")
+            year_info.easter_monday = data.get("easter_monday")
+            year_info.ascension_day = data.get("ascension_day")
+            year_info.whit_monday = data.get("whit_monday")
+            year_info.save()
+            return JsonResponse({"success": "Year information updated successfully"})
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
+

@@ -1,0 +1,15 @@
+{
+    "Cr\u00e9neau": "Sem 1 MS",
+    "Pr\u00e9requis": "Etre inscrit au Mast\u00e8re Sp\u00e9cialis\u00e9 GCGOE",
+    "Enseignants responsables": "Emmanuel Chocq",
+    "Equipe enseignante": "Benoit DIETZ, Simon DUVAL, Maher DJEDIDI",
+    "Objectifs du module": "Le BIM (Building Information Management) est d\u00e9sormais d'usage courant dans le b\u00e2timent, mais son utilisation dans les ouvrages pour l'\u00e9nergie comporte des sp\u00e9cificit\u00e9s. A l'issu du cours, les \u00e9l\u00e8ves connaitront les notions fondamentales du BIM et le contexte dans lequel son d\u00e9ploiement s'inscrit, en particulier sur de grands projets nucl\u00e9aires et hydro\u00e9lectriques (G\u00e9nie civil b\u00e9ton et ferraillage, Corps d'\u00e9tats techniques) Ils sauront identifier les opportunit\u00e9s et risques associ\u00e9s au BIM, et sauront comment formaliser une d\u00e9marche BIM au sein d'un projet sous forme d'une convention BIM. Ils connaitront les capacit\u00e9s des logiciels les plus courants du march\u00e9, et seront capable de manipuler et d'effectuer des op\u00e9rations de base sur les logiciels Revit, Tekla et Navisworks.",
+    "Programme du module": "cours magistraux : - Introduction au BIM : contexte, d\u00e9finitions, normalisation, outils et logiciels, - BIM Management : cadre contractuel, r\u00f4les des acteurs, r\u00e9daction d'une convention BIM - Cas d'usages BIM - REX sur des projets nucl\u00e9aires et hydro\u00e9lectriques int\u00e9grant du BIM TD sur les logiciels - Revit : Interface et principes, mod\u00e9lisation de base, annotation et mise en page, extraction de donn\u00e9es - Tekla : mod\u00e9lisation d'\u00e9l\u00e9ments en b\u00e9ton arm\u00e9 et mise en plan - Navisworks : compilation de mod\u00e8les, recherches param\u00e9triques, d\u00e9tection de conflits, 4D",
+    "Modalit\u00e9s": "8 s\u00e9ances de 3 heures : \" 3x3h Cours Magistral \" 1x3h REX, \" 4x3h TD",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "QCM en derni\u00e8re s\u00e9ance",
+    "Documents p\u00e9dagogiques - Bibliographie": "Polycopi\u00e9 constitu\u00e9 des supports de pr\u00e9sentation des cours, documentation technique",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "Mast\u00e8re G\u00e9nie Civil des Grands Ouvrages pour l'Energie",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Code": "CCFAO"
+}

@@ -1,0 +1,16 @@
+{
+    "Cr\u00e9neau": "Sem 4/Sem 6 Lu 8 h 30 - 11 h 15Sem 6 Lu 8 h 30 - 11 h 15",
+    "Pr\u00e9requis": "M\u00e9canique des fluides incompressibles - premi\u00e8re partie (M\u00e9ca1). Bon niveau en maths et physique.",
+    "Enseignants responsables": "Damien VIOLEAU",
+    "Equipe enseignante": "Damien VIOLEAU, Remi CARMIGNIANI",
+    "Objectifs du module": "L'objectif de ce module est de pr\u00e9senter aux \u00e9l\u00e8ves la m\u00e9thode SPH (Smoothed Particle Hydrodynamics), qui est une technique lagrangienne de mod\u00e9lisation des milieux continus. On se concentre ici sur la mod\u00e9lisation des \u00e9coulements de fluides incompressibles visqueux. Les \u00e9l\u00e8ves apprendront comment et pourquoi cette m\u00e9thode marche, et comment programmer un petit code SPH simple.",
+    "Programme du module": "On pr\u00e9sente les fondements th\u00e9oriques de la m\u00e9thode, on explique comment ses fondements sont reli\u00e9s \u00e0 ceux de la m\u00e9canique th\u00e9orique, et quelles pr\u00e9cautions prendre pour d\u00e9velopper un petit code SPH en Python. Les \u00e9l\u00e8ves travailleront en TD \u00e0 l'aide d'un \" code \u00e0 trous \" pr\u00e9-fourni. On montre aussi des exemples convaincants de validations et d'applications pour l'industrie hydraulique.",
+    "Modalit\u00e9s": "Le module est divis\u00e9 en 6 s\u00e9ances : 1 - Introduction \u00e0 la m\u00e9thode SPH ; 2 - S\u00e9ance de TD ; 3 - El\u00e9ments sur la m\u00e9canique lagrangienne th\u00e9orique ; 4 - S\u00e9ance de TD ; 5 - Pr\u00e9sentation des \u00e9l\u00e9ments th\u00e9oriques avanc\u00e9s ; 6 - TD et examen.",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Lors de la 3e s\u00e9ance, les 30 derni\u00e8res minutes seront consacr\u00e9es \u00e0 un petit travail de programmation (bin\u00f4mes possibles) ; un rendu sera exig\u00e9 pour la derni\u00e8re s\u00e9ance (20% de la note du module). Lors de la derni\u00e8re s\u00e9ance, chaque \u00e9l\u00e8ve aura 30 mn pour r\u00e9soudre une question th\u00e9orique en lien direct avec la partie th\u00e9orique du cours (20% de la note du module). Enfin, les 60% restants de la note du module seront d\u00e9termin\u00e9s par un petit projet de programmation en bin\u00f4mes (4 \u00e0 6 semaines de d\u00e9lai apr\u00e8s la fin du cours).",
+    "Documents p\u00e9dagogiques - Bibliographie": "Copies papiers des diapositives, articles scientifiques, code Python (Jupyter).",
+    "Effectif maximal": "Effectif limit\u00e9 \u00e0 20 \u00e9l\u00e8ves",
+    "D\u00e9partement de rattachement": "D\u00e9partement G\u00e9nie M\u00e9canique et Mat\u00e9riaux",
+    "Nombre de cr\u00e9dits ECTS": "1,5 cr\u00e9dit ECTS",
+    "Mise \u00e0 jour": "01/09/2024",
+    "Code": "SPHYD"
+}

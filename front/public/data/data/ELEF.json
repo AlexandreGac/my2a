@@ -1,0 +1,16 @@
+{
+    "Cr\u00e9neau": "Sem 4/Sem 6 Lu 13 h 45 - 16 h 30Sem 6 Lu 13 h 45 - 16 h 30",
+    "": "Aucune",
+    "Pr\u00e9requis": "Il est fortement recommand\u00e9 mais pas obligatoire d'avoir suivi le cours d'approfondissement sur les \u00e9quations aux d\u00e9riv\u00e9es partielles de 1A.",
+    "Enseignants responsables": "Alexandre ERN",
+    "Objectifs du module": "- comprendre les fondements math\u00e9matiques de la m\u00e9thode des \u00e9l\u00e9ments finis - savoir comment l'appliquer \u00e0 des probl\u00e8mes coercifs comme en \u00e9lasticit\u00e9 lin\u00e9aire - comprendre comment \u00e9tendre la m\u00e9thode aux \u00e9coulements incompressibles et aux \u00e9quations hyperboliques",
+    "Programme du module": "Interpolation par \u00e9l\u00e9ments finis, formulation variationnelle des probl\u00e8mes coercifs, application \u00e0 la diffusion et l'\u00e9lasticit\u00e9, formulations mixtes pour les \u00e9quations de Stokes incompressibles, extension aux probl\u00e8mes hyperboliques.",
+    "Modalit\u00e9s": "6 s\u00e9ances de 2h30, les 5 premi\u00e8res au format cours magistral (intercal\u00e9 d'exercices) et la 6\u00e8me au format classe invers\u00e9e.",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "Quizz \u00e0 r\u00e9aliser en ligne \u00e0 l'issue des 5 premi\u00e8res s\u00e9ances, pr\u00e9sentation orale avec support (transparents et rapport) pour la classe invers\u00e9e",
+    "Documents p\u00e9dagogiques - Bibliographie": "Polycopi\u00e9 en anglais, qui est une version all\u00e9g\u00e9e et simplifi\u00e9e du livre \" Finite Elements \" en trois volumes (Springer, 2021) disponible en acc\u00e8s libre depuis le site HAL.",
+    "Effectif maximal": "Effectif limit\u00e9 \u00e0 40 \u00e9l\u00e8ves",
+    "D\u00e9partement de rattachement": "D\u00e9partement Ing\u00e9nierie Math\u00e9matique et Informatique",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "01 Septembre 2024",
+    "Code": "ELEF"
+}

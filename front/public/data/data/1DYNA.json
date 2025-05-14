@@ -1,0 +1,14 @@
+{
+    "Cr\u00e9neau": "Sem 2/Sem 4Sem 4",
+    "Pr\u00e9requis": "Avoir suivi le cours d'approfondissement \" Introduction \u00e0 la m\u00e9canique Lagrangienne \"",
+    "Enseignants responsables": "Gwendal CUMUNEL , Luc DORMIEUX",
+    "Equipe enseignante": "Gwendal CUMUNEL, Luc DORMIEUX",
+    "Objectifs du module": "La demande architecturale associ\u00e9e \u00e0 un souci de r\u00e9duction des co\u00fbts am\u00e8ne \u00e0 la r\u00e9alisation de structures de plus en plus l\u00e9g\u00e8res et avec des formes innovantes. La grande souplesse de ces structures les rend de plus en plus sensibles aux sollicitations dynamiques ext\u00e9rieures telles que le trafic, le vent et les tremblements de terre \u2026 Les techniques de contr\u00f4le des vibrations permettent aujourd'hui d'envisager sereinement des constructions modernes de plus en plus \u00e9lanc\u00e9es. L'enseignement de ce cours s'inscrit dans cette probl\u00e9matique de r\u00e9duction des vibrations, plus sp\u00e9cifiquement appliqu\u00e9e aux syst\u00e8mes discrets, et propose une prise de contact avec le comportement dynamique des structures. On se place dans la situation o\u00f9 la g\u00e9om\u00e9trie du syst\u00e8me peut \u00eatre param\u00e9tr\u00e9e par un nombre fini de degr\u00e9s de libert\u00e9 (i.e. des syst\u00e8mes discrets). A travers l'\u00e9tude de quelques syst\u00e8mes simples, le cours vise \u00e0 donner les \u00e9l\u00e9ments d'une culture \" dynamique \" dans les domaines lin\u00e9aire (analyse modale, propagation d'ondes) et non lin\u00e9aire. La p\u00e9dagogie du cours consacre une place significative \u00e0 la d\u00e9couverte et \u00e0 l'analyse exp\u00e9rimentale des ph\u00e9nom\u00e8nes en s'effor\u00e7ant d'effectuer le cycle mod\u00e9lisation-exp\u00e9rience-validation.",
+    "Programme du module": "- R\u00e9visions de l'oscillateur \u00e0 1 DDL, \u00e9tude exp\u00e9rimentale sur un oscillateur \u00e0 lames - Introduction \u00e0 l'\u00e9tude vibratoire des syst\u00e8mes \u00e0 n DDL, analyse modale - Traitement num\u00e9rique du signal (python) appliqu\u00e9 au comportement non lin\u00e9aire d'un pendule - Propagation d'ondes m\u00e9caniques unidimensionnelles - Propagation d'ondes m\u00e9caniques tridimensionnelles - Etude exp\u00e9rimentale d'un syst\u00e8me \u00e0 2 DDL, amortisseur \u00e0 masse accord\u00e9e",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "DM, comptes rendus de TP et QCM final.",
+    "Documents p\u00e9dagogiques - Bibliographie": "Y. Bamberger, M\u00e9canique de l'ing\u00e9nieur - Tome 1 : Syst\u00e8mes de corps rigides, Hermann Sc./Exc, 1997.",
+    "Effectif maximal": "Effectif limit\u00e9 \u00e0 12 \u00e9l\u00e8ves",
+    "D\u00e9partement de rattachement": "D\u00e9partement de 1\u00e8re ann\u00e9e",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Code": "1DYNA"
+}

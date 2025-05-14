@@ -1,0 +1,17 @@
+{
+    "Cr\u00e9neau": "Sem 1/Sem 3Sem 2/Sem 4SL",
+    "Pr\u00e9requis": "L'enseignement de MMCA1 s'appuie sur les connaissances en Alg\u00e8bre lin\u00e9aire et en calcul diff\u00e9rentiel (fonctions de plusieurs variables) et calcul int\u00e9gral au programme des classes pr\u00e9paratoires .Outre les notions de base de m\u00e9canique du point mat\u00e9riel et du solide, les chapitres de physique auxquels le c ours fait appel directement ou indirectement, \u00e0 savoir la thermodynamique et l'\u00e9lectromagn\u00e9tisme (\u00e0 travers la pratique de l'analyse vectorielle) sont \u00e9galement au programme des trois fili\u00e8res.",
+    "Enseignants responsables": "Luc DORMIEUX",
+    "Equipe enseignante": "Luc DORMIEUX, Benjamin TERRADE, Ghazi HASSEN, Xavier CHATEAU, Eric LEMARCHAND, Alice GRIBONVAL, Sarah ROPERT",
+    "Objectifs du module": "Le module propose une br\u00e8ve introduction \u00e0 l'\u00e9lastostatique isotherme des milieux continus. On commence par une pr\u00e9sentation succincte des outils math\u00e9matiques tensoriels propres \u00e0 la description des efforts int\u00e9rieurs et des d\u00e9formations dans les solides d\u00e9formables : le tenseur de contrainte de Cauchy, le tenseur de d\u00e9formation de Green-Lagrange et sa forme lin\u00e9aris\u00e9e dans le cadre de l'approche lagrangienne de la transformation g\u00e9om\u00e9trique. On montre que l'\u00e9quilibre local d'un milieu continu s'exprime au moyen d'une edp sur le champ de contrainte. On introduit la loi de comportement \u00e9lastique lin\u00e9aire dans le cadre de la thermodynamique des milieux continus. On d\u00e9finit la solution d'un probl\u00e8me d'\u00e9lasticit\u00e9 lin\u00e9aire \u00e0 l'\u00e9quilibre en se limitant aux transformations infinit\u00e9simales. Enfin, les m\u00e9thodes de r\u00e9solution directes sont expos\u00e9es et illustr\u00e9es bri\u00e8vement par l'\u00e9tude de quelques solutions classiques en r\u00e9gime isotherme.",
+    "Programme du module": "transformation g\u00e9om\u00e9trique : description lagrangienne efforts int\u00e9rieurs pour le milieu continu 3D : tenseur de contrainte de Cauchy tenseur de d\u00e9formation de Green-Lagrange, lin\u00e9arisation comportement \u00e9lastique lin\u00e9aire isotrope probl\u00e8mes d'\u00e9lasticit\u00e9 lin\u00e9aire isotherme",
+    "Modalit\u00e9s": "Le cours comporte des amphis pour l'expos\u00e9 des notions principales et des travaux dirig\u00e9s pour leur mise en \u0153uvre.",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "La validation est jug\u00e9e sur le r\u00e9sultat d'un examen \u00e9crit.",
+    "Adresse du site du module": "educnet.enpc.fr/course/view.php?id=573",
+    "Documents p\u00e9dagogiques - Bibliographie": "Livre : M\u00e9canique des milieux continus : cours et exercices corrig\u00e9s (L. Dormieux, E. Lemarchand, D.Kondo) Editions Ellipses. Polycopi\u00e9s des transparents projet\u00e9s en amphi. Recueil de travaux dirig\u00e9s corrig\u00e9s (site educnet) R\u00e9sum\u00e9s des amphis et formulaire (site educnet)",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "D\u00e9partement de 1\u00e8re ann\u00e9e",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "22/11/2024",
+    "Code": "MMCA1"
+}

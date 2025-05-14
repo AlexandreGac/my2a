@@ -1,0 +1,17 @@
+{
+    "Cr\u00e9neau": "Sem 5",
+    "Pr\u00e9requis": "Notions de base de m\u00e9canique du solide et de physique : potentiels et champs vectoriels. Notions de probabilit\u00e9s : lois discr\u00e8tes et densit\u00e9s de probabilit\u00e9. Connaissances en thermodynamique et physique statistique pr\u00e9f\u00e9rables m\u00eame si non obligatoires. Connaissance basique du langage Python.",
+    "Enseignants responsables": "Matthieu VANDAMME",
+    "Equipe enseignante": "Virginie GALLAND EHRLACHER, Laurent BROCHARD",
+    "Objectifs du module": "Acqu\u00e9rir, par la pratique, une connaissance d'outils de simulation mol\u00e9culaire en science des mat\u00e9riaux. La pratique passe par l'\u00e9criture de son propre code de simulation pour des probl\u00e8mes simples, et par l'utilisation de codes existants pour traiter des probl\u00e8mes r\u00e9alistes relatifs aux mat\u00e9riaux pour les technologies de l'\u00e9nergie. Dans le secteur de l'\u00e9nergie, la simulation mol\u00e9culaire intervient \u00e0 divers stades de la mise en \u0153uvre des syst\u00e8mes technologiques : s\u00e9lection de mat\u00e9riaux de conversion et de stockage, analyse de leur durabilit\u00e9, optimisation des proc\u00e9d\u00e9s permettant leur production, entre autres.",
+    "Programme du module": "Partie 1 (3 s\u00e9ances incluant TP), dynamique mol\u00e9culaire : objectifs et limitations de la dynamique mol\u00e9culaire, m\u00e9thodes num\u00e9riques d'int\u00e9gration en temps, calcul de quantit\u00e9s thermodynamiques, thermostats et barostats, pr\u00e9sentation des potentiels interatomiques classiques. TP : Propri\u00e9t\u00e9s \u00e9lastiques du graph\u00e8ne. Partie 2 (2 s\u00e9ances incluant TP), m\u00e9thodes stochastiques et statistiques: objectifs et limitations des m\u00e9thodes d'\u00e9chantillonage, formulation g\u00e9n\u00e9rale des m\u00e9thodes Monte-Carlo, algorithme de Metropolis et extensions, m\u00e9thodes statistiques d'exploration de donn\u00e9es. TP : Capacit\u00e9 de stockage de CO2 dans les couches de charbon g\u00e9ologiques. Partie 3 (2 s\u00e9ances, incluant 1/2 s\u00e9ance de TP), introduction aux mod\u00e8les d'\u00e9nergie quantiques : int\u00e9r\u00eat, rappels de m\u00e9canique quantique, mod\u00e8les d'\u00e9nergie quantiques, mod\u00e8le d'Hartree-Fock, density functional theory. TP : \u00e9tude de la mol\u00e8cule de dihydrog\u00e8ne.",
+    "Modalit\u00e9s": "Module divis\u00e9 en 7 s\u00e9ances de 2h30. 5 s\u00e9ances en petite classe et 2 s\u00e9ances de TP. Les s\u00e9ances en petite classe comportent en moyenne 2h d'enseignement et 30min d'application.",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "La validation du module se base sur les notes obtenues aux devoirs \u00e0 la maison et aux s\u00e9ances de TP. Chaque devoir et TP est not\u00e9 sur la base d'un rendu \u00e9crit. Pas d'examen final.",
+    "Adresse du site du module": "educnet.enpc.fr/course/view.php?id=340",
+    "Documents p\u00e9dagogiques - Bibliographie": "Livre: Understanding molecular simulation, 2nd Edition, D. Frenkel et B. Smith, Academic Press, 1996, ISBN : 978-0-12-267351-1.",
+    "Effectif maximal": "Effectif limit\u00e9 \u00e0 20 \u00e9l\u00e8ves",
+    "D\u00e9partement de rattachement": "D\u00e9partement G\u00e9nie M\u00e9canique et Mat\u00e9riaux",
+    "Nombre de cr\u00e9dits ECTS": "2,5 cr\u00e9dits ECTS",
+    "Mise \u00e0 jour": "01/09/2024",
+    "Code": "SIMMA"
+}

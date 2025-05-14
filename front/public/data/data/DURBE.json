@@ -1,0 +1,15 @@
+{
+    "Cr\u00e9neau": "Sem 5",
+    "Pr\u00e9requis": "Connaissances de base sur les b\u00e9tons.",
+    "Enseignants responsables": "Ad\u00e9laide FERAILLE , Jean-Michel TORRENTI",
+    "Equipe enseignante": "Ing\u00e9nieurs et chercheurs de l'IFSTTAR, de l'Ecole des Ponts ParisTech, de l'ENS Cachan, d'Oxand, de l'ANDRA et d'EDF",
+    "Objectifs du module": "Les b\u00e9tons sont utilis\u00e9s dans la plupart des structures li\u00e9es \u00e0 la production d'\u00e9nergie : barrages, enceintes de centrales nucl\u00e9aires, stockages de d\u00e9chets nucl\u00e9aires, etc... La dur\u00e9e de service de ces ouvrages et donc la durabilit\u00e9 des b\u00e9tons et des structures construites avec ce mat\u00e9riau sont des questions essentielles du point de vue \u00e9conomique. L'objectif de ce cours est l'\u00e9tude de la durabilit\u00e9 des b\u00e9tons et structures en b\u00e9ton, avec une ouverture sur les probl\u00e9matiques de la maintenance, des r\u00e9parations et de l'optimisation de la gestion des structures ainsi que sur l'application des approches probabilistes \u00e0 la durabilit\u00e9.",
+    "Programme du module": "Les sujets suivants seront abord\u00e9s : o pr\u00e9sentation g\u00e9n\u00e9rale du cours, rappels sur les b\u00e9tons, g\u00e9n\u00e9ralit\u00e9s, influence de la formulation sur les propri\u00e9t\u00e9s de transfert (JM Torrenti - UGE) o les objets \u00e9tudi\u00e9s : enceintes de centrales nucl\u00e9aires, barrages, stockage de d\u00e9chets nucl\u00e9aires (JM Torrenti) o le comportement au jeune \u00e2ge et les d\u00e9formations diff\u00e9r\u00e9es (B Masson - EDF) o la corrosion des armatures (armatures passives et c\u00e2bles de pr\u00e9contrainte) ; \u00e9tude de cas (V Bouteiller - UGE) o le comportement en temp\u00e9rature (A Feraille - ENPC) o le comportement vis-\u00e0-vis du gel-d\u00e9gel (S Bouteille - DIR Centre-Est) o RAG et RSI ; application au cas des barrages (O. Omikrine - UGE & E. Grimal - EDF) o RAG et RSI cas d'\u00e9tude (J-F Seignol - UGE) o la carbonatation, la p\u00e9n\u00e9tration des chlorures (A. Djerbi - UGE) o approche probabiliste de la durabilit\u00e9 ; gestion des risques, maintenance ; application num\u00e9rique \" approche bay\u00e9sienne \" (A.Orc\u00e9si - CEREMA) o le b\u00e9ton dans les ouvrages de stockage des d\u00e9chets radioactifs (X. Bourbon - ANDRA)",
+    "Modalit\u00e9s": "13 s\u00e9ances de 3 heures.",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "La validation reposera sur un contr\u00f4le des connaissances par quizz.",
+    "Adresse du site du module": "educnet.enpc.fr/course/view.php?id=314&userid=guest",
+    "Effectif maximal": "Effectif illimit\u00e9",
+    "D\u00e9partement de rattachement": "Mast\u00e8re G\u00e9nie Civil des Grands Ouvrages pour l'Energie",
+    "Nombre de cr\u00e9dits ECTS": "3 cr\u00e9dits ECTS",
+    "Code": "DURBE"
+}

@@ -1,0 +1,15 @@
+{
+    "Cr\u00e9neau": "Sem 1/Sem 3Sem 3",
+    "Pr\u00e9requis": "Aucun",
+    "Enseignants responsables": "Virginie GALLAND EHRLACHER",
+    "Equipe enseignante": "Virginie GALLAND EHRLACHER, Alb\u00e9ric LEFORT, Jack THOMAS, Rodrigue LELOTTE, Jean RUEL, Cl\u00e9ment GUILLOT, Rapha\u00ebl GASTADELLO, Dagbegnon LOKO",
+    "Objectifs du module": "L'objectif de ce module est d'introduire les concepts math\u00e9matiques fondamentaux n\u00e9cessaires pour la r\u00e9solution d'\u00e9quations aux d\u00e9riv\u00e9es partielles. Dans ce module, nous pr\u00e9senterons les notions d'espaces vectoriels norm\u00e9s, espaces de Banach, espaces de Hilbert, ainsi que les rudiments de la th\u00e9orie de la mesure, la d\u00e9finition de l'int\u00e9grale de Lebesgue et ses principales propri\u00e9t\u00e9s.",
+    "Programme du module": "S\u00e9ance 1. Espaces vectoriels norm\u00e9s S\u00e9ance 2. Espaces de Banach (1) S\u00e9ance 3. Espaces de Banach (2) et espaces de Hilbert (1) S\u00e9ance 4. Espaces de Hilbert (2) S\u00e9ance 5. Th\u00e9orie de la mesure (1) S\u00e9ance 6. Th\u00e9orie de la mesure (2) S\u00e9ance 7. Th\u00e9orie de la mesure (3)",
+    "Modalit\u00e9s": "La majorit\u00e9 des s\u00e9ances seront des s\u00e9ances de cours/TD. Deux s\u00e9ances en autonomie seront consacr\u00e9es \u00e0 des r\u00e9visions sur la r\u00e9solution d'\u00e9quations diff\u00e9rentielles ordinaires lin\u00e9aires et le calcul d'int\u00e9grales par la formule de changement de variables. Une autre s\u00e9ance de TPA sera consacr\u00e9e \u00e0 des r\u00e9visions.",
+    "Contr\u00f4le des connaissances - R\u00e8gles de validation du module": "A chaque s\u00e9ance \u00e0 partir de la s\u00e9ance 2, un quizz comportant 4 questions de cours sera \u00e0 effectuer pour contr\u00f4ler l'acquisition du cours de la semaine pr\u00e9c\u00e9dente. Le premier quizz sera un quizz blanc, mais les autres quizz compteront dans la note finale. Un examen aura \u00e9galement lieu \u00e0 la fin du module. La note sera compt\u00e9e \u00e0 partir de la note \u00e0 l'examen final (12 points) et de la moyenne des notes aux quizz (8 points). Un DM facultatif sera propos\u00e9 aux \u00e9tudiants, et sera not\u00e9 sur 0.5 points. La note de ce DM sera compt\u00e9e comme bonus sur la note finale.",
+    "Documents p\u00e9dagogiques - Bibliographie": "Un polycopi\u00e9 en anglais est disponible, ainsi que les slides (en fran\u00e7ais) correspondant \u00e0 chaque s\u00e9ance de cours. Les \u00e9nonc\u00e9s des examens des ann\u00e9es ant\u00e9rieures et leurs corrig\u00e9s sont disponibles sur la page educnet du cours. https://educnet.enpc.fr",
+    "Effectif maximal": "Effectif limit\u00e9 \u00e0 200 \u00e9l\u00e8ves",
+    "D\u00e9partement de rattachement": "D\u00e9partement de 1\u00e8re ann\u00e9e",
+    "Nombre de cr\u00e9dits ECTS": "2 cr\u00e9dits ECTS",
+    "Code": "AEDP1"
+}

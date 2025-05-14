@@ -1,5 +1,15 @@
 import React, { useEffect, useState, forwardRef, useMemo } from "react";
-import { Button, Grid, Typography, Accordion, AccordionSummary, AccordionDetails, Box, setRef } from "@mui/material";
+import {
+    Button,
+    Grid,
+    Typography,
+    Accordion,
+    AccordionSummary,
+    AccordionDetails,
+    Box,
+    setRef,
+    Radio, RadioGroup, FormLabel
+} from "@mui/material";
 import TopBar from "../components/TopBar";
 import CustomProgressBar from "../components/ProgressBar";
 import InputLabel from '@mui/material/InputLabel';
@@ -25,6 +35,9 @@ import TextField from "@mui/material/TextField";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
+import { jsPDF } from "jspdf";
+
+
 pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.js`;
 
 
@@ -40,6 +53,7 @@ export default function Dashboard() {
     const [parcoursList, setParcoursList] = useState([])
     const [parcours, setParcours] = useState(-1)
     const [mandatoryCourses, setMandatoryCourses] = useState([])
+    const [mandatoryChoices, setMandatoryChoices] = useState([])
     const [choosenMandatoryCourses, setChoosenMandatoryCourses] = useState([])
     const [electiveCourses, setElectiveCourses] = useState([])
     const [choosenElectiveCourses, setChoosenElectiveCourses] = useState([])
@@ -51,10 +65,36 @@ export default function Dashboard() {
     const [comment, setComment] = useState('')
     const [parameters, setParameters] = useState({})
     const [semester, setSemester] = useState(1)
+    const [displayedPdf, setDisplayedPdf] = useState(null);
 
     const timetable = useMemo(() => (
-        {url: "/api/student/current/timetable/"}
+        { url: "/api/student/current/timetable/" }
     ), [choosenElectiveCourses, choosenMandatoryCourses, parcours])
+
+    const hasInvalidMandatoryCourses = () => {
+        let count = 0;
+        for (const course of mandatoryCourses) {
+            if (choosenMandatoryCourses.includes(course.name)) {
+                count += 1;
+            }
+        }
+        return count < required_mandatory_courses;
+    }
+
+    const hasInvalidMandatoryChoices = () => {
+        for (const courses of mandatoryChoices) {
+            let count = 0;
+            for (const course of courses) {
+                if (choosenMandatoryCourses.includes(course.name)) {
+                    count += 1;
+                }
+            }
+            if (count !== 1) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     const handleChange = (panel) => {
         if (opened != panel) setOpened(panel)
@@ -95,27 +135,259 @@ export default function Dashboard() {
         else return null
     }
 
-    const getMandatoryCourses = () => {
-        return mandatoryCourses.map((course) => {
-            return (
-                <FormControlLabel control={<Checkbox defaultChecked={choosenMandatoryCourses.includes(course.name)} onClick={(e) => {
-                    changeEnrollment(course.name, e.target.checked, 'mandatory')
-                }} />} disabled={!editable || !isCourseCompitable(course.name) && !choosenMandatoryCourses.includes(course.name)} label={'[' + course.code.replaceAll(" ", "") + '] ' + course.name + ' (' + course.ects + ' ECTS)'} />
-            )
-        })
 
+    const getMandatoryChoices = () => {
+        return mandatoryChoices.map((courses) => {
+            if (!isNaN(courses[0].day)) {
+                return (
+                    <Box sx={{marginTop: "20px"}}>
+                        <FormLabel>{"Semaine d'ouverture (Semaine " + courses[0].day + ") :"}</FormLabel>
+                            {
+                                courses.map((course) => {
+                                    return (
+                                        <Box sx={{marginTop: "20px"}}>
+                                            <FormControlLabel
+                                                control={<Checkbox
+                                                    defaultChecked={choosenMandatoryCourses.includes(course.name)}
+                                                    onClick={(e) => {
+                                                        changeEnrollment(course.name, e.target.checked, 'mandatory');
+                                                    }}
+                                                />}
+                                                disabled={!editable || !isCourseCompitable(course.name) && !choosenMandatoryCourses.includes(course.name)}
+                                                label={'[' + course.code.replaceAll(" ", "") + '] ' + course.name + ' (' + course.ects + ' ECTS)'}
+                                                value={course.id}
+                                            />
+                                            <Button
+                                            variant="outlined"
+                                            size="small"
+                                            sx={{
+                                                minWidth: "70px",
+                                                textAlign: "center",
+                                            }}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleDescClick(course.code);
+                                            }}
+                                            >
+                                            Desc
+                                            </Button>
+                                        </Box>
+                                    )
+                                })
+                            }
+                 </Box>
+                )
+            }
+            else {
+                return (
+                    <Box sx={{marginTop: "20px"}}>
+                        <FormLabel>{"Créneau : " + courses[0].day + ", " + courses[0].start_time + " - " + courses[0].end_time}</FormLabel>
+                            {
+                                courses.map((course) => {
+                                    return (
+                                        <Box sx={{marginTop: "20px"}}>
+                                            <FormControlLabel
+                                                control={<Checkbox
+                                                    defaultChecked={choosenMandatoryCourses.includes(course.name)}
+                                                    onClick={(e) => {
+                                                        changeEnrollment(course.name, e.target.checked, 'mandatory');
+                                                    }}
+                                                />}
+                                                disabled={!editable || !isCourseCompitable(course.name) && !choosenMandatoryCourses.includes(course.name)}
+                                                label={'[' + course.code.replaceAll(" ", "") + '] ' + course.name + ' (' + course.ects + ' ECTS)'}
+                                                value={course.id}
+                                            />
+                                            <Button
+                                            variant="outlined"
+                                            size="small"
+                                            sx={{
+                                                minWidth: "70px",
+                                                textAlign: "center",
+                                            }}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleDescClick(course.code);
+                                            }}
+                                            >
+                                            Desc
+                                            </Button>
+                                        </Box>
+                                    )
+                                })
+                            }
+                    </Box>
+                )
+            }
+        })
     }
+
+
+    const handleDescClick = (courseCode) => {
+        const cleanedCode = courseCode.trim();
+
+        fetch(`/data/data/${cleanedCode}.json`)
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+                return res.json();
+            })
+            .then((data) => {
+                const doc = new jsPDF();
+
+                doc.setFont('times', 'bold');
+                doc.setFontSize(16);
+                doc.text(`Description du cours ${cleanedCode}`, 10, 20);
+
+                doc.setFontSize(12);
+                let yPosition = 30;
+                Object.keys(data).forEach((key) => {
+                    doc.setFont('times', 'bold');
+                    const text = `${key} : `;
+                    const lines = doc.splitTextToSize(text, 180);
+                    doc.text(lines, 10, yPosition);
+                    yPosition += 5;
+                    doc.setFont('times', 'normal');
+                    const text2 = `${data[key]}`;
+                    const lines2 = doc.splitTextToSize(text2, 180);
+                    doc.text(lines2, 10, yPosition);
+                    yPosition += lines2.length * 6;
+
+
+                    if (yPosition > 280) {
+                        doc.addPage();
+                        yPosition = 20;
+                    }
+                });
+
+                const pdfBlob = doc.output("blob");
+                const pdfUrl = URL.createObjectURL(pdfBlob);
+                setDisplayedPdf(pdfUrl);
+                setSemester(1);
+            })
+            .catch((error) => {
+                console.error("Erreur lors du chargement du fichier JSON :", error);
+                const doc = new jsPDF();
+                doc.setFontSize(16);
+                doc.text("Fichier de description non trouvé.", 10, 20);
+                const pdfBlob = doc.output("blob");
+                const pdfUrl = URL.createObjectURL(pdfBlob);
+                setDisplayedPdf(pdfUrl);
+            });
+    };
+
+    const getMandatoryCourses = () => {
+        return mandatoryCourses.map((course) => (
+            <Box
+                key={course.code}
+                sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    width: "100%",
+                    minHeight: "40px",
+                }}
+            >
+                {/* Checkbox alignée à gauche */}
+                <Checkbox
+                    defaultChecked={choosenMandatoryCourses.includes(course.name)}
+                    onClick={(e) => {
+                        changeEnrollment(course.name, e.target.checked, "mandatory");
+                    }}
+                    disabled={
+                        !editable ||
+                        (!isCourseCompitable(course.name) && !choosenMandatoryCourses.includes(course.name))
+                    }
+                />
+
+                {/* Texte du cours */}
+                <Box
+                    sx={{
+                        flex: 1, // Le texte occupe tout l'espace disponible
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        minHeight: "40px",
+                        display: "flex",
+                        alignItems: "center",
+                    }}
+                >
+                    <Typography>
+                        {"[" + course.code.replaceAll(" ", "") + "] " + course.name + " (" + course.ects + " ECTS)"}
+                    </Typography>
+                </Box>
+
+                {/* Bouton Desc parfaitement aligné à droite */}
+                <Button
+                    variant="outlined"
+                    size="small"
+                    sx={{
+                        minWidth: "70px",
+                        textAlign: "center",
+                    }}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        handleDescClick(course.code);
+                    }}
+                >
+                    Desc
+                </Button>
+            </Box>
+        ));
+    };
 
     const getElectiveCourses = () => {
-        return electiveCourses.map((course) => {
-            return (
-                <FormControlLabel control={<Checkbox defaultChecked={choosenElectiveCourses.includes(course.name)} onClick={(e) => {
-                    changeEnrollment(course.name, e.target.checked, 'elective')
-                }} />} disabled={!editable || !isCourseCompitable(course.name) && !choosenElectiveCourses.includes(course.name)} label={'[' + course.code + '] ' + course.name + ' (' + course.ects + ' ECTS)'} />
-            )
-        })
+        return electiveCourses.map((course) => (
+            <Box key={course.code} sx={{ display: "flex", alignItems: "center", width: "100%", minHeight: "40px" }}>
+                {/* Checkbox à gauche */}
+                <Checkbox
+                    defaultChecked={choosenElectiveCourses.includes(course.name)}
+                    onClick={(e) => {
+                        changeEnrollment(course.name, e.target.checked, "elective");
+                    }}
+                    disabled={
+                        !editable ||
+                        (!isCourseCompitable(course.name) && !choosenElectiveCourses.includes(course.name))
+                    }
+                />
 
-    }
+                {/* Texte du cours */}
+                <Box
+                    sx={{
+                        flex: 1, // Prend tout l'espace disponible
+                        whiteSpace: "nowrap", // Empêche le retour à la ligne
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        minHeight: "40px",
+                        display: "flex",
+                        alignItems: "center",
+                    }}
+                >
+                    <Typography>
+                        {"[" + course.code + "] " + course.name + " (" + course.ects + " ECTS)"}
+                    </Typography>
+                </Box>
+
+                {/* Bouton Desc aligné sur la même colonne */}
+                <Button
+                    variant="outlined"
+                    size="small"
+                    sx={{
+                        minWidth: "70px", // Assure que tous les boutons ont la même largeur
+                        textAlign: "center",
+                    }}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        handleDescClick(course.code);
+                    }}
+                >
+                    Desc
+                </Button>
+            </Box>
+        ));
+    };
+
+
+
 
     const getDepartmentDescription = (code) => {
         const temp = departments.filter((dep) => dep.id == code)
@@ -172,7 +444,7 @@ export default function Dashboard() {
             },
             body: JSON.stringify({ course: course, is_enrolled: is_enrolled, category: category }),
         })
-            .then((res) => res.json())
+            .then((res) => { console.log(res); res.json();})
             .then((result) => {
                 fetch('/api/student/current/courses/available', {
                     method: 'GET',
@@ -369,7 +641,13 @@ export default function Dashboard() {
             })
                 .then((res) => res.json())
                 .then((result) => {
-                    setMandatoryCourses(result)
+                    let choices = Array
+                        .from(Map.groupBy(result, (course) => course.start_time + course.day).values())
+                        .filter((courses) => courses.length > 1);
+                    let flat_choices = choices.flat();
+                    let mandatory = result.filter((course) => !flat_choices.includes(course));
+                    setMandatoryChoices(choices);
+                    setMandatoryCourses(mandatory);
                 },
                     (error) => {
                         console.log(error);
@@ -463,7 +741,6 @@ export default function Dashboard() {
                     console.log(error);
                 })
     }, [parcours, choosenElectiveCourses, choosenMandatoryCourses])
-
     return (
         <>
             {isLogged && (
@@ -556,21 +833,36 @@ export default function Dashboard() {
                             {getParcoursDescription(parcours) && getParcoursDescription(parcours).split("\r\n").map((line) => (
                                 <Typography sx={{ marginTop: "20px", marginLeft: "5px" }}>{line}</Typography>
                             ))}
-                            <Accordion disabled={progress < 66} expanded={opened === 'obligatoires'} onChange={(e, expanded) => {
-                                if (expanded) handleChange('obligatoires')
-                            }}>
-                                <AccordionSummary aria-controls="panel3d-content" id="panel3d-header" expandIcon={<ExpandMoreIcon />}>
-                                    <Typography><b>Choix des cours obligatoires sur liste</b></Typography>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    {getListCoursesHint(parcours) && getListCoursesHint(parcours).split("\r\n").map((part) => (
-                                        <Typography sx={{ fontWeight: "bold", textDecoration: 'underline', fontSize: "15px", marginBottom: "10px" }}>{part}</Typography>
-                                    ))}
-                                    <FormGroup>
-                                        {getMandatoryCourses()}
-                                    </FormGroup>
-                                </AccordionDetails>
-                            </Accordion>
+                            <Box sx={{ marginTop: "20px" }} >
+                                <Accordion disabled={progress < 66} expanded={opened === 'obligatoires'} onChange={(e, expanded) => {
+                                    if (expanded) handleChange('obligatoires')
+                                }}>
+                                    <AccordionSummary aria-controls="panel3d-content" id="panel3d-header" expandIcon={<ExpandMoreIcon />}>
+                                        <Typography><b>Choix des cours obligatoires sur liste</b></Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        {getListCoursesHint(parcours) && getListCoursesHint(parcours).split("\r\n").map((part) => (
+                                            <Typography sx={{ fontWeight: "bold", textDecoration: 'underline', fontSize: "15px", marginBottom: "10px" }}>{part}</Typography>
+                                        ))}
+                                        <FormGroup>
+                                            {getMandatoryCourses()}
+                                        </FormGroup>
+                                    </AccordionDetails>
+                                </Accordion>
+                            </Box>
+                            <Box sx={{marginTop: "20px"}} >
+                                <Accordion disabled={progress < 66} expanded={opened === 'creneaux'} onChange={(e, expanded) => {
+                                    if (expanded) handleChange('creneaux')
+                                }}>
+                                    <AccordionSummary aria-controls="panel3d-content" id="panel3d-header" expandIcon={<ExpandMoreIcon />}>
+                                        <Typography><b>Choix des cours obligatoires sur créneau</b></Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <Typography sx={{ fontWeight: "bold", textDecoration: 'underline', fontSize: "15px", marginBottom: "10px" }}>Sélectionner un unique cours sur chacun des créneaux</Typography>
+                                        {getMandatoryChoices()}
+                                    </AccordionDetails>
+                                </Accordion>
+                            </Box>
                             <Box sx={{ marginBottom: "50px", marginTop: "20px" }} >
                                 <Accordion disabled={progress < 66} expanded={opened === 'electifs'} onChange={(e, expanded) => {
                                     if (expanded) handleChange('electifs')
@@ -591,7 +883,7 @@ export default function Dashboard() {
                                 </Accordion>
                             </Box>
                             {editable && (
-                                <Button disabled={departement == -1 || parcours == -1} variant="contained" disableElevation style={{ marginTop: 10, float: "right" }} onClick={() => {
+                                <Button disabled={departement == -1 || parcours == -1} variant="contained" disableElevation style={{ marginTop: 10, float: "right", marginBottom: 20 }} onClick={() => {
                                     setConfirmationDialogState(true)
                                 }} endIcon={<SendIcon />}>
                                     Confirmer
@@ -601,14 +893,22 @@ export default function Dashboard() {
                         <Grid item md={6} xs={11} sm={11}>
                             <Box sx={{ marginBottom: "50px" }} >
                                 <Button variant="contained" sx={{marginRight: "10px"}} onClick={() => {
-                                    setSemester(1)
+                                    setDisplayedPdf(timetable);
+                                    setSemester(1);
                                 }}>
                                     Semestre 1
                                 </Button>
                                 <Button variant="contained" sx={{marginRight: "10px"}} onClick={() => {
-                                    setSemester(2)
+                                    setDisplayedPdf(timetable);
+                                    setSemester(2);
                                 }}>
                                     Semestre 2
+                                </Button>
+                                <Button variant="contained" sx={{marginRight: "10px"}} onClick={() => {
+                                    setDisplayedPdf(timetable);
+                                    setSemester(3);
+                                }}>
+                                    Année Complète
                                 </Button>
                                 <Button variant="contained" sx={{marginRight: "10px"}} onClick={() => {
                                     window.open("/api/student/current/timetable/")
@@ -617,10 +917,19 @@ export default function Dashboard() {
                                 </Button>
                             </Box>
                             <Box sx={{ width: "100px" }}>
-                                <Document file={timetable}
+                                <Document
+                                    file={displayedPdf ? displayedPdf : timetable}
                                     onContextMenu={(e) => e.preventDefault()}
-                                    className="pdf-container">
-                                    <Page size="A2" pageNumber={semester} scale={1} renderTextLayer={false} />
+                                    className="pdf-container"
+                                >
+                                    {/* Si un PDF de description est affiché, on affiche sa première page ;
+                                    sinon, on affiche le planning selon le semestre choisi */}
+                                    <Page
+                                        size="A2"
+                                        pageNumber={semester}
+                                        scale={1}
+                                        renderTextLayer={false}
+                                    />
                                 </Document>
                             </Box>
                         </Grid>
@@ -641,7 +950,10 @@ export default function Dashboard() {
                                 {((getDepartmentCode(departement) === 'GCC' && student.ects < 48.5) || (getDepartmentCode(departement) === 'IMI' && student.ects < 60)) && "Attention: vous n'avez pas choisi suffisamment d'ECTS de cours."}
                             </DialogContentText>
                             <DialogContentText sx={{ color: "red", fontWeight: "bold" }}>
-                                {choosenMandatoryCourses.length < required_mandatory_courses && "Vous devez choisir au moins 2 cours obligatoires sur liste."}
+                                {hasInvalidMandatoryCourses() && "Vous devez choisir au moins 2 cours obligatoires sur liste."}
+                            </DialogContentText>
+                            <DialogContentText sx={{ color: "red", fontWeight: "bold" }}>
+                                {hasInvalidMandatoryChoices() && "Attention: Vous devez sélectionner exactement un cours par créneau obligatoire."}
                             </DialogContentText>
                         </DialogContent>
                         <TextField sx={{ margin: 'auto', width: "90%" }} placeholder="Commentaire" value={comment} onChange={(e) => setComment(e.target.value)} />

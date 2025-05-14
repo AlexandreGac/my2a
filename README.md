@@ -73,3 +73,7 @@ Be careful: the container name 'my2a-back-1' can be different. If it doesn't wor
 5. Populate the database with courses, departments, parcours etc. 
 
 6. Do not forget to setup a reverse proxy that redirect my2a.enpc.org to the my2a's proxy.
+
+NB :
+- Login: root | rootGI
+- passw: a | abababab
