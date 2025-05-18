@@ -1,9 +1,3 @@
 code;name;department;semester;ects;day;start_time;end_time;description;teacher
-AAA ;Optimisation convexe ;IMI;S5;3;Vendredi;8:30;11:15;;Vincent LECLERE
-BBB ;Optimisation convexe ;IMI;S4;a;Vendredi;8:30;11:15;;Vincent LECLERE
-CCC ;Optimisation convexe ;IMI;S4;3;Samedi;8:30;11:15;;Vincent LECLERE
-DDD ;Optimisation convexe ;IMI;S4;4.5;VEN;8:30;11:15;;Vincent LECLERE
-EEE ;Optimisation convexe ;IMI;S4;5;Vendredi;AAA;11:15;;Vincent LECLERE
-FFF ;Optimisation convexe ;IMI;S4;5;Vendredi;8:30;BBB;;Vincent LECLERE
-GGG ;Optimisation convexe ;IMI;S4;5;Vendredi;10:30;8:30;;Vincent LECLERE
-HHH ;Optimisation convexe ;IMI;S4;3;Vendredi;8:30;11:15;;Vincent LECLERE
+AAA ;Optimisation convexe 1;IMI;S4;1;Vendredi;8:30;11:15;;Vincent LECLERE
+BBB ;Optimisation convexe 2;IMI;S4;1;Vendredi;8:30;11:15;;Vincent LECLERE
