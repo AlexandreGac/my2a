@@ -55,7 +55,9 @@ export default function SectionBar(props) {
                                 </DialogContentText>
                             </DialogContent>
                             <DialogActions>
-                                <Button color="secondary" variant="outlined" onClick={handleDownload} startIcon={<DownloadIcon />}>Exemple.csv</Button>
+                                {props.showExampleButton && (
+                                    <Button color="secondary" variant="outlined" onClick={handleDownload} startIcon={<DownloadIcon />}>Exemple.csv</Button>
+                                )}
                                 <Button color="inherit" variant="outlined" onClick={handleCloseDialog}>Fermer</Button>
                             </DialogActions>
                         </Dialog>
