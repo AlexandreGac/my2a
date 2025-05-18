@@ -14,11 +14,13 @@ from reportlab.platypus import (
 from django.db.models.signals import post_migrate
 from django.dispatch import receiver
 
+from .models import SpecialDay
+from .models import YearInformation
 
-@receiver(post_migrate)
+
+#@receiver(post_migrate)
 def get_year(sender, **kwargs):
     try:
-        from .models import YearInformation
         return YearInformation.objects.get().end_of_school_year.year
     except Exception:
         return 2025
@@ -156,10 +158,9 @@ def write_days(spec_days, table_data, style, color):
                 table_data[weeks][4*days+i] = ""
             table_data[weeks][4*days+1] = key
 
-@receiver(post_migrate)
+#@receiver(post_migrate)
 def on_post_migrate(sender, **kwargs):
     try:
-        from .models import YearInformation
         def get_semester_begin():
             try:
                 year_info = YearInformation.objects.get()
@@ -236,10 +237,9 @@ def on_post_migrate(sender, **kwargs):
 
 
 
-@receiver(post_migrate)
+#@receiver(post_migrate)
 def get_special_days_dict(sender, **kwargs):
     try:
-        from .models import SpecialDay
         special_days = SpecialDay.objects.all()
         special_days_dict = {}
         for day in special_days:
@@ -534,6 +534,7 @@ def add_course(course, table_data, sem, day = None,emplacement = None, dire = No
 
 def generate_annual_table(elements, courses):
     special_days = get_special_days_dict(None)
+    semester_begin,vacation, public_holiday = on_post_migrate(None)
 
     actual_monday = semester_begin[0]
 
