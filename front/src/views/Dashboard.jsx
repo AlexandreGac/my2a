@@ -66,6 +66,7 @@ export default function Dashboard() {
     const [parameters, setParameters] = useState({})
     const [semester, setSemester] = useState(1)
     const [displayedPdf, setDisplayedPdf] = useState(null);
+    const [isEnrolling, setIsEnrolling] = useState(false);
 
     const timetable = useMemo(() => (
         { url: "/api/student/current/timetable/" }
@@ -140,12 +141,19 @@ export default function Dashboard() {
         return mandatoryChoices.map((courses) => {
             if (!isNaN(courses[0].day)) {
                 return (
-                    <Box sx={{marginTop: "20px"}}>
+                    <Box sx={{
+                        marginTop: "20px",
+                    }}>
                         <FormLabel>{"Semaine d'ouverture (Semaine " + courses[0].day + ") :"}</FormLabel>
                             {
                                 courses.map((course) => {
                                     return (
-                                        <Box sx={{marginTop: "20px"}}>
+                                        <Box sx={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            width: "100%",
+                                            minHeight: "40px",
+                                        }}>
                                             <FormControlLabel
                                                 control={<Checkbox
                                                     defaultChecked={choosenMandatoryCourses.includes(course.name)}
@@ -153,9 +161,18 @@ export default function Dashboard() {
                                                         changeEnrollment(course.name, e.target.checked, 'mandatory');
                                                     }}
                                                 />}
-                                                disabled={!editable || !isCourseCompitable(course.name) && !choosenMandatoryCourses.includes(course.name)}
+                                                disabled={isEnrolling || !editable || !isCourseCompitable(course.name) && !choosenMandatoryCourses.includes(course.name)}
                                                 label={'[' + course.code.replaceAll(" ", "") + '] ' + course.name + ' (' + course.ects + ' ECTS)'}
                                                 value={course.id}
+                                                sx={{
+                                                    flex: 1, // Le texte occupe tout l'espace disponible
+                                                    whiteSpace: "nowrap",
+                                                    overflow: "hidden",
+                                                    textOverflow: "ellipsis",
+                                                    minHeight: "40px",
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                }}
                                             />
                                             <Button
                                             variant="outlined"
@@ -180,12 +197,19 @@ export default function Dashboard() {
             }
             else {
                 return (
-                    <Box sx={{marginTop: "20px"}}>
+                    <Box sx={{
+                        marginTop: "20px",
+                    }}>
                         <FormLabel>{"Créneau : " + courses[0].day + ", " + courses[0].start_time + " - " + courses[0].end_time}</FormLabel>
                             {
                                 courses.map((course) => {
                                     return (
-                                        <Box sx={{marginTop: "20px"}}>
+                                        <Box sx={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            width: "100%",
+                                            minHeight: "40px",
+                                        }}>
                                             <FormControlLabel
                                                 control={<Checkbox
                                                     defaultChecked={choosenMandatoryCourses.includes(course.name)}
@@ -193,23 +217,32 @@ export default function Dashboard() {
                                                         changeEnrollment(course.name, e.target.checked, 'mandatory');
                                                     }}
                                                 />}
-                                                disabled={!editable || !isCourseCompitable(course.name) && !choosenMandatoryCourses.includes(course.name)}
+                                                disabled={isEnrolling || !editable || !isCourseCompitable(course.name) && !choosenMandatoryCourses.includes(course.name)}
                                                 label={'[' + course.code.replaceAll(" ", "") + '] ' + course.name + ' (' + course.ects + ' ECTS)'}
                                                 value={course.id}
+                                                sx={{
+                                                    flex: 1, // Le texte occupe tout l'espace disponible
+                                                    whiteSpace: "nowrap",
+                                                    overflow: "hidden",
+                                                    textOverflow: "ellipsis",
+                                                    minHeight: "40px",
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                }}
                                             />
                                             <Button
-                                            variant="outlined"
-                                            size="small"
-                                            sx={{
-                                                minWidth: "70px",
-                                                textAlign: "center",
-                                            }}
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                handleDescClick(course.code);
-                                            }}
+                                                variant="outlined"
+                                                size="small"
+                                                sx={{
+                                                    minWidth: "70px",
+                                                    textAlign: "center",
+                                                }}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleDescClick(course.code);
+                                                }}
                                             >
-                                            Desc
+                                                Desc
                                             </Button>
                                         </Box>
                                     )
@@ -294,6 +327,7 @@ export default function Dashboard() {
                         changeEnrollment(course.name, e.target.checked, "mandatory");
                     }}
                     disabled={
+                        isEnrolling ||
                         !editable ||
                         (!isCourseCompitable(course.name) && !choosenMandatoryCourses.includes(course.name))
                     }
@@ -345,6 +379,7 @@ export default function Dashboard() {
                         changeEnrollment(course.name, e.target.checked, "elective");
                     }}
                     disabled={
+                        isEnrolling ||
                         !editable ||
                         (!isCourseCompitable(course.name) && !choosenElectiveCourses.includes(course.name))
                     }
@@ -435,6 +470,7 @@ export default function Dashboard() {
     }
 
     const changeEnrollment = (course, is_enrolled, category) => {
+        setIsEnrolling(true);
         fetch('/api/student/current/enroll/', {
             method: 'POST',
             credentials: "include",
@@ -502,6 +538,14 @@ export default function Dashboard() {
                 (error) => {
                     console.log(error)
                 })
+        .catch((error) => {
+            console.log(error);
+        })
+        .finally(() => {
+            setTimeout(() => {
+                setIsEnrolling(false);
+            }, 1000);
+        });
     }
 
     const validateForm = () => {
@@ -918,7 +962,7 @@ export default function Dashboard() {
                             </Box>
                             <Box sx={{ width: "100px" }}>
                                 <Document
-                                    file={displayedPdf ? displayedPdf : timetable}
+                                    file={(typeof displayedPdf === 'string' && displayedPdf.startsWith('blob:')) ? displayedPdf : timetable}
                                     onContextMenu={(e) => e.preventDefault()}
                                     className="pdf-container"
                                 >
