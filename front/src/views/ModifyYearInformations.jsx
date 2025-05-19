@@ -181,8 +181,9 @@ export default function ModifyYearInformations() {
                         <Box sx={{ backgroundColor: "white", paddingBottom: 2, borderRadius: "0 0 16px 16px" }}>
                             <SectionBar
                                 title="Modifier les informations de l'année"
-                                infos={"Modifiez les dates des événements de l'année scolaire."}
+                                infos={"Modifiez les dates des événements de l'année scolaire. Toutes les dates doivent être des Lundis sauf le jeudi de l'Ascension et correspondent toujours au premier lundi de la période concernée. Par exemple, si vous mettez le début de S3B au Lundi 6 novembre alors le dernier cours du S3A sera le vendredi 3 novembre."}
                                 showInfo={true}
+                                showExampleButton={false}
                             />
                             <div style={{ marginBottom: 40 }}></div>
                             <Grid container justifyContent="center" columnGap={4} rowGap={3}>

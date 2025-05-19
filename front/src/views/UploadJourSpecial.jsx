@@ -118,14 +118,14 @@ export default function Upload() {
                         setFailedProcessing(result.failed);
                     } else {
                         setOpenSnackbar(true);
-                        setSnackbarMessage("Import et remplacement des jours spéciaux réussi");
+                        setSnackbarMessage("Import et remplacement des journées pédagogiques réussi");
                         setSnackbarSeverity("success");
                         // Dans ce cas, result.created contient la liste des jours créés (peut être non vide)
                     }
                 } else {
                     setSuccessProcessing(false);
                     setOpenSnackbar(true);
-                    setSnackbarMessage("Erreur lors de l'import des jours spéciaux");
+                    setSnackbarMessage("Erreur lors de l'import des journées pédagogiques");
                     setSnackbarSeverity("error");
                 }
             });
@@ -135,7 +135,7 @@ export default function Upload() {
     const handleImportClick = () => {
         if (selectedFile) {
             setOpenSnackbar(true);
-            setSnackbarMessage("Import des jours spéciaux en cours...");
+            setSnackbarMessage("Import des journées pédagogiques en cours...");
             setSnackbarSeverity("info");
             sendFile();
         }
@@ -179,9 +179,9 @@ export default function Upload() {
             }}
             >
             <SectionBar
-            title="Importer des jours spéciaux"
+            title="Importer des journées pédagogiques"
             infos={
-                "Le fichier doit être au format CSV. La première ligne doit être la même que dans l'exemple à télécharger ci-dessous. Attention, le fichier doit comporter l'ensemble des jours spéciaux puisqu'il supprimera les anciens jours."
+                "Le fichier doit être au format CSV. La première ligne doit être la même que dans l'exemple à télécharger ci-dessous. Attention, le fichier doit comporter l'ensemble des journées pédagogiques puisqu'il supprimera les anciens jours."
             }
             showInfo={true}
             exampleFile="/exempleJourSpecial.csv"
@@ -233,7 +233,7 @@ export default function Upload() {
                         variant="h6"
                         component="div"
                         >
-                        Les jours spéciaux suivants ont été créés :
+                        Les journées pédagogiques suivants ont été créés :
                         </Typography>
                         <List sx={{ ml: 12 }}>
                         {createdProcessing.map((name) => (
@@ -257,7 +257,7 @@ export default function Upload() {
                         variant="h6"
                         component="div"
                         >
-                        Les jours spéciaux suivants n'ont pas été ajoutés :
+                        Les journées pédagogiques suivants n'ont pas été ajoutés :
                         </Typography>
                         <List sx={{ ml: 12 }}>
                         {failedProcessing.map(([name, err]) => (
@@ -280,7 +280,7 @@ export default function Upload() {
                         variant="h6"
                         component="div"
                         >
-                        Tous les jours spéciaux ont bien été importés !
+                        Tous les journées pédagogiques ont bien été importés !
                         </Typography>
                     )}
                     </>
@@ -290,7 +290,7 @@ export default function Upload() {
                     variant="h6"
                     component="div"
                     >
-                    Aucun jour spécial n'a été ajouté.
+                    Aucune journée pédagogique n'a été ajoutée.
                     </Typography>
                 )}
                 </>
