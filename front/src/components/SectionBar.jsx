@@ -11,10 +11,15 @@ import DownloadIcon from '@mui/icons-material/Download';
 import { styled, alpha } from '@mui/material/styles';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@mui/material';
 
-
-export default function SectionBar(props) {
+export default function SectionBar({ 
+    title,
+    infos,
+    color,
+    showInfo,
+    exampleFile,
+    showExampleButton = true // Set default value to true
+}) {
     const [openDialog, setOpenDialog] = React.useState(false);
-
 
     const handleOpenDialog = () => {
         setOpenDialog(true);
@@ -26,18 +31,18 @@ export default function SectionBar(props) {
 
     const handleDownload = () => {
         const link = document.createElement('a');
-        link.href = props.exampleFile;
+        link.href = exampleFile;
         link.download = 'exemple.csv';
         link.click();
     };
 
     return (
-        <AppBar position="static" color={props.color} elevation={0}>
+        <AppBar position="static" color={color} elevation={0}>
             <Toolbar variant="dense">
                 <Typography variant="h6" color="inherit" component="div" sx={{ flexGrow: 1 }}>
-                    {props.title}
+                    {title}
                 </Typography>
-                {props.showInfo && (
+                {showInfo && (
                     <div>
                         <IconButton size="large"
                             aria-label="account of current user"
@@ -51,11 +56,11 @@ export default function SectionBar(props) {
                             <DialogTitle>Explications</DialogTitle>
                             <DialogContent>
                                 <DialogContentText>
-                                    {props.infos}
+                                    {infos}
                                 </DialogContentText>
                             </DialogContent>
                             <DialogActions>
-                                {props.showExampleButton && (
+                                {showExampleButton && (
                                     <Button color="secondary" variant="outlined" onClick={handleDownload} startIcon={<DownloadIcon />}>Exemple.csv</Button>
                                 )}
                                 <Button color="inherit" variant="outlined" onClick={handleCloseDialog}>Fermer</Button>
