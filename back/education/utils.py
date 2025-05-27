@@ -30,7 +30,7 @@ def importCourseCSV(csv_file):
         print(row)
         try:
             code = row["code"]
-
+            print("Ok")
             # Check if course with the same code already exists
             if Course.objects.filter(code=code).exists():
                 print("------ " + f"Course with code {code} already exists")
@@ -40,14 +40,23 @@ def importCourseCSV(csv_file):
             name = row["name"]
             department_code = row[
                 "department"
-            ]  # Change variable name to department_code
+            ]
             ects = row["ects"]
             description = row["description"]
             teacher = row["teacher"]
-            semester = row["semester"]
             day = row["day"]
-            start_time = row["start_time"]
-            end_time = row["end_time"]
+
+            # Si day est un nombre, on utilise des valeurs par défaut pour semester et les horaires
+            if day.isdigit():
+                print("------ " + f"Day {day} is a number, using default values")
+                semester = "S3"  # Valeur par défaut "S3"
+                start_time = "8:00"  # Valeur par défaut "8:00"
+                end_time = "17:00"  # Valeur par défaut "17:00"
+            else:
+                print
+                semester = row["semester"]
+                start_time = row["start_time"]
+                end_time = row["end_time"]
 
             # catch : Field 'ects' expected a number but got 'a'.
             try:
@@ -77,7 +86,7 @@ def importCourseCSV(csv_file):
                 )
                 continue
 
-            if semester not in ["S3", "S4", "S3A", "S3B", "S4A", "S4B"]:
+            if semester not in ["S3", "S4", "S3A", "S3B", "S4A", "S4B","S5", "S5A", "S5B", "S6", "S6A", "S6B"]:
                 print("------ " + f"Semester {semester} does not exist")
                 error_rows.append(
                     [
@@ -96,6 +105,12 @@ def importCourseCSV(csv_file):
                 "S4": Course.Semester.S4,
                 "S4A": Course.Semester.S4A,
                 "S4B": Course.Semester.S4B,
+                "S5": Course.Semester.S5,
+                "S5A": Course.Semester.S5A,
+                "S5B": Course.Semester.S5B,
+                "S6": Course.Semester.S6,
+                "S6A": Course.Semester.S6A,
+                "S6B": Course.Semester.S6B,
             }
             semester = semester_mapping.get(semester)
 
@@ -252,6 +267,7 @@ def importStudentCSV(csv_file):
             department_code = row[
                 "department"
             ]  # Change variable name to department_code
+            year = row["year"]
 
             # Create user
             split = email.split("@")
@@ -303,6 +319,7 @@ def importStudentCSV(csv_file):
                 name=name,
                 surname=surname,
                 department=department,
+                year=year,
                 editable=True,
             )
 

@@ -13,6 +13,7 @@ class StudentSerializer(serializers.ModelSerializer):
             "surname",
             "department",
             "parcours",
+            "year",
             "editable",
             "is_admin",
             "has_logged_in",

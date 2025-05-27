@@ -220,13 +220,31 @@ class StudentViewset(ReadOnlyModelViewSet):
     def get_not_enrolled_courses(self, request):
         """
         Return the courses not enrolled by the current user.
+        Filters courses based on student's year:
+        - 2A: S3/S4 semesters
+        - 3A: S5/S6 semesters
         """
         student = get_object_or_404(Student, user=request.user)
         if student.parcours is None:
             return Response([])
-        courses = (
-            Course.objects.all().order_by("code").filter(~Q(department__code="SHS"))
+
+        # Define semester lists based on student's year
+        semesters_2A = ["S3", "S4", "S3A", "S4A", "S3B", "S4B"]
+        semesters_3A = ["S5", "S6", "S5A", "S6A", "S5B", "S6B"]
+        
+        # Filter courses
+        courses = Course.objects.all().order_by("code").filter(
+            ~Q(department__code="SHS")
+        ).filter(
+            ~Q(day__iregex=r'^\d+$')
         )
+
+        # Add semester filter based on student's year
+        if student.year == "2A":
+            courses = courses.filter(semester__in=semesters_2A)
+        elif student.year == "3A":
+            courses = courses.filter(semester__in=semesters_3A)
+
         serializer = CourseSerializer(courses, many=True)
         return Response(serializer.data)
 

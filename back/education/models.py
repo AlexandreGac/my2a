@@ -66,11 +66,17 @@ class Course(models.Model):
     class Semester(models.TextChoices):
         S3 = "S3"
         S4 = "S4"
+        S5 = "S5"
+        S6 = "S6"
         # Ajoute les demi-semestres
         S3A = "S3A"
         S3B = "S3B"
         S4A = "S4A"
         S4B = "S4B"
+        S5A = "S5A"
+        S5B = "S5B"
+        S6A = "S6A"
+        S6B = "S6B"
 
     semester = models.CharField(max_length=10, choices=Semester.choices)
 
@@ -140,6 +146,11 @@ class Student(models.Model):
     )
     editable = models.BooleanField()
     comment = models.TextField(null=True, blank=True)
+    class Year(models.TextChoices):
+        A2 = "2A"
+        A3 = "3A"
+
+    year = models.CharField(max_length=10, choices=Year.choices, default=Year.A2)
 
     def mandatory_courses(self):
         """Return the list of mandatory courses for the student."""
@@ -237,7 +248,7 @@ class Student(models.Model):
             }
             for course in self.parcours.courses_mandatory.all()
         ]
-        return generate_pdf_from_courses(self.name, courses, intro)
+        return generate_pdf_from_courses(self.name, courses, intro, self.year)
 
 
 class Enrollment(models.Model):

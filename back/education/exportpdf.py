@@ -53,7 +53,13 @@ semester_to_int = {
     "S4A" : [2],
     "S4B" : [3],
     "S3" : [0,1],
-    "S4" : [2,3]
+    "S4" : [2,3],
+    "S5A" : [0],
+    "S5B" : [1],
+    "S5" : [0,1],
+    "S6A" : [2],
+    "S6B" : [3],
+    "S6" : [2,3],
 }
 
 
@@ -294,7 +300,7 @@ def date_to_hour_id(date: datetime.time):
     return str(date.hour) + ("h" + str(date.minute)).replace("h0", "h00")
 
 
-def generate_pdf_from_courses(name, courses, intro):
+def generate_pdf_from_courses(name, courses, intro,year_student="2A"):
     """
     Generate a pdf from a list of courses.
     """
@@ -308,10 +314,11 @@ def generate_pdf_from_courses(name, courses, intro):
 
     elements.append(title)
     generate_table(elements, courses, "S3")
-    elements.append(PageBreak())
-    generate_table(elements, courses, "S4")
-    elements.append(PageBreak())
-    generate_annual_table(elements, courses)
+    if year_student == "2A":
+        elements.append(PageBreak())
+        generate_table(elements, courses, "S4")
+        elements.append(PageBreak())
+        generate_annual_table(elements, courses)
     doc.build(elements)
     pdf = buffer.getvalue()
     buffer.close()

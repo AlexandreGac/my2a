@@ -67,6 +67,7 @@ export default function Dashboard() {
     const [semester, setSemester] = useState(1)
     const [displayedPdf, setDisplayedPdf] = useState(null);
     const [isEnrolling, setIsEnrolling] = useState(false);
+    const [yearStudy, setYearStudy] = useState(null);
 
     const timetable = useMemo(() => (
         { url: "/api/student/current/timetable/" }
@@ -254,6 +255,29 @@ export default function Dashboard() {
         })
     }
 
+    const getYearStudy = () => {
+        if (yearStudy == null) {
+            fetch('api/student/current/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+                .then((res) => {
+                    if (!res.ok) {
+                        throw new Error(`HTTP error! status: ${res.status}`);
+                    }
+                    return res.json();
+                })
+                .then((data) => {
+                    setYearStudy(data.year);
+                })
+                .catch((error) => {
+                    console.error("Erreur lors du chargement des informations de l'étudiant :", error);
+                });
+        }
+    };
 
     const handleDescClick = (courseCode) => {
         const cleanedCode = courseCode.trim();
@@ -622,6 +646,7 @@ export default function Dashboard() {
                             setEditable(result.editable)
                             if (result.department != null) {
                                 setDepartement(result.department)
+                                setYearStudy(result.year)
                                 setOpened('parcours')
                                 setProgress(34)
                             }
@@ -754,6 +779,10 @@ export default function Dashboard() {
 
         }
     }, [parcours]);
+
+    useEffect(() => {
+        getYearStudy();
+    }, [yearStudy]);
 
     useEffect(() => {
         fetch('/api/student/current/courses/available', {
@@ -942,18 +971,22 @@ export default function Dashboard() {
                                 }}>
                                     Semestre 1
                                 </Button>
-                                <Button variant="contained" sx={{marginRight: "10px"}} onClick={() => {
-                                    setDisplayedPdf(timetable);
-                                    setSemester(2);
-                                }}>
-                                    Semestre 2
-                                </Button>
-                                <Button variant="contained" sx={{marginRight: "10px"}} onClick={() => {
-                                    setDisplayedPdf(timetable);
-                                    setSemester(3);
-                                }}>
-                                    Année Complète
-                                </Button>
+                                {yearStudy === "2A" && (
+                                    <Button variant="contained" sx={{marginRight: "10px"}} onClick={() => {
+                                        setDisplayedPdf(timetable);
+                                        setSemester(2);
+                                    }}>
+                                        Semestre 2
+                                    </Button>
+                                )}
+                                {yearStudy === "2A" && (
+                                    <Button variant="contained" sx={{marginRight: "10px"}} onClick={() => {
+                                        setDisplayedPdf(timetable);
+                                        setSemester(3);
+                                    }}>
+                                        Année complète
+                                    </Button>
+                                )}
                                 <Button variant="contained" sx={{marginRight: "10px"}} onClick={() => {
                                     window.open("/api/student/current/timetable/")
                                 }}>

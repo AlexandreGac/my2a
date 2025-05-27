@@ -181,7 +181,7 @@ export default function Upload() {
             <SectionBar
             title="Importer des journées pédagogiques"
             infos={
-                "Le fichier doit être au format CSV. La première ligne doit être la même que dans l'exemple à télécharger ci-dessous. Attention, le fichier doit comporter l'ensemble des journées pédagogiques puisqu'il supprimera les anciens jours."
+                "Le fichier doit être au format CSV. La première ligne doit être la même que dans l'exemple à télécharger ci-dessous. Attention, le fichier doit comporter l'ensemble des journées pédagogiques puisqu'il supprimera les anciens jours, de plus toutes les journées pédagogiques doivent avoir un nom différents."
             }
             showInfo={true}
             exampleFile="/exempleJourSpecial.csv"
