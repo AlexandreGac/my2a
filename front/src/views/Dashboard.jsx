@@ -711,7 +711,7 @@ export default function Dashboard() {
                 .then((res) => res.json())
                 .then((result) => {
                     let choices = Array
-                        .from(Map.groupBy(result, (course) => course.start_time + course.day).values())
+                        .from(Map.groupBy(result, (course) => course.start_time + course.day + course.semester + course.end_time).values())
                         .filter((courses) => courses.length > 1);
                     let flat_choices = choices.flat();
                     let mandatory = result.filter((course) => !flat_choices.includes(course));

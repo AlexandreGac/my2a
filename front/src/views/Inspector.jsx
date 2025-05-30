@@ -14,6 +14,7 @@ import IconButton from "@mui/material/IconButton";
 import DownloadIcon from '@mui/icons-material/Download';
 import EditIcon from "@mui/icons-material/Edit";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search'
@@ -89,6 +90,10 @@ export default function Inspector() {
     const [isAdmin, setIsAdmin] = useState(false)
     const [departments, setDepartments] = useState([])
     const [currentDepartment, setCurrentDepartment] = useState(null)
+
+    // State for the email sending status dialog
+    const [emailStatusDialogOpen, setEmailStatusDialogOpen] = useState(false);
+    const [emailStatusInfo, setEmailStatusInfo] = useState({ message: "", details: null });
 
     const handleClose = () => {
         setOpen(false);
@@ -212,6 +217,50 @@ export default function Inspector() {
         })
     }
 
+    const handleSendAccountCreationEmails = () => {
+        setEmailStatusInfo({ message: "Envoi en cours...", details: null });
+        setEmailStatusDialogOpen(true);
+
+        fetch("/api/admin/send-bulk-account-creation-emails/", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookies.get('csrftoken'),
+            },
+        })
+        .then((res) => {
+            if (!res.ok) {
+                // Attempt to parse JSON error from backend
+                return res.json().then(errorData => {
+                    const backendError = errorData.detail || errorData.error || `Erreur ${res.status}`;
+                    throw new Error(backendError);
+                }).catch(() => {
+                    // If parsing JSON fails, or res.json() itself fails
+                    throw new Error(`Erreur ${res.status}: ${res.statusText}`);
+                });
+            }
+            return res.json(); // If res.ok, parse the successful JSON response
+        })
+        .then((result) => {
+            let statusMsg = result.message || "Opération terminée.";
+            if (result.sent_count !== undefined) { // Check if sent_count exists
+                statusMsg += ` ${result.sent_count} email(s) déclenché(s).`;
+            }
+            if (result.skipped_enpc_domain > 0) {
+                statusMsg += ` ${result.skipped_enpc_domain} ignoré(s) (domaine @eleves.enpc.fr).`;
+            }
+            setEmailStatusInfo({ message: statusMsg, details: result });
+        })
+        .catch((error) => {
+            console.error("Erreur lors de l'envoi des emails de création de compte:", error);
+            setEmailStatusInfo({
+                message: `Erreur: ${error.message || "Impossible d'envoyer les emails."}`,
+                details: { errors: [{ error: error.message || "Erreur inconnue" }] } // Structure for error display
+            });
+        });
+    };
+
     return (
         <div>
 
@@ -258,6 +307,7 @@ export default function Inspector() {
                             <Button sx={{ marginBottom: 2, marginRight: 2}} variant="outlined" onClick={() => { window.location = "/inspector/yearinformations" }} startIcon={<EditIcon />} >Modifier les informations de l'année</Button>
                             <Button sx={{ marginBottom: 2, marginRight: 2}} variant="outlined" onClick={() => { window.location = "/inspector/parcours" }} startIcon={<RemoveRedEyeIcon />} >Modifier les parcours</Button>
                             <Button sx={{ marginBottom: 2, marginRight: 2}} variant="outlined" onClick={() => { window.location = "/inspector/courses" }} startIcon={<RemoveRedEyeIcon />} >Voir la liste des cours</Button>
+                            <Button sx={{ marginBottom: 2, marginRight: 2}} variant="outlined" onClick={handleSendAccountCreationEmails} startIcon={<MailOutlineIcon />} >Envoyer Emails Création Compte</Button>
                             <List dense sx={{ bgcolor: 'background.paper' }}>
                                 {students.map((value) => {
                                     const labelId = `checkbox-list-secondary-label-${value}`;
@@ -366,6 +416,40 @@ export default function Inspector() {
                         <DialogActions>
                             <Button onClick={() => { changeStudentStatus(currentStudent.id) }}>Confirmer</Button>
                             <Button onClick={() => { setEditOpened(false) }}>Annuler</Button>
+                        </DialogActions>
+                    </Dialog>
+
+                    <Dialog
+                        open={emailStatusDialogOpen}
+                        onClose={() => setEmailStatusDialogOpen(false)}
+                        aria-labelledby="email-status-dialog-title"
+                        aria-describedby="email-status-dialog-description"
+                    >
+                        <DialogTitle id="email-status-dialog-title">Statut d'envoi des emails de création de compte</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText id="email-status-dialog-main-message">
+                                {emailStatusInfo.message}
+                            </DialogContentText>
+                            {emailStatusInfo.details && emailStatusInfo.details.errors && emailStatusInfo.details.errors.length > 0 && (
+                                <>
+                                    <DialogContentText sx={{ marginTop: 2, fontWeight: 'bold' }}>
+                                        Erreurs détaillées:
+                                    </DialogContentText>
+                                    <List dense sx={{ maxHeight: 200, overflow: 'auto' }}>
+                                        {emailStatusInfo.details.errors.map((error, index) => (
+                                            <ListItem key={index}>
+                                                <ListItemText
+                                                    primary={error.student_name ? `Étudiant: ${error.student_name} (ID: ${error.student_id})` : `Étudiant ID: ${error.student_id || 'N/A'}`}
+                                                    secondary={`Erreur: ${error.error}${error.user_email ? ' - Email: ' + error.user_email : ''}`}
+                                                />
+                                            </ListItem>
+                                        ))}
+                                    </List>
+                                </>
+                            )}
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={() => setEmailStatusDialogOpen(false)}>Fermer</Button>
                         </DialogActions>
                     </Dialog>
                 </div>
