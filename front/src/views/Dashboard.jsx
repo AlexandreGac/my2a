@@ -823,7 +823,7 @@ export default function Dashboard() {
                         <Grid item md={7} xs={11} sm={11}>
                             <CustomProgressBar progress={progress} />
                         </Grid>
-                        {getDepartmentCode(departement) == 'GCC' && (
+                        {getDepartmentCode(departement) == 'GCC3' && (
                             <Grid md={1}>
                                 {/*<Typography sx={{ textAlign: "center", fontWeight: "bold" }}>ECTS</Typography>*/}
                                 <Box sx={{ position: 'relative', display: 'inline-flex', marginBottom: 4 }}>
@@ -844,7 +844,7 @@ export default function Dashboard() {
                                 </Box>
                             </Grid>
                         )}
-                        {getDepartmentCode(departement) == 'IMI' && (
+                        {getDepartmentCode(departement) !== 'GCC3' && (
                             <Grid md={1}>
                                 <Typography sx={{ textAlign: "center", fontWeight: "bold" }}>Total ECTS</Typography>
                                 <Box sx={{ position: 'relative', display: 'inline-flex', marginBottom: 4 }}>
@@ -1024,7 +1024,7 @@ export default function Dashboard() {
                                 {getDepartmentEndComment(departement)}
                             </DialogContentText>
                             <DialogContentText sx={{ color: "red", fontWeight: "bold" }}>
-                                {((getDepartmentCode(departement) === 'GCC' && student.ects < 48.5) || (getDepartmentCode(departement) === 'IMI' && student.ects < 60)) && "Attention: vous n'avez pas choisi suffisamment d'ECTS de cours."}
+                                {((getDepartmentCode(departement) !== 'GCC3' && student.ects < 60.0) || (getDepartmentCode(departement) === 'GCC3' && student.ects < 30.0)) && "Attention: vous n'avez pas choisi suffisamment d'ECTS de cours."}
                             </DialogContentText>
                             <DialogContentText sx={{ color: "red", fontWeight: "bold" }}>
                                 {hasInvalidMandatoryCourses() && "Vous devez choisir au moins 2 cours obligatoires sur liste."}
