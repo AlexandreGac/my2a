@@ -33,7 +33,7 @@ from .serializers import (
     StudentSerializer,
     ParameterSerializer,
 )
-from .utils import course_list_to_string, importCourseCSV, importStudentCSV, importSpecialDayCSV
+from .utils import course_list_to_string, importCourseCSV, importStudentCSV, importSpecialDayCSV, send_account_created_mails
 
 
 def index(request):
@@ -810,3 +810,44 @@ class ModifyYearInformations(View):
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
 
+
+class SendBulkAccountCreationEmailView(APIView):
+    """
+    API endpoint for administrators to trigger the sending of account creation emails
+    to students who are marked as 'editable' and haven't received one or for whom
+    the previous attempt failed.
+    """
+    permission_classes = [IsAdminUser]  # Ensure only admin users can access this
+
+    def post(self, request, *args, **kwargs):
+        """
+        Handles the POST request to send out account creation emails.
+        """
+        try:
+            result = send_account_created_mails()  # Call the utility function
+
+            response_data = {
+                "sent_count": result.get("sent_count", 0),
+                "skipped_enpc_domain": result.get("skipped_enpc_domain", 0),
+                "errors": result.get("errors", [])
+            }
+
+            if "message" in result:  # For specific messages like "No students found"
+                response_data["message"] = result["message"]
+            elif result.get("errors"):
+                response_data["message"] = "Account creation email process completed with some errors."
+                return Response(response_data, status=status.HTTP_207_MULTI_STATUS)
+            else:
+                response_data["message"] = "Account creation emails triggered successfully."
+
+            return Response(response_data, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            # General error handling for the API endpoint itself
+            # import logging
+            # logger = logging.getLogger(__name__)
+            # logger.error(f"Error in SendBulkAccountCreationEmailView: {e}", exc_info=True)
+            return Response(
+                {"error": "An unexpected error occurred while trying to send emails.", "detail": str(e)},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )

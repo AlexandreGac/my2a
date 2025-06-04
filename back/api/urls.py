@@ -31,6 +31,7 @@ from education.views import (
     ViewContractPDF,
     ParameterView,
     ModifyYearInformations,
+    SendBulkAccountCreationEmailView
 )
 from rest_framework import routers
 
@@ -57,5 +58,5 @@ urlpatterns = [
     path("students/export", ExportStudentsView.as_view(), name="export_students"),
     path("parameters", ParameterView.as_view(), name="parameters"),
     path("yearinformations", ModifyYearInformations.as_view(), name="modify_year_informations"),
-
+    path('admin/send-bulk-account-creation-emails/', SendBulkAccountCreationEmailView.as_view(), name='send_bulk_account_creation_emails'),
 ]

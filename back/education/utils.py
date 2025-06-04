@@ -288,9 +288,9 @@ def importStudentCSV(csv_file):
                 user.save()
                 print("------ " + f"User {user} created")
                 # Send email
-                if email.split("@")[1] != "eleves.enpc.fr":
+                """if email.split("@")[1] != "eleves.enpc.fr":
                     print("------ " + f"Sending email to {email}")
-                    send_account_creation_mail.delay(email, name, surname, password)
+                    send_account_creation_mail.delay(email, name, surname, password)"""
 
             try:
                 department = Department.objects.get(code=department_code)
@@ -341,3 +341,91 @@ def course_list_to_string(course_list):
     if len(text) > 2:
         text = text[:-2]
     return text
+
+
+def send_account_created_mails():
+    """
+       Identifies students who have accounts and are 'editable', implying they are new
+       or pending setup, and triggers sending them an account creation email.
+       For non-'@eleves.enpc.fr' emails, it generates a new password and includes it.
+       Returns a summary of actions: count of emails sent, skipped, and any errors.
+    """
+
+    students_to_potentially_email = Student.objects.filter(user__isnull=False, editable=True)
+
+    sent_count = 0
+    skipped_enpc_domain = 0  # Count students skipped due to @eleves.enpc.fr domain
+    errors = []
+
+    if not students_to_potentially_email.exists():
+        return {
+            "sent_count": 0,
+            "skipped_enpc_domain": 0,
+            "errors": [],
+            "message": "No students found matching criteria (user exists and student is editable)."
+        }
+
+    for student in students_to_potentially_email:
+        user = None  # Initialize user to None for robust error reporting
+        try:
+            user = student.user
+            if not user.email:  # Should ideally not happen if email is part of user creation
+                errors.append({
+                    "student_id": student.id,
+                    "student_name": f"{student.name} {student.surname}",
+                    "error": "User account exists but has no email address."
+                })
+                continue
+
+            # Check email domain condition from importStudentCSV's commented email section
+            email_parts = user.email.split("@")
+            if len(email_parts) == 2 and email_parts[1] == "eleves.enpc.fr":
+                # Consistent with importStudentCSV, skip sending this specific email
+                # to @eleves.enpc.fr addresses.
+                # Their passwords, if set by importStudentCSV, remain untouched by this function.
+                skipped_enpc_domain += 1
+                continue
+
+                # For other email domains, generate a new random password.
+            # This overwrites any previous password for the user.
+            # Necessary because the original plaintext password (if any) is not stored.
+            new_password = User.objects.make_random_password(length=12)  # Using a reasonable length
+            user.set_password(new_password)
+            user.save()  # Save the user with the new password hash
+
+            # Send the email with the new password using the imported Celery task.
+            # Assumes send_account_creation_mail is a Celery task and handles .delay()
+            send_account_creation_mail.delay(
+                user.email,  # email (positional argument 1)
+                student.name,  # name (positional argument 2)
+                student.surname,  # surname (positional argument 3)
+                new_password  # password (positional argument 4)
+            )
+
+            sent_count += 1
+
+            # OPTIONAL/RECOMMENDED IMPROVEMENT:
+            # To prevent re-sending emails to the same students if this function is called again,
+            # you would ideally set a flag on the Student model here. E.g.:
+            # student.account_creation_email_sent = True
+            # student.save(update_fields=['account_creation_email_sent'])
+            # This requires adding `account_creation_email_sent = models.BooleanField(default=False)`
+            # to the Student model in `models.py`.
+
+        except Exception as e:
+            # Log full error for server-side debugging if a logger is configured
+            # import logging
+            # logger = logging.getLogger(__name__)
+            # logger.error(f"Error processing student {student.id} ({student.name} {student.surname}): {e}", exc_info=True)
+            errors.append({
+                "student_id": student.id,
+                "student_name": f"{student.name} {student.surname}",
+                "user_email": user.email if user and hasattr(user, 'email') else "N/A",
+                "error": str(e)
+            })
+
+    return {
+        "sent_count": sent_count,
+        "skipped_enpc_domain": skipped_enpc_domain,
+        "errors": errors
+    }
