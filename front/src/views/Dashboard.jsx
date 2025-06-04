@@ -84,15 +84,17 @@ export default function Dashboard() {
     }
 
     const hasInvalidMandatoryChoices = () => {
-        for (const courses of mandatoryChoices) {
-            let count = 0;
-            for (const course of courses) {
-                if (choosenMandatoryCourses.includes(course.name)) {
-                    count += 1;
+        if (getDepartmentCode(departement) === 'GCC3') {
+            for (const courses of mandatoryChoices) {
+                let count = 0;
+                for (const course of courses) {
+                    if (choosenMandatoryCourses.includes(course.name)) {
+                        count += 1;
+                    }
                 }
-            }
-            if (count !== 1) {
-                return true;
+                if (count !== 1) {
+                    return true;
+                }
             }
         }
         return false;
@@ -710,13 +712,19 @@ export default function Dashboard() {
             })
                 .then((res) => res.json())
                 .then((result) => {
-                    let choices = Array
-                        .from(Map.groupBy(result, (course) => course.start_time + course.day + course.semester + course.end_time).values())
-                        .filter((courses) => courses.length > 1);
-                    let flat_choices = choices.flat();
-                    let mandatory = result.filter((course) => !flat_choices.includes(course));
-                    setMandatoryChoices(choices);
-                    setMandatoryCourses(mandatory);
+                    if (getDepartmentCode(departement) === 'GCC3') {
+                        let choices = Array
+                            .from(Map.groupBy(result, (course) => course.start_time + course.day + course.semester + course.end_time).values())
+                            .filter((courses) => courses.length > 1);
+                        let flat_choices = choices.flat();
+                        let mandatory = result.filter((course) => !flat_choices.includes(course));
+                        setMandatoryChoices(choices);
+                        setMandatoryCourses(mandatory);
+                    }
+                    else {
+                        setMandatoryChoices([]);
+                        setMandatoryCourses(result);
+                    }
                 },
                     (error) => {
                         console.log(error);
@@ -923,7 +931,8 @@ export default function Dashboard() {
                                     </AccordionDetails>
                                 </Accordion>
                             </Box>
-                            <Box sx={{marginTop: "20px"}} >
+                            {getDepartmentCode(departement) == 'GCC3' && (
+                                <Box sx={{marginTop: "20px"}} >
                                 <Accordion disabled={progress < 66} expanded={opened === 'creneaux'} onChange={(e, expanded) => {
                                     if (expanded) handleChange('creneaux')
                                 }}>
@@ -935,7 +944,8 @@ export default function Dashboard() {
                                         {getMandatoryChoices()}
                                     </AccordionDetails>
                                 </Accordion>
-                            </Box>
+                                </Box>
+                            )}
                             <Box sx={{ marginBottom: "50px", marginTop: "20px" }} >
                                 <Accordion disabled={progress < 66} expanded={opened === 'electifs'} onChange={(e, expanded) => {
                                     if (expanded) handleChange('electifs')
