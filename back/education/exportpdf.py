@@ -1,8 +1,10 @@
 import datetime
+from datetime import time
 from io import BytesIO
 import random as rd
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import landscape, letter
+from reportlab.lib.units import cm
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import (
     PageBreak,
@@ -92,6 +94,8 @@ hour_to_line = {
     "19h30": 24,
     "20h00": 25,
 }
+
+
 
 background_color = {
     0 : colors.HexColor("#c9ff96"),
@@ -325,180 +329,154 @@ def generate_pdf_from_courses(name, courses, intro,year_student="2A"):
     return pdf
 
 
-def generate_table(elements, courses, semester):
 
+
+
+
+
+
+
+TIME_BLOCKS = [
+    {"start": time(8, 30), "end": time(11, 30), "rows": 6},
+    {"start": time(11, 30), "end": time(12, 15), "rows": 2},
+    {"start": time(12, 15), "end": time(15, 15), "rows": 6},
+    {"start": time(15, 15), "end": time(15, 30), "rows": 2},
+    {"start": time(15, 30), "end": time(18, 30), "rows": 6},
+    {"start": time(18, 30), "end": time(21, 30), "rows": 4},
+]
+
+
+
+def find_course_block_and_rows_final(course_start_time, blocks):
+    current_row_index = 1
+    for block in blocks:
+        start_line = current_row_index
+        end_line = start_line + block["rows"] - 1
+        if block["start"] <= course_start_time < block["end"]:
+            return {
+                "start_line": start_line,
+                "end_line": end_line,
+                "rows_in_block": block["rows"]
+            }
+        current_row_index += block["rows"]
+    return None
+
+def generate_table(elements, courses, semester):
     colors_list = [
         colors.lightcoral,
         colors.lightgreen,
         colors.lightcyan,
     ]
+    
     table_data = [
         [" ", "Lundi", "", "Mardi", "", "Mercredi", "", "Jeudi", "", "Vendredi", ""],
     ]
 
-    for hour in range(8, 21):  # Hours from 8 to 20 (inclusive)
-        table_data.append([f"{hour}h", "", "", "", "", "", "", "", "", "", ""])
-        if hour < 20: # Add half hour rows until 19:30
-            table_data.append([f"{hour}h30", "", "", "", "", "", "", "", "", "", ""])
-    table_data.append(["20h", "", "", "", "", "", "", "", "", "", ""])
-
     style = TableStyle(
         [
             ("FONTNAME", (0, 0), (-1, -1), "Times-Bold"),
-            ("BACKGROUND", (0, 0), (-1, 0), colors.lightgrey),
-            ("BACKGROUND", (0, 0), (0, -1), colors.lightgrey),
             ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+            ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
             ("BOX", (0, 0), (-1, -1), 1, colors.black),
-            ("LINEABOVE", (0, 0), (-1, 0), 1, colors.black),
-            ("LINEABOVE", (0, 0), (0, -1), 1, colors.black),
-            ("LINEBELOW", (0, 0), (-1, 0), 1, colors.black),
-            ("LINEBELOW", (0, 0), (0, -1), 1, colors.black),
+            ("BACKGROUND", (0, 0), (-1, 0), colors.lightgrey),
+            ("BACKGROUND", (0, 1), (0, -1), colors.lightgrey),
             ("LINEAFTER", (0, 0), (0, -1), 1, colors.black),
-            ("LINEAFTER", (0, 0), (-1, 0), 1, colors.black),
-            ("BACKGROUND", (1, 1), (-1, -1), colors.whitesmoke),
         ]
     )
 
-    for i in range(1,5):
-        style.add("LINEAFTER", (2*i, 0), (2*i, -1), 1, colors.black)
+    current_row = 1
+    for block in TIME_BLOCKS:
+        start_line = current_row
+        end_line = start_line + block["rows"] - 1
+
+        for _ in range(block["rows"]):
+            table_data.append(["", "", "", "", "", "", "", "", "", "", ""])
+
+        style.add("SPAN", (0, start_line), (0, end_line))
+        style.add("LINEABOVE", (0, start_line), (-1, start_line), 1.5, colors.darkgrey)
+        
+        # <-- MODIFICATION 1: Ajout de la logique pour les blocs LUNCH et BREAK
+        # Bloc pour le repas
+        if block['start'] == time(11, 30):
+            style.add('BACKGROUND', (1, start_line), (-1, end_line), colors.black)
+            style.add('TEXTCOLOR', (1, start_line), (-1, end_line), colors.white)
+            wed_col = table_data[0].index('Mercredi')
+            style.add('SPAN', (wed_col, start_line), (wed_col + 1, end_line))
+            table_data[start_line][wed_col] = "LUNCH"
+        # Bloc pour la pause
+        elif block['start'] == time(15, 15):
+            style.add('BACKGROUND', (1, start_line), (-1, end_line), colors.black)
+            style.add('TEXTCOLOR', (1, start_line), (-1, end_line), colors.white)
+            wed_col = table_data[0].index('Mercredi')
+            style.add('SPAN', (wed_col, start_line), (wed_col + 1, end_line))
+            table_data[start_line][wed_col] = "BREAK"
+        # Bloc normal
+        else:
+            start_str = block["start"].strftime("%Hh%M").replace("00", "h")
+            end_str = block["end"].strftime("%Hh%M").replace("00", "h")
+            table_data[start_line][0] = f"{start_str}\n-\n{end_str}"
+        
+        current_row = end_line + 1
+
+    for i in range(1, 6):
+        style.add("LINEAFTER", (2 * i, 0), (2 * i, -1), 1, colors.black)
 
     for course in courses:
-        if not (course["semester"][:2] == semester) or course["day"] not in table_data[0]:
+        if not (course["semester"][:2] == semester):
             continue
-        start_line = hour_to_line[date_to_hour_id(round_time(course["start_time"]))]
-        end_line = hour_to_line[date_to_hour_id(ceil_time(course["end_time"]))]
+        
+        course_start_time = course["start_time"]
+        block_info = find_course_block_and_rows_final(course_start_time, TIME_BLOCKS)
+        
+        if not block_info or course["day"] not in table_data[0]:
+            continue
 
-        if course["semester"][2:] == "B":
-            column = table_data[0].index(course["day"]) + 1
-            style.add(
-                "LINEAFTER",
-                (column - 1, start_line),
-                (column - 1, end_line),
-                1,
-                colors.black,
-            )
-            table_data[start_line][column] = course["semester"]
-            style.add(
-                "LINEABOVE",
-                (column, start_line + 1),
-                (column, start_line + 1),
-                1,
-                colors.black,
-            )
+        start_line = block_info["start_line"]
+        end_line = block_info["end_line"]
+        
+        column = -1
+        if course["semester"].endswith("A"): column = table_data[0].index(course["day"])
+        elif course["semester"].endswith("B"): column = table_data[0].index(course["day"]) + 1
+        else: column = table_data[0].index(course["day"])
+
+        if course["semester"].endswith("A") or course["semester"].endswith("B"):
+            style.add("SPAN", (column, start_line), (column, end_line))
         else:
-            column = table_data[0].index(course["day"])
-            if course["semester"][2:] == "A":
-                style.add(
-                    "LINEAFTER",
-                    (column, start_line),
-                    (column, end_line),
-                    1,
-                    colors.black,
-                )
+            style.add("SPAN", (column, start_line), (column + 1, end_line))
+        
+        # <-- MODIFICATION 2: Utilisation de votre suggestion pour le texte du semestre
+        course_text = f'{course["code"]}\n{course["ects"]} ECTS'
+        if len(course.get("semester", "")) == 3:
+            course_text += f"\n({course['semester']})"
+        
+        table_data[start_line][column] = course_text
+        
+        background_color = colors_list[course['color'] % len(colors_list)]
+        if course["semester"].endswith("A") or course["semester"].endswith("B"):
+            style.add("BACKGROUND", (column, start_line), (column, end_line), background_color)
+            style.add("BOX", (column, start_line), (column, end_line), 1, colors.black)
+        else:
+            style.add("BACKGROUND", (column, start_line), (column + 1, end_line), background_color)
+            style.add("BOX", (column, start_line), (column + 1, end_line), 1, colors.black)
 
-        table_data[start_line][column] = course["semester"]
-        style.add(
-            "LINEABOVE",
-            (column, start_line + 1),
-            (column, start_line + 1),
-            1,
-            colors.black,
-        )
-        style.add(
-            "LINEAFTER",
-            (table_data[0].index(course["day"]) - 1, start_line),
-            (table_data[0].index(course["day"]) - 1, end_line),
-            1,
-            colors.black,
-        )
-
-        style.add(
-            "LINEAFTER",
-            (table_data[0].index(course["day"]) + 1, start_line),
-            (table_data[0].index(course["day"]) + 1, end_line),
-            1,
-            colors.black,
-        )
-        style.add(
-            "LINEBELOW",
-            (column, start_line - 1),
-            (column , start_line - 1),
-            1,
-            colors.black,
-        )
-        style.add(
-            "LINEABOVE",
-            (column, end_line + 1),
-            (column, end_line + 1),
-            1,
-            colors.black,
-        )
-
-        middle_line = (start_line + end_line) // 2
-        if course["semester"][2:] == "":
-            table_data[middle_line][column] = center_text(course["code"])
-            table_data[middle_line + 1][column] = center_text(str(course["ects"]) + " ECTS")
-            table_data[start_line][column] = center_text(course["semester"])
-            style.add(
-                "ALIGN",
-                (column, start_line),
-                (column + 1, end_line),
-                "LEFT",
-            )
-
-            style.add(
-                "LINEBELOW",
-                (column+1, start_line - 1),
-                (column+1 , start_line - 1),
-                1,
-                colors.black,
-            )
-            style.add(
-                "LINEABOVE",
-                (column+1, end_line + 1),
-                (column+1, end_line + 1),
-                1,
-                colors.black,
-            )
-            style.add(
-                "LINEABOVE",
-                (column+1, start_line + 1),
-                (column+1, start_line + 1),
-                1,
-                colors.black,
-            )
-            for line in range(start_line, end_line + 1):
-                    style.add(
-                        "BACKGROUND",
-                        (column, line),
-                        (column, line),
-                        colors_list[course['color'] % len(colors_list)],
-                    )
-                    style.add(
-                        "BACKGROUND",
-                        (column + 1, line),
-                        (column + 1, line),
-                        colors_list[course['color'] % len(colors_list)],
-                    )
-        else :
-            table_data[middle_line][column] = course["code"]
-            table_data[middle_line + 1][column] = (
-                str(course["ects"]) + " ECTS"
-            )
-
-            for line in range(start_line, end_line + 1):
-                style.add(
-                    "BACKGROUND",
-                    (column, line),
-                    (column, line),
-                    colors_list[course['color'] % len(colors_list)],
-                )
-
-    table = Table(table_data, colWidths=50, rowHeights=15)
-
+    col_widths = [1.5*cm] + [1.8*cm] * 10
+    table = Table(table_data, colWidths=col_widths, rowHeights=None)
     table.setStyle(style)
-
+    
     elements.append(table)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def add_course(course, table_data, sem, day = None,emplacement = None, dire = None):
     if not course["code"] in code_to_hour_line:
