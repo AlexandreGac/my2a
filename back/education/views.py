@@ -9,6 +9,7 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import auth
+from django.contrib.auth.models import User
 from django.db.models import Q
 from reportlab.lib.units import cm
 from reportlab.pdfgen import canvas
@@ -47,9 +48,19 @@ def auth_view(request):
         elif request.user.is_authenticated:
             return redirect("/")
         return render(request, "registration/login.html")
-    username = request.POST.get("mail", "")
+    email = request.POST.get("mail", "")
     password = request.POST.get("password", "")
-    user = auth.authenticate(username=username, password=password)
+
+    try:
+        user_obj = User.objects.get(email=email)
+        username = user_obj.username
+    except User.DoesNotExist:
+        username = None
+
+    if username:
+        user = auth.authenticate(username=username, password=password)
+    else:
+        user = None
 
     if user is not None:
         if user.is_active:
