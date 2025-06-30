@@ -336,18 +336,26 @@ def generate_pdf_from_courses(name, courses, intro,year_student="2A"):
 
 
 
+# Assurez-vous d'importer les bibliothèques nécessaires
+from reportlab.lib import colors
+from reportlab.platypus import Table, TableStyle
+from reportlab.lib.units import cm
+from datetime import time
+
+# Votre structure de blocs de temps reste inchangée
 TIME_BLOCKS = [
     {"start": time(8, 30), "end": time(11, 30), "rows": 6},
-    {"start": time(11, 30), "end": time(12, 15), "rows": 2},
+    {"start": time(11, 30), "end": time(12, 15), "rows": 2}, # LUNCH
     {"start": time(12, 15), "end": time(15, 15), "rows": 6},
-    {"start": time(15, 15), "end": time(15, 30), "rows": 2},
+    {"start": time(15, 15), "end": time(15, 30), "rows": 2}, # BREAK
     {"start": time(15, 30), "end": time(18, 30), "rows": 6},
     {"start": time(18, 30), "end": time(21, 30), "rows": 4},
 ]
 
-
-
-def find_course_block_and_rows_final(course_start_time, blocks):
+# --- ANCIENNE FONCTION (RENOMMÉE POUR PLUS DE CLARTÉ) ---
+# Utilisée comme solution de repli si l'heure de fin d'un cours est invalide.
+def find_single_course_block(course_start_time, blocks):
+    """Trouve le premier bloc correspondant à l'heure de début du cours."""
     current_row_index = 1
     for block in blocks:
         start_line = current_row_index
@@ -356,11 +364,44 @@ def find_course_block_and_rows_final(course_start_time, blocks):
             return {
                 "start_line": start_line,
                 "end_line": end_line,
-                "rows_in_block": block["rows"]
             }
         current_row_index += block["rows"]
     return None
 
+# --- NOUVELLE FONCTION ---
+# Pour gérer les cours s'étendant sur plusieurs blocs.
+def find_all_course_blocks(course_start_time, course_end_time, blocks):
+    """
+    Trouve tous les blocs de cours chevauchés par un intervalle de temps donné.
+    Les blocs LUNCH et BREAK sont ignorés.
+    """
+    matched_blocks = []
+    current_row_index = 1
+    
+    # Blocs spéciaux à ignorer
+    special_blocks_starts = [time(11, 30), time(15, 15)]
+
+    for block in blocks:
+        start_line = current_row_index
+        end_line = start_line + block["rows"] - 1
+        
+        # Le cours chevauche-t-il ce bloc ? (overlap condition)
+        is_overlapping = (course_start_time < block["end"] and course_end_time > block["start"])
+        
+        # Est-ce un bloc de cours normal (pas un break) ?
+        is_normal_block = block["start"] not in special_blocks_starts
+
+        if is_overlapping and is_normal_block:
+            matched_blocks.append({
+                "start_line": start_line,
+                "end_line": end_line,
+            })
+        
+        current_row_index += block["rows"]
+        
+    return matched_blocks
+
+# --- FONCTION PRINCIPALE MISE À JOUR ---
 def generate_table(elements, courses, semester):
     colors_list = [
         colors.lightcoral,
@@ -384,6 +425,7 @@ def generate_table(elements, courses, semester):
         ]
     )
 
+    # La génération de la grille de base reste identique
     current_row = 1
     for block in TIME_BLOCKS:
         start_line = current_row
@@ -395,25 +437,21 @@ def generate_table(elements, courses, semester):
         style.add("SPAN", (0, start_line), (0, end_line))
         style.add("LINEABOVE", (0, start_line), (-1, start_line), 1.5, colors.darkgrey)
         
-        # <-- MODIFICATION 1: Ajout de la logique pour les blocs LUNCH et BREAK
-        # Bloc pour le repas
         if block['start'] == time(11, 30):
             style.add('BACKGROUND', (1, start_line), (-1, end_line), colors.black)
             style.add('TEXTCOLOR', (1, start_line), (-1, end_line), colors.white)
             wed_col = table_data[0].index('Mercredi')
             style.add('SPAN', (wed_col, start_line), (wed_col + 1, end_line))
             table_data[start_line][wed_col] = "LUNCH"
-        # Bloc pour la pause
         elif block['start'] == time(15, 15):
             style.add('BACKGROUND', (1, start_line), (-1, end_line), colors.black)
             style.add('TEXTCOLOR', (1, start_line), (-1, end_line), colors.white)
             wed_col = table_data[0].index('Mercredi')
             style.add('SPAN', (wed_col, start_line), (wed_col + 1, end_line))
             table_data[start_line][wed_col] = "BREAK"
-        # Bloc normal
         else:
-            start_str = block["start"].strftime("%Hh%M").replace("00", "h")
-            end_str = block["end"].strftime("%Hh%M").replace("00", "h")
+            start_str = block["start"].strftime("%Hh%M").replace("h00", "h")
+            end_str = block["end"].strftime("%Hh%M").replace("h00", "h")
             table_data[start_line][0] = f"{start_str}\n-\n{end_str}"
         
         current_row = end_line + 1
@@ -421,30 +459,54 @@ def generate_table(elements, courses, semester):
     for i in range(1, 6):
         style.add("LINEAFTER", (2 * i, 0), (2 * i, -1), 1, colors.black)
 
+    # --- MODIFICATION DE LA LOGIQUE D'AJOUT DES COURS ---
+    valid_block_end_times = {block["end"] for block in TIME_BLOCKS}
+
     for course in courses:
         if not (course["semester"][:2] == semester):
             continue
         
         course_start_time = course["start_time"]
-        block_info = find_course_block_and_rows_final(course_start_time, TIME_BLOCKS)
+        course_end_time = course.get("end_time") # Utilise .get() pour éviter une erreur si la clé n'existe pas
+
+        # Valider si l'heure de fin du cours correspond à une fin de bloc
+        is_end_time_valid = course_end_time in valid_block_end_times
         
-        if not block_info or course["day"] not in table_data[0]:
+        start_line, end_line = None, None
+        
+        # NOUVELLE LOGIQUE: Gérer les cours sur plusieurs blocs
+        if is_end_time_valid:
+            # On cherche tous les blocs que le cours chevauche
+            matched_blocks = find_all_course_blocks(course_start_time, course_end_time, TIME_BLOCKS)
+            if matched_blocks:
+                # Le SPAN commence à la première ligne du premier bloc trouvé
+                start_line = matched_blocks[0]["start_line"]
+                # et se termine à la dernière ligne du dernier bloc trouvé
+                end_line = matched_blocks[-1]["end_line"]
+        
+        # ANCIENNE LOGIQUE (FALLBACK): si l'heure de fin est invalide ou manquante
+        else:
+            block_info = find_single_course_block(course_start_time, TIME_BLOCKS)
+            if block_info:
+                start_line = block_info["start_line"]
+                end_line = block_info["end_line"]
+
+        # Si aucun bloc n'a été trouvé, on passe au cours suivant
+        if start_line is None or course["day"] not in table_data[0]:
             continue
 
-        start_line = block_info["start_line"]
-        end_line = block_info["end_line"]
-        
+        # Le calcul de la colonne reste le même
         column = -1
         if course["semester"].endswith("A"): column = table_data[0].index(course["day"])
         elif course["semester"].endswith("B"): column = table_data[0].index(course["day"]) + 1
         else: column = table_data[0].index(course["day"])
 
+        # L'application du style utilise les start_line et end_line calculées
         if course["semester"].endswith("A") or course["semester"].endswith("B"):
             style.add("SPAN", (column, start_line), (column, end_line))
         else:
             style.add("SPAN", (column, start_line), (column + 1, end_line))
         
-        # <-- MODIFICATION 2: Utilisation de votre suggestion pour le texte du semestre
         course_text = f'{course["code"]}\n{course["ects"]} ECTS'
         if len(course.get("semester", "")) == 3:
             course_text += f"\n({course['semester']})"
