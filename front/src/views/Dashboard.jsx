@@ -712,7 +712,7 @@ export default function Dashboard() {
             })
                 .then((res) => res.json())
                 .then((result) => {
-                    if (getDepartmentCode(departement) === 'GCC3') {
+                    if (false) {
                         let choices = Array
                             .from(Map.groupBy(result, (course) => course.start_time + course.day + course.semester + course.end_time).values())
                             .filter((courses) => courses.length > 1);

@@ -317,7 +317,8 @@ def generate_pdf_from_courses(name, courses, intro,year_student="2A"):
     title = Paragraph(title_text, title_style)
 
     elements.append(title)
-    generate_table(elements, courses, "S3")
+    print(year_student)
+    generate_table(elements, courses, "S3" if year_student == "2A" else "S5")
     if year_student == "2A":
         elements.append(PageBreak())
         generate_table(elements, courses, "S4")
